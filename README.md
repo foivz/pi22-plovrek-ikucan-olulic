@@ -12,20 +12,23 @@ Sav programski kod potrebno je verzionirati u glavnoj **master** grani i **obvez
 Nakon vaše prijave bit će vam dodijeljen mentor s kojim ćete tijekom semestra raditi na ovom projektu. A sada, vrijeme je da prijavite vaš projekt. Za prijavu vašeg projektnog prijedloga molimo vas koristite **predložak** koji je naveden u nastavku, a započnite tako da kliknete na *olovku* u desnom gornjem kutu ovoga dokumenta :) 
 
 # Naziv projekta
-(u redak iznad navedite kratki proizvoljni naziv projekta prikladan akademskoj zajednici, a ovaj tekst obrišite)
+Aplikacija za kontrolu servisa za automobile.
 
 ## Projektni tim
 
 Ime i prezime | E-mail adresa (FOI) | JMBAG | Github korisničko ime
 ------------  | ------------------- | ----- | ---------------------
-Ime i prezime | mojaadresa@foi.hr | 000000000 | githubuser
-Ime i prezime | ... | ... | ...
+Patrik Lovrek | plovrek@foi.hr | 0016142513 | PakoLoki
+Ivan Kučan | ikucan@foi.hr | 0016142529 | ivankucan
+Oton Lulić | olulic@foi.hr | 0016142630 | olulic
 
 ## Opis domene
-Umjesto ovih uputa opišite domenu ili problem koji pokrivate vašim  projektom. Domena može biti proizvoljna, ali obratite pozornost da sukladno ishodima učenja, domena omogući primjenu zahtijevanih koncepata kako je to navedeno u sljedećem poglavlju. Priložite odgovarajuće skice gdje je to prikladno.
+Tema bi pokrila problem čekanja i problem nedostatka informacija o specifičnim dijelovima potrebnih za servisiranje automobila. Klijent kad doveze auto na servis nema pristup informacijama koliko će dugo morati čekati da servis završi i koliko će koštati nadoplata iskorištenih materijala u servisu. Aplikacija bi omogućila obrtu za servisiranje da može postaviti uvjete kako se servis odvija, postaviti korisniku detalje o utrošenom materijalu te mu javiti kada mu servis završi da dođe po vozilo. 
 
 ## Specifikacija projekta
 Umjesto ovih uputa opišite zahtjeve za funkcionalnošću programskog proizvoda. Pobrojite osnovne funkcionalnosti i za svaku naznačite ime odgovornog člana tima. Opišite buduću arhitekturu programskog proizvoda. Obratite pozornost da bi arhitektura trebala biti višeslojna s odvojenom (dislociranom) bazom podatka. Također uzmite u obzir da bi svaki član tima treba biti odgovorana za otprilike 3 funkcionalnosti, te da bi opterećenje članova tima trebalo biti ujednačeno. Priložite odgovarajuće dijagrame i skice gdje je to prikladno. Funkcionalnosti sustava bobrojite u tablici ispod koristeći predložak koji slijedi:
+
+Aplikacija bi sadržavala korisničku i obrtsku instancu. Preko korisničke instance, klijenti naručuju servis te primaju obavijesti o tome kako se servis odvija. Obrtska instanca može prihvatiti upit za servisiranjem te obavještavati korisnika o tijeku servisa i detaljima. 
 
 Oznaka | Naziv | Kratki opis | Odgovorni član tima
 ------ | ----- | ----------- | -------------------
