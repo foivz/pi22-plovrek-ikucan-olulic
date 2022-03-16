@@ -43,6 +43,6 @@ F08 | Lista čekanja | Dodavanje liste čekanja gdje korisnik može vidjeti koli
 F09 | Izdavanje računa | Izrada računa sa svim specifikacijama o izvršenom servisu | Oton Lulić
 
 ## Tehnologije i oprema
-Koristili bismo MySQL Workbench, alat za izradu baze podataka te MySQL server preko koje bi se u Visual Studiu mogli spojiti na bazu podataka workbencha. Također koristili bi, već navedeni Visual Studio 2022 za razvoj programskog koda.
+Koristili bismo MySQL Workbench, alat za izradu baze podataka te MySQL server preko koje bi se u Visual Studiu mogli spojiti na bazu podataka workbencha. Također koristili bi, već navedeni Visual Studio 2022 za razvoj programskog koda. 
 
 //Umjesto ovih uputa jasno popišite sve tehnologije, alate i opremu koju ćete koristiti pri implementaciji vašeg rješenja. Ne zaboravite planirati korištenje tehnologija u aktivnostima kao što su projektni menadžment ili priprema dokumentacije. Tehnologije koje ćete koristiti bi trebale biti javno dostupne, a ako ih ne budemo obrađivali na vježbama u vašoj dokumentaciji ćete morati navesti način preuzimanja, instaliranja i korištenja onih tehnologija koje su neopbodne kako bi se vaš programski proizvod preveo i pokrenuo. Pazite da svi alati koje ćete koristiti moraju imati odgovarajuću licencu.
