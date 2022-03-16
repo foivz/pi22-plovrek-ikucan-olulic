@@ -28,12 +28,13 @@ Tema bi pokrila problem čekanja i problem nedostatka informacija o specifičnim
 ## Specifikacija projekta
 Umjesto ovih uputa opišite zahtjeve za funkcionalnošću programskog proizvoda. Pobrojite osnovne funkcionalnosti i za svaku naznačite ime odgovornog člana tima. Opišite buduću arhitekturu programskog proizvoda. Obratite pozornost da bi arhitektura trebala biti višeslojna s odvojenom (dislociranom) bazom podatka. Također uzmite u obzir da bi svaki član tima treba biti odgovorana za otprilike 3 funkcionalnosti, te da bi opterećenje članova tima trebalo biti ujednačeno. Priložite odgovarajuće dijagrame i skice gdje je to prikladno. Funkcionalnosti sustava bobrojite u tablici ispod koristeći predložak koji slijedi:
 
-Aplikacija bi sadržavala korisničku i obrtsku instancu. Preko korisničke instance, klijenti naručuju servis te primaju obavijesti o tome kako se servis odvija. Obrtska instanca može prihvatiti upit za servisiranjem te obavještavati korisnika o tijeku servisa i detaljima. 
+Aplikacija bi sadržavala korisničku i obrtsku instancu. Preko korisničke instance, klijenti naručuju servis te primaju obavijesti o tome kako se servis odvija. Obrtska instanca može prihvatiti upit za servisiranjem te obavještavati korisnika o tijeku servisa i detaljima te također može naručiti potrebne dijelove koji su bili utrošeni prilikom servisa. 
 
 Oznaka | Naziv | Kratki opis | Odgovorni član tima
 ------ | ----- | ----------- | -------------------
-F01 | Login | Za pristup dnevniku potrebnba je autentikacija korisnika pomoću login funkcionalnosti. Korisnik se logira s podacima koji su mu dodijeljeni prilikom ... | Zlatko Stapić
-F02 | Pregled dnevnika | .... | ...
+F01 | Login | Korisnicima aplikacije potrebno se ulogirati u sustav radi autentifikacije | Patrik Lovrek
+F02 | Baza podataka | Izrada baze podataka u koju će se spremati podaci (Npr. logirani korisnici, materijali itd.) | Patrik Lovrek
+F03 | 
 
 ## Tehnologije i oprema
 Umjesto ovih uputa jasno popišite sve tehnologije, alate i opremu koju ćete koristiti pri implementaciji vašeg rješenja. Ne zaboravite planirati korištenje tehnologija u aktivnostima kao što su projektni menadžment ili priprema dokumentacije. Tehnologije koje ćete koristiti bi trebale biti javno dostupne, a ako ih ne budemo obrađivali na vježbama u vašoj dokumentaciji ćete morati navesti način preuzimanja, instaliranja i korištenja onih tehnologija koje su neopbodne kako bi se vaš programski proizvod preveo i pokrenuo. Pazite da svi alati koje ćete koristiti moraju imati odgovarajuću licencu.
