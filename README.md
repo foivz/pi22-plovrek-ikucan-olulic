@@ -26,15 +26,23 @@ Oton Lulić | olulic@foi.hr | 0016142630 | olulic
 Tema bi pokrila problem čekanja i problem nedostatka informacija o specifičnim dijelovima potrebnih za servisiranje automobila. Klijent kad doveze auto na servis nema pristup informacijama koliko će dugo morati čekati da servis završi i koliko će koštati nadoplata iskorištenih materijala u servisu. Aplikacija bi omogućila obrtu za servisiranje da može postaviti uvjete kako se servis odvija, postaviti korisniku detalje o utrošenom materijalu te mu javiti kada mu servis završi da dođe po vozilo. 
 
 ## Specifikacija projekta
-Umjesto ovih uputa opišite zahtjeve za funkcionalnošću programskog proizvoda. Pobrojite osnovne funkcionalnosti i za svaku naznačite ime odgovornog člana tima. Opišite buduću arhitekturu programskog proizvoda. Obratite pozornost da bi arhitektura trebala biti višeslojna s odvojenom (dislociranom) bazom podatka. Također uzmite u obzir da bi svaki član tima treba biti odgovorana za otprilike 3 funkcionalnosti, te da bi opterećenje članova tima trebalo biti ujednačeno. Priložite odgovarajuće dijagrame i skice gdje je to prikladno. Funkcionalnosti sustava bobrojite u tablici ispod koristeći predložak koji slijedi:
+Aplikacija bi sadržavala korisničku i obrtsku instancu. Preko korisničke instance, klijenti naručuju servis te primaju obavijesti o tome kako se servis odvija. Obrtska instanca može prihvatiti upit za servisiranjem te obavještavati korisnika o tijeku servisa i detaljima te također može naručiti potrebne dijelove koji su bili utrošeni prilikom servisa.
 
-Aplikacija bi sadržavala korisničku i obrtsku instancu. Preko korisničke instance, klijenti naručuju servis te primaju obavijesti o tome kako se servis odvija. Obrtska instanca može prihvatiti upit za servisiranjem te obavještavati korisnika o tijeku servisa i detaljima te također može naručiti potrebne dijelove koji su bili utrošeni prilikom servisa. 
+//Umjesto ovih uputa opišite zahtjeve za funkcionalnošću programskog proizvoda. Pobrojite osnovne funkcionalnosti i za svaku naznačite ime odgovornog člana tima. Opišite buduću arhitekturu programskog proizvoda. Obratite pozornost da bi arhitektura trebala biti višeslojna s odvojenom (dislociranom) bazom podatka. Također uzmite u obzir da bi svaki član tima treba biti odgovorana za otprilike 3 funkcionalnosti, te da bi opterećenje članova tima trebalo biti ujednačeno. Priložite odgovarajuće dijagrame i skice gdje je to prikladno. Funkcionalnosti sustava bobrojite u tablici ispod koristeći predložak koji slijedi: 
 
 Oznaka | Naziv | Kratki opis | Odgovorni član tima
 ------ | ----- | ----------- | -------------------
 F01 | Login | Korisnicima aplikacije potrebno se ulogirati u sustav radi autentifikacije | Patrik Lovrek
 F02 | Baza podataka | Izrada baze podataka u koju će se spremati podaci (Npr. logirani korisnici, materijali itd.) | Patrik Lovrek
-F03 | 
+F03 | Primitak narudžbe servisa | Klijent može naručiti servis koji mu odgovorni djelatnik zatim prihvaća | Patrik Lovrek
+F04 | Izvještaj o detaljima i napretku servisa | Izvještaj koji informira klijenta kako mu servis napreduje i ako mu je vozilo gotovo | Ivan Kučan
+F05 | Dodavanje auto dijelova | Dodavanje potrebnih auto dijelova za servis radi evidencije da klijent i zaposlenici mogu vidjeti što se utrošilo | Ivan Kučan
+F06 | Kupovina auto dijelova | Stavka za naručivanje dijelova koji su bili utrošeni u servisu | Ivan Kučan
+F07 | Određivanje uloge zaposlenicima | Prilikom prijave, zaposlenik može odabrati koju ulogu će on imati (Mehaničar, limar, recepcionist itd.) | Oton Lulić
+F08 | Lista čekanja | Dodavanje liste čekanja gdje korisnik može vidjeti koliko je vozila trenutno na servisu i kad bi njegovo vozilo moglo doći na red | Oton Lulić
+F09 | Izdavanje računa | Izrada računa sa svim specifikacijama o izvršenom servisu | Oton Lulić
 
 ## Tehnologije i oprema
-Umjesto ovih uputa jasno popišite sve tehnologije, alate i opremu koju ćete koristiti pri implementaciji vašeg rješenja. Ne zaboravite planirati korištenje tehnologija u aktivnostima kao što su projektni menadžment ili priprema dokumentacije. Tehnologije koje ćete koristiti bi trebale biti javno dostupne, a ako ih ne budemo obrađivali na vježbama u vašoj dokumentaciji ćete morati navesti način preuzimanja, instaliranja i korištenja onih tehnologija koje su neopbodne kako bi se vaš programski proizvod preveo i pokrenuo. Pazite da svi alati koje ćete koristiti moraju imati odgovarajuću licencu.
+Koristili bismo MySQL Workbench, alat za izradu baze podataka te MySQL server preko koje bi se u Visual Studiu mogli spojiti na bazu podataka workbencha. Također koristili bi, već navedeni Visual Studio 2022 za razvoj programskog koda.
+
+//Umjesto ovih uputa jasno popišite sve tehnologije, alate i opremu koju ćete koristiti pri implementaciji vašeg rješenja. Ne zaboravite planirati korištenje tehnologija u aktivnostima kao što su projektni menadžment ili priprema dokumentacije. Tehnologije koje ćete koristiti bi trebale biti javno dostupne, a ako ih ne budemo obrađivali na vježbama u vašoj dokumentaciji ćete morati navesti način preuzimanja, instaliranja i korištenja onih tehnologija koje su neopbodne kako bi se vaš programski proizvod preveo i pokrenuo. Pazite da svi alati koje ćete koristiti moraju imati odgovarajuću licencu.
