@@ -33,14 +33,17 @@ Aplikacija bi sadržavala korisničku i obrtsku instancu. Preko korisničke inst
 Oznaka | Naziv | Kratki opis | Odgovorni član tima
 ------ | ----- | ----------- | -------------------
 F01 | Login | Korisnicima aplikacije potrebno se ulogirati u sustav radi autentifikacije | Patrik Lovrek
-F02 | Baza podataka | Izrada baze podataka u koju će se spremati podaci (Npr. logirani korisnici, materijali itd.) | Patrik Lovrek
-F03 | Primitak narudžbe servisa | Klijent može naručiti servis koji mu odgovorni djelatnik zatim prihvaća | Patrik Lovrek
-F04 | Izvještaj o detaljima i napretku servisa | Izvještaj koji informira klijenta kako mu servis napreduje i ako mu je vozilo gotovo | Ivan Kučan
-F05 | Dodavanje auto dijelova | Dodavanje potrebnih auto dijelova za servis radi evidencije da klijent i zaposlenici mogu vidjeti što se utrošilo | Ivan Kučan
-F06 | Kupovina auto dijelova | Stavka za naručivanje dijelova koji su bili utrošeni u servisu | Ivan Kučan
-F07 | Određivanje uloge zaposlenicima | Prilikom prijave, zaposlenik može odabrati koju ulogu će on imati (Mehaničar, limar, recepcionist itd.) | Oton Lulić
-F08 | Lista čekanja | Dodavanje liste čekanja gdje korisnik može vidjeti koliko je vozila trenutno na servisu i kad bi njegovo vozilo moglo doći na red | Oton Lulić
-F09 | Izdavanje računa | Izrada računa sa svim specifikacijama o izvršenom servisu | Oton Lulić
+F02 | Registracija | Neregistrirani korisnici se mogu prijaviti | Patrik Lovrek
+F03 | Narudžba servisa/radova (klijent) | Klijent može naručiti servis/rad | Patrik Lovrek
+F04 | Potvrđivanje servisa/radova (djelatnik) | Djelatnik može potvrditi/odbiti servis/rad | Patrik Lovrek
+F05 | Otkazivanje servisa/radova (klijent) | Klijent može otkazati servis/rad do trenutka kad mu vozilo dolazi na red | Ivan Kučan
+F06 | Izvještaj o detaljima i napretku servisa/radova | Izvještaj koji informira klijenta kako mu servis napreduje i ako mu je vozilo gotovo | Ivan Kučan
+F07 | Prikaz popisa auto dijelova | Prikazivanje popisa sa potrebnim auto dijelovima za servis radi evidencije da klijent i zaposlenici mogu vidjeti što se utrošilo | Ivan Kučan
+F08 | Kupovina auto dijelova | Stavka za naručivanje dijelova koji su bili utrošeni u servisu | Ivan Kučan
+F09 | Pregled odrađenih servisa/radova na vozilu | Korisnik ima mogućnost provjeriti koji su se radovi i kada odradili na vozilu (povijest korištenja) | Oton Lulić
+F10 | Izbornik za obavještavanje korisnika | Izbornik koji sadrži automatsko slanje generiranih e-mailova kako bi se korisnika obavijestilo x sati prije nego će mu vozilo doći na servis | Oton Lulić
+F11 | Izdavanje računa | Izrada računa sa svim specifikacijama o izvršenom servisu | Oton Lulić
+
 
 ## Tehnologije i oprema
 Koristili bismo MySQL Workbench, alat za izradu baze podataka te MySQL server preko koje bi se u Visual Studiu mogli spojiti na bazu podataka workbencha. Također koristili bi, već navedeni Visual Studio 2022 za razvoj programskog koda u jeziku C# i .NET. 
