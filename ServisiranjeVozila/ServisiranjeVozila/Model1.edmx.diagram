@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2d68c0c90b54445ab1d78f30dda22710" Name="Diagram1">
+        <EntityTypeShape EntityType="ModelBaze.Dijelovi" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelBaze.Korisnik" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelBaze.Kupovina" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelBaze.Napredak" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelBaze.Narudzba" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelBaze.Racun" Width="1.5" PointX="8.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelBaze.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelBaze.TipKorisnika" Width="1.5" PointX="1.5" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="ModelBaze.FK_Korisnik_TipKorisnika" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelBaze.FK_Racun_korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelBaze.korisnik_narudzba" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelBaze.FK_napredak_narudzba" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelBaze.FK_Racun_narudzba" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelBaze.Dio_u_kupovini" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelBaze.Sadrzi_dio" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
