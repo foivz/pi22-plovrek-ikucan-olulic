@@ -158,6 +158,15 @@ namespace ServisiranjeVozila
             {
                 buttonNapredak.Enabled = true;
             }
+
+            if((dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba).Zavrsena == 1 || (dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba).Potvrđeno == 0 || (dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba).Otkazano == 1)
+            {
+                buttonZavrsi.Enabled = false;
+            }
+            else
+            {
+                buttonZavrsi.Enabled = true;
+            }
         }
 
         private void buttonPotvrdi_Click(object sender, EventArgs e)
