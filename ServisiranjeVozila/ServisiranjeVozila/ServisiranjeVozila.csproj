@@ -55,8 +55,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="detaljiNarudzbeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="detaljiNarudzbeForm.Designer.cs">
+      <DependentUpon>detaljiNarudzbeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dijelovi.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dodajNapredakForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dodajNapredakForm.Designer.cs">
+      <DependentUpon>dodajNapredakForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="napredakNarudzbeKlijentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="napredakNarudzbeKlijentForm.Designer.cs">
+      <DependentUpon>napredakNarudzbeKlijentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pocetnaKlijentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pocetnaKlijentForm.Designer.cs">
+      <DependentUpon>pocetnaKlijentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="loginForm.cs">
       <SubType>Form</SubType>
@@ -91,6 +115,12 @@
     <Compile Include="Narudzba.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="pocetnaZaposlenikForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pocetnaZaposlenikForm.Designer.cs">
+      <DependentUpon>pocetnaZaposlenikForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Racun.cs">
@@ -108,8 +138,23 @@
     <Compile Include="TipKorisnika.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="detaljiNarudzbeForm.resx">
+      <DependentUpon>detaljiNarudzbeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dodajNapredakForm.resx">
+      <DependentUpon>dodajNapredakForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="napredakNarudzbeKlijentForm.resx">
+      <DependentUpon>napredakNarudzbeKlijentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pocetnaKlijentForm.resx">
+      <DependentUpon>pocetnaKlijentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="loginForm.resx">
       <DependentUpon>loginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pocetnaZaposlenikForm.resx">
+      <DependentUpon>pocetnaZaposlenikForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

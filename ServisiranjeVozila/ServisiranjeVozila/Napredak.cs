@@ -16,7 +16,7 @@ namespace ServisiranjeVozila
     {
         public int ID_napretka { get; set; }
         public string Opis { get; set; }
-        public Nullable<int> ID_narudzbe { get; set; }
+        public int ID_narudzbe { get; set; }
     
         public virtual Narudzba Narudzba { get; set; }
     }

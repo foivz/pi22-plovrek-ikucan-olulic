@@ -68,6 +68,21 @@ namespace ServisiranjeVozila
                     {
                         MessageBox.Show("Podaci su ok");
                         zastavica = true;
+                        if(item.ID_tipa == 1)
+                        {
+                            PocetnaKlijentForm pocetna = new PocetnaKlijentForm(item);
+                            this.Hide();
+                            pocetna.ShowDialog();
+                            this.Close();
+                            
+                        }
+                        else if(item.ID_tipa == 2)
+                        {
+                            pocetnaZaposlenikForm pocetna = new pocetnaZaposlenikForm(item);
+                            this.Hide();
+                            pocetna.ShowDialog();
+                            this.Close();
+                        }
                     }
                 }
                 if (!zastavica)

@@ -50,9 +50,9 @@
           <Key>
             <PropertyRef Name="ID_napretka" />
           </Key>
-          <Property Name="ID_napretka" Type="int" Nullable="false" />
+          <Property Name="ID_napretka" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Opis" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="ID_narudzbe" Type="int" />
+          <Property Name="ID_narudzbe" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Narudzba">
           <Key>
@@ -142,8 +142,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_napredak_narudzba">
-          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="0..1" />
+        <Association Name="FK_Napredak_Narudzba">
+          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
           <End Role="Napredak" Type="Self.Napredak" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Narudzba">
@@ -237,7 +237,7 @@
             <End Role="TipKorisnika" EntitySet="TipKorisnika" />
             <End Role="Korisnik" EntitySet="Korisnik" />
           </AssociationSet>
-          <AssociationSet Name="FK_napredak_narudzba" Association="Self.FK_napredak_narudzba">
+          <AssociationSet Name="FK_Napredak_Narudzba" Association="Self.FK_Napredak_Narudzba">
             <End Role="Narudzba" EntitySet="Narudzba" />
             <End Role="Napredak" EntitySet="Napredak" />
           </AssociationSet>
@@ -311,7 +311,7 @@
           </Key>
           <Property Name="ID_napretka" Type="Int32" Nullable="false" />
           <Property Name="Opis" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ID_narudzbe" Type="Int32" />
+          <Property Name="ID_narudzbe" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Narudzba" Relationship="Self.FK_napredak_narudzba" FromRole="Napredak" ToRole="Narudzba" />
         </EntityType>
         <EntityType Name="Narudzba">
@@ -402,7 +402,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_napredak_narudzba">
-          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="0..1" />
+          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
           <End Role="Napredak" Type="Self.Napredak" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Narudzba">
