@@ -1,6 +1,6 @@
 ﻿namespace ServisiranjeVozila
 {
-    partial class dodajNapredakForm
+    partial class dodajNapredakZaposlenikForm
     {
         /// <summary>
         /// Required designer variable.
@@ -136,9 +136,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(27, 25);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 13);
+            this.label6.Size = new System.Drawing.Size(68, 13);
             this.label6.TabIndex = 20;
-            this.label6.Text = "ID narudžbe";
+            this.label6.Text = "ID narudžbe:";
             // 
             // textBoxIDNarudzbe
             // 
@@ -185,11 +185,11 @@
             this.buttonZatvori.UseVisualStyleBackColor = true;
             this.buttonZatvori.Click += new System.EventHandler(this.buttonZatvori_Click);
             // 
-            // dodajNapredakForm
+            // dodajNapredakZaposlenikForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 358);
+            this.ClientSize = new System.Drawing.Size(437, 311);
             this.Controls.Add(this.buttonZatvori);
             this.Controls.Add(this.buttonDodajNapredak);
             this.Controls.Add(this.label7);
@@ -206,7 +206,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxKorime);
             this.Controls.Add(this.label1);
-            this.Name = "dodajNapredakForm";
+            this.Name = "dodajNapredakZaposlenikForm";
             this.Text = "dodajNapredakForm";
             this.Load += new System.EventHandler(this.dodajNapredakForm_Load);
             this.ResumeLayout(false);

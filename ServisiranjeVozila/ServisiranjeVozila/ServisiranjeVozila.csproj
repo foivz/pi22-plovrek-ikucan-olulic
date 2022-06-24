@@ -55,26 +55,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="detaljiNarudzbeForm.cs">
+    <Compile Include="detaljiNarudzbeKlijentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="detaljiNarudzbeForm.Designer.cs">
-      <DependentUpon>detaljiNarudzbeForm.cs</DependentUpon>
+    <Compile Include="detaljiNarudzbeKlijentForm.Designer.cs">
+      <DependentUpon>detaljiNarudzbeKlijentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Dijelovi.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="dodajNapredakForm.cs">
+    <Compile Include="dodajDijeloveZaposlenikForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dodajNapredakForm.Designer.cs">
-      <DependentUpon>dodajNapredakForm.cs</DependentUpon>
+    <Compile Include="dodajDijeloveZaposlenikForm.Designer.cs">
+      <DependentUpon>dodajDijeloveZaposlenikForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="napredakNarudzbeKlijentForm.cs">
+    <Compile Include="dodajDijeloveUKupovinuZaposlenikForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="napredakNarudzbeKlijentForm.Designer.cs">
-      <DependentUpon>napredakNarudzbeKlijentForm.cs</DependentUpon>
+    <Compile Include="dodajDijeloveUKupovinuZaposlenikForm.Designer.cs">
+      <DependentUpon>dodajDijeloveUKupovinuZaposlenikForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dodajNapredakZaposlenikForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dodajNapredakZaposlenikForm.Designer.cs">
+      <DependentUpon>dodajNapredakZaposlenikForm.cs</DependentUpon>
     </Compile>
     <Compile Include="pocetnaKlijentForm.cs">
       <SubType>Form</SubType>
@@ -138,14 +144,17 @@
     <Compile Include="TipKorisnika.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="detaljiNarudzbeForm.resx">
-      <DependentUpon>detaljiNarudzbeForm.cs</DependentUpon>
+    <EmbeddedResource Include="detaljiNarudzbeKlijentForm.resx">
+      <DependentUpon>detaljiNarudzbeKlijentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="dodajNapredakForm.resx">
-      <DependentUpon>dodajNapredakForm.cs</DependentUpon>
+    <EmbeddedResource Include="dodajDijeloveUKupovinuZaposlenikForm.resx">
+      <DependentUpon>dodajDijeloveUKupovinuZaposlenikForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="napredakNarudzbeKlijentForm.resx">
-      <DependentUpon>napredakNarudzbeKlijentForm.cs</DependentUpon>
+    <EmbeddedResource Include="dodajDijeloveZaposlenikForm.resx">
+      <DependentUpon>dodajDijeloveZaposlenikForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dodajNapredakZaposlenikForm.resx">
+      <DependentUpon>dodajNapredakZaposlenikForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pocetnaKlijentForm.resx">
       <DependentUpon>pocetnaKlijentForm.cs</DependentUpon>

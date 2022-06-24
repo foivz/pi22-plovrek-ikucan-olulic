@@ -1,6 +1,6 @@
 ﻿namespace ServisiranjeVozila
 {
-    partial class detaljiNarudzbeForm
+    partial class detaljiNarudzbeKlijentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -50,6 +50,14 @@
             this.radioButtonZavrseno = new System.Windows.Forms.RadioButton();
             this.buttonOtkazi = new System.Windows.Forms.Button();
             this.buttonZatvori = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgvDijelovi = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBoxNapredak = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDijelovi)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -235,7 +243,7 @@
             // buttonOtkazi
             // 
             this.buttonOtkazi.Enabled = false;
-            this.buttonOtkazi.Location = new System.Drawing.Point(42, 351);
+            this.buttonOtkazi.Location = new System.Drawing.Point(93, 353);
             this.buttonOtkazi.Name = "buttonOtkazi";
             this.buttonOtkazi.Size = new System.Drawing.Size(106, 23);
             this.buttonOtkazi.TabIndex = 22;
@@ -245,7 +253,7 @@
             // 
             // buttonZatvori
             // 
-            this.buttonZatvori.Location = new System.Drawing.Point(215, 351);
+            this.buttonZatvori.Location = new System.Drawing.Point(1044, 397);
             this.buttonZatvori.Name = "buttonZatvori";
             this.buttonZatvori.Size = new System.Drawing.Size(82, 23);
             this.buttonZatvori.TabIndex = 23;
@@ -253,11 +261,59 @@
             this.buttonZatvori.UseVisualStyleBackColor = true;
             this.buttonZatvori.Click += new System.EventHandler(this.buttonZatvori_Click);
             // 
-            // detaljiNarudzbeForm
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgvDijelovi);
+            this.groupBox1.Location = new System.Drawing.Point(321, 14);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(395, 383);
+            this.groupBox1.TabIndex = 24;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Popis dijelova";
+            // 
+            // dgvDijelovi
+            // 
+            this.dgvDijelovi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDijelovi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDijelovi.Location = new System.Drawing.Point(6, 19);
+            this.dgvDijelovi.Name = "dgvDijelovi";
+            this.dgvDijelovi.Size = new System.Drawing.Size(383, 358);
+            this.dgvDijelovi.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(12, 14);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(294, 383);
+            this.groupBox2.TabIndex = 25;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Podaci o narudžbi";
+            // 
+            // textBoxNapredak
+            // 
+            this.textBoxNapredak.Enabled = false;
+            this.textBoxNapredak.Location = new System.Drawing.Point(6, 19);
+            this.textBoxNapredak.Multiline = true;
+            this.textBoxNapredak.Name = "textBoxNapredak";
+            this.textBoxNapredak.Size = new System.Drawing.Size(383, 358);
+            this.textBoxNapredak.TabIndex = 26;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.textBoxNapredak);
+            this.groupBox3.Location = new System.Drawing.Point(731, 14);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(395, 383);
+            this.groupBox3.TabIndex = 25;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Napredak";
+            // 
+            // detaljiNarudzbeKlijentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 444);
+            this.ClientSize = new System.Drawing.Size(1138, 428);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonZatvori);
             this.Controls.Add(this.buttonOtkazi);
             this.Controls.Add(this.radioButtonZavrseno);
@@ -280,9 +336,15 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxKorime);
             this.Controls.Add(this.label1);
-            this.Name = "detaljiNarudzbeForm";
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox3);
+            this.Name = "detaljiNarudzbeKlijentForm";
             this.Text = "Detalji narudžbe";
             this.Load += new System.EventHandler(this.detaljiNarudzbeForm_Load);
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDijelovi)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,5 +374,10 @@
         private System.Windows.Forms.RadioButton radioButtonZavrseno;
         private System.Windows.Forms.Button buttonOtkazi;
         private System.Windows.Forms.Button buttonZatvori;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dgvDijelovi;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox textBoxNapredak;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

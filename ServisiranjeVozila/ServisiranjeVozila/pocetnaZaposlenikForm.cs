@@ -112,17 +112,29 @@ namespace ServisiranjeVozila
             dgvSveNarudzbe.Columns["Korisnicko_ime"].HeaderText = "Korisničko ime";
             dgvSveNarudzbe.Columns["ID_narudzbe"].HeaderText = "ID narudžbe";
             dgvSveNarudzbe.Columns["Zavrsena"].HeaderText = "Završeno";
+
+            dgvKupovinaDijelova.Columns["Dijelovi"].Visible = false;
+            dgvKupovinaDijelova.Columns["ID_kupovine"].HeaderText = "ID Kupovine";
+            dgvKupovinaDijelova.Columns["Ukupna_cijena"].HeaderText = "Ukupna cijena";
+            dgvKupovinaDijelova.Columns["Datum_kupovine"].HeaderText = "Datum kupovine";
+            dgvKupovinaDijelova.Columns["Status_kupovina"].HeaderText = "Status kupovine";
         }
 
         private void OsvjeziPodatke()
         {
             using (var context = new EntitetiBaze())
             {
-                var query = from n in context.Narudzba
+                var narudzbe = from n in context.Narudzba
                             orderby n.Datum_narudzbe
                             select n;
-                var podaci = query.ToList();
-                dgvSveNarudzbe.DataSource = podaci;
+                var podaciNarudzbe = narudzbe.ToList();
+                dgvSveNarudzbe.DataSource = podaciNarudzbe;
+
+                var kupovine = from k in context.Kupovina
+                               orderby k.Datum_kupovine
+                               select k;
+                var podaciKupovine = kupovine.ToList();
+                dgvKupovinaDijelova.DataSource = podaciKupovine;
             }
             PostaviNaslove();
             
@@ -141,7 +153,8 @@ namespace ServisiranjeVozila
 
         private void dgvSveNarudzbe_SelectionChanged(object sender, EventArgs e)
         {
-            if((dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba).Potvrđeno == 0)
+            Narudzba odabranaNarudzba = dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba;
+            if (odabranaNarudzba.Potvrđeno == 0)
             {
                 buttonPotvrdi.Enabled = true;
             }
@@ -150,16 +163,18 @@ namespace ServisiranjeVozila
                 buttonPotvrdi.Enabled = false;
             }
 
-            if((dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba).Zavrsena == 1 || (dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba).Otkazano == 1 || (dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba).Potvrđeno == 0)
+            if(odabranaNarudzba.Zavrsena == 1 || odabranaNarudzba.Otkazano == 1 || odabranaNarudzba.Potvrđeno == 0)
             {
                 buttonNapredak.Enabled = false;
+                buttonDijelovi.Enabled = false;
             }
             else
             {
                 buttonNapredak.Enabled = true;
+                buttonDijelovi.Enabled = true;
             }
 
-            if((dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba).Zavrsena == 1 || (dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba).Potvrđeno == 0 || (dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba).Otkazano == 1)
+            if(odabranaNarudzba.Zavrsena == 1 || odabranaNarudzba.Potvrđeno == 0 || odabranaNarudzba.Otkazano == 1)
             {
                 buttonZavrsi.Enabled = false;
             }
@@ -183,7 +198,7 @@ namespace ServisiranjeVozila
 
         private void buttonNapredak_Click(object sender, EventArgs e)
         {
-            dodajNapredakForm dodajNapredak = new dodajNapredakForm(dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba);
+            dodajNapredakZaposlenikForm dodajNapredak = new dodajNapredakZaposlenikForm(dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba);
             this.Hide();
             dodajNapredak.ShowDialog();
             this.Show();
@@ -197,6 +212,49 @@ namespace ServisiranjeVozila
             {
                 context.Narudzba.Attach(selektiranaNarudzba);
                 selektiranaNarudzba.Zavrsena = 1;
+                context.SaveChanges();
+            }
+            OsvjeziPodatke();
+        }
+
+        private void buttonDijelovi_Click(object sender, EventArgs e)
+        {
+            var selektiranaNarudzba = dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba;
+            dodajDijeloveZaposlenikForm dodajDijelove = new dodajDijeloveZaposlenikForm(selektiranaNarudzba);
+            dodajDijelove.ShowDialog();
+        }
+
+        private void buttonKreirajKupovinu_Click(object sender, EventArgs e)
+        {
+            using (var context = new EntitetiBaze())
+            {
+                Kupovina kupovina = new Kupovina
+                {
+                    Djelatnik = trenutniKorisnik.Korisnicko_ime,
+                    Ukupna_cijena = 0,
+                    Datum_kupovine = DateTime.Now,
+                    Status_kupovina = "U tijeku"
+                };
+                context.Kupovina.Add(kupovina);
+                context.SaveChanges();
+            }
+            OsvjeziPodatke();
+        }
+
+        private void buttonDijeloviKupovina_Click(object sender, EventArgs e)
+        {
+            dodajDijeloveUKupovinuZaposlenikForm dodajDijeloveUKupovinu = new dodajDijeloveUKupovinuZaposlenikForm(dgvKupovinaDijelova.CurrentRow.DataBoundItem as Kupovina);
+            dodajDijeloveUKupovinu.ShowDialog();
+            OsvjeziPodatke();
+        }
+
+        private void buttonKupovinaZavrsena_Click(object sender, EventArgs e)
+        {
+            var selektiranaKupovina = dgvKupovinaDijelova.CurrentRow.DataBoundItem as Kupovina;
+            using (var context = new EntitetiBaze())
+            {
+                context.Kupovina.Attach(selektiranaKupovina);
+                selektiranaKupovina.Status_kupovina = "Završena";
                 context.SaveChanges();
             }
             OsvjeziPodatke();

@@ -60,16 +60,9 @@ namespace ServisiranjeVozila
         private void detaljiNarudzbe_Click(object sender, EventArgs e)
         {
             var odabranaNarudzba = dgvKorisnikoveNarudzbe.CurrentRow.DataBoundItem as Narudzba;
-            detaljiNarudzbeForm detaljiNarudzbeForm = new detaljiNarudzbeForm(odabranaNarudzba);
+            detaljiNarudzbeKlijentForm detaljiNarudzbeForm = new detaljiNarudzbeKlijentForm(odabranaNarudzba);
             detaljiNarudzbeForm.ShowDialog();
             OsvjeziPodatke();
-        }
-
-        private void buttonNapredak_Click(object sender, EventArgs e)
-        {
-            var odabranaNarudzba = dgvKorisnikoveNarudzbe.CurrentRow.DataBoundItem as Narudzba;
-            napredakNarudzbeKlijentForm napredakNarudzbeForm = new napredakNarudzbeKlijentForm(odabranaNarudzba);
-            napredakNarudzbeForm.ShowDialog();
         }
     }
 }

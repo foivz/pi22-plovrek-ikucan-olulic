@@ -35,7 +35,14 @@
             this.buttonPotvrdi = new System.Windows.Forms.Button();
             this.buttonNapredak = new System.Windows.Forms.Button();
             this.buttonZavrsi = new System.Windows.Forms.Button();
+            this.buttonDijelovi = new System.Windows.Forms.Button();
+            this.dgvKupovinaDijelova = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.buttonDijeloviKupovina = new System.Windows.Forms.Button();
+            this.buttonKreirajKupovinu = new System.Windows.Forms.Button();
+            this.buttonKupovinaZavrsena = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSveNarudzbe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKupovinaDijelova)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -110,11 +117,75 @@
             this.buttonZavrsi.UseVisualStyleBackColor = true;
             this.buttonZavrsi.Click += new System.EventHandler(this.buttonZavrsi_Click);
             // 
+            // buttonDijelovi
+            // 
+            this.buttonDijelovi.Location = new System.Drawing.Point(218, 232);
+            this.buttonDijelovi.Name = "buttonDijelovi";
+            this.buttonDijelovi.Size = new System.Drawing.Size(103, 37);
+            this.buttonDijelovi.TabIndex = 9;
+            this.buttonDijelovi.Text = "Dodaj dijelove narudžbi";
+            this.buttonDijelovi.UseVisualStyleBackColor = true;
+            this.buttonDijelovi.Click += new System.EventHandler(this.buttonDijelovi_Click);
+            // 
+            // dgvKupovinaDijelova
+            // 
+            this.dgvKupovinaDijelova.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvKupovinaDijelova.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKupovinaDijelova.Location = new System.Drawing.Point(12, 313);
+            this.dgvKupovinaDijelova.Name = "dgvKupovinaDijelova";
+            this.dgvKupovinaDijelova.Size = new System.Drawing.Size(636, 187);
+            this.dgvKupovinaDijelova.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 297);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Kupovine dijelova:";
+            // 
+            // buttonDijeloviKupovina
+            // 
+            this.buttonDijeloviKupovina.Location = new System.Drawing.Point(436, 506);
+            this.buttonDijeloviKupovina.Name = "buttonDijeloviKupovina";
+            this.buttonDijeloviKupovina.Size = new System.Drawing.Size(103, 37);
+            this.buttonDijeloviKupovina.TabIndex = 12;
+            this.buttonDijeloviKupovina.Text = "Dodaj dijelove u kupovinu";
+            this.buttonDijeloviKupovina.UseVisualStyleBackColor = true;
+            this.buttonDijeloviKupovina.Click += new System.EventHandler(this.buttonDijeloviKupovina_Click);
+            // 
+            // buttonKreirajKupovinu
+            // 
+            this.buttonKreirajKupovinu.Location = new System.Drawing.Point(545, 506);
+            this.buttonKreirajKupovinu.Name = "buttonKreirajKupovinu";
+            this.buttonKreirajKupovinu.Size = new System.Drawing.Size(103, 37);
+            this.buttonKreirajKupovinu.TabIndex = 13;
+            this.buttonKreirajKupovinu.Text = "Kreiraj novu kupovinu";
+            this.buttonKreirajKupovinu.UseVisualStyleBackColor = true;
+            this.buttonKreirajKupovinu.Click += new System.EventHandler(this.buttonKreirajKupovinu_Click);
+            // 
+            // buttonKupovinaZavrsena
+            // 
+            this.buttonKupovinaZavrsena.Location = new System.Drawing.Point(327, 506);
+            this.buttonKupovinaZavrsena.Name = "buttonKupovinaZavrsena";
+            this.buttonKupovinaZavrsena.Size = new System.Drawing.Size(103, 37);
+            this.buttonKupovinaZavrsena.TabIndex = 14;
+            this.buttonKupovinaZavrsena.Text = "Postavi kupovinu kao završenu";
+            this.buttonKupovinaZavrsena.UseVisualStyleBackColor = true;
+            this.buttonKupovinaZavrsena.Click += new System.EventHandler(this.buttonKupovinaZavrsena_Click);
+            // 
             // pocetnaZaposlenikForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 290);
+            this.ClientSize = new System.Drawing.Size(662, 566);
+            this.Controls.Add(this.buttonKupovinaZavrsena);
+            this.Controls.Add(this.buttonKreirajKupovinu);
+            this.Controls.Add(this.buttonDijeloviKupovina);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dgvKupovinaDijelova);
+            this.Controls.Add(this.buttonDijelovi);
             this.Controls.Add(this.buttonZavrsi);
             this.Controls.Add(this.buttonNapredak);
             this.Controls.Add(this.buttonPotvrdi);
@@ -126,6 +197,7 @@
             this.Text = "Glavni izbornik";
             this.Load += new System.EventHandler(this.pocetnaZaposlenikForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSveNarudzbe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKupovinaDijelova)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,5 +212,11 @@
         private System.Windows.Forms.Button buttonPotvrdi;
         private System.Windows.Forms.Button buttonNapredak;
         private System.Windows.Forms.Button buttonZavrsi;
+        private System.Windows.Forms.Button buttonDijelovi;
+        private System.Windows.Forms.DataGridView dgvKupovinaDijelova;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonDijeloviKupovina;
+        private System.Windows.Forms.Button buttonKreirajKupovinu;
+        private System.Windows.Forms.Button buttonKupovinaZavrsena;
     }
 }

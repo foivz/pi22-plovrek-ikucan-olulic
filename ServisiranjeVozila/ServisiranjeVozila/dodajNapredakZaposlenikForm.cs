@@ -10,15 +10,15 @@ using System.Windows.Forms;
 
 namespace ServisiranjeVozila
 {
-    public partial class dodajNapredakForm : Form
+    public partial class dodajNapredakZaposlenikForm : Form
     {
         private Narudzba odabranaNarudzba;
-        public dodajNapredakForm(Narudzba narudzba)
+        public dodajNapredakZaposlenikForm(Narudzba narudzba)
         {
             odabranaNarudzba = narudzba;
             InitializeComponent();
         }
-        public dodajNapredakForm()
+        public dodajNapredakZaposlenikForm()
         {
             InitializeComponent();
         }
