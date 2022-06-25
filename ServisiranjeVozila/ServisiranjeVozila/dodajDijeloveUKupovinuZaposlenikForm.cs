@@ -13,6 +13,7 @@ namespace ServisiranjeVozila
     public partial class dodajDijeloveUKupovinuZaposlenikForm : Form
     {
         Kupovina odabranaKupovina;
+        KomunikacijaSBazom baza = new KomunikacijaSBazom();
         public dodajDijeloveUKupovinuZaposlenikForm(Kupovina kupovina)
         {
             odabranaKupovina = kupovina;
@@ -45,23 +46,9 @@ namespace ServisiranjeVozila
 
         private void OsvjeziPodatke()
         {
-            using (var context = new EntitetiBaze())
-            {
-                var querySvi = from d in context.Dijelovi
-                               select d;
-                var dijeloviSvi = querySvi.ToList();
-                dgvDijelovi.DataSource = null;
-                dgvDijelovi.DataSource = dijeloviSvi;
+            dgvDijelovi.DataSource = baza.DohvatiDijeloveOsimUKupovini(odabranaKupovina);
+            dgvDijeloviUNarudzbi.DataSource = baza.DohvatiDijeloveUKupovini(odabranaKupovina);
 
-
-                var queryUKupovini = from d in context.Dijelovi
-                                     where d.Kupovina.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
-                                     select d;
-                var dijeloviUKupovini = queryUKupovini.ToList();
-                dgvDijeloviUNarudzbi.DataSource = null;
-                dgvDijeloviUNarudzbi.DataSource = dijeloviUKupovini;
-
-            }
             PostaviNaslove();
         }
 
@@ -74,48 +61,30 @@ namespace ServisiranjeVozila
 
         private void textBoxPretrazivanjeNaziv_TextChanged(object sender, EventArgs e)
         {
-            using (var context = new EntitetiBaze())
-            {
-                var querySvi = from d in context.Dijelovi
-                               where d.Naziv_dijela.Contains(textBoxPretrazivanjeNaziv.Text)
-                               select d;
-                var dijeloviSvi = querySvi.ToList();
-                dgvDijelovi.DataSource = null;
-                dgvDijelovi.DataSource = dijeloviSvi;
-            }
+
+            dgvDijelovi.DataSource = baza.FiltrirajDijelovePremaNazivu(textBoxPretrazivanjeNaziv.Text);
             PostaviNaslove();
         }
 
         private void textBoxPretrazivanjeSifra_TextChanged(object sender, EventArgs e)
         {
-            using (var context = new EntitetiBaze())
-            {
-                var querySvi = from d in context.Dijelovi
-                               where d.Sifra_dijela.Contains(textBoxPretrazivanjeSifra.Text)
-                               select d;
-                var dijeloviSvi = querySvi.ToList();
-                dgvDijelovi.DataSource = null;
-                dgvDijelovi.DataSource = dijeloviSvi;
-            }
+            
+            dgvDijelovi.DataSource = baza.FiltrirajDijelovePremaSifri(textBoxPretrazivanjeSifra.Text);
             PostaviNaslove();
         }
 
         private void buttonUNarudzbu_Click(object sender, EventArgs e)
         {
-            Dijelovi odabraniDio = dgvDijelovi.CurrentRow.DataBoundItem as Dijelovi;
-            using (var context = new EntitetiBaze())
+            if(dgvDijelovi.SelectedRows.Count > 0)
             {
-                context.Dijelovi.Attach(odabraniDio);
-                context.Kupovina.Attach(odabranaKupovina);
-                if (!odabraniDio.Kupovina.Contains(odabranaKupovina))
-                {
-                    odabraniDio.Kupovina = new List<Kupovina>();
-                    odabraniDio.Kupovina.Add(odabranaKupovina);
-                    odabranaKupovina.Ukupna_cijena += odabraniDio.Cijena;
-                    context.SaveChanges();
-                }
+                baza.DodajDioUKupovinu(dgvDijelovi.CurrentRow.DataBoundItem as Dijelovi, odabranaKupovina);
+                OsvjeziPodatke();
             }
-            OsvjeziPodatke();
+            else
+            {
+                MessageBox.Show("Označite red!");
+            }
+            
         }
 
         private void buttonZatvori_Click(object sender, EventArgs e)

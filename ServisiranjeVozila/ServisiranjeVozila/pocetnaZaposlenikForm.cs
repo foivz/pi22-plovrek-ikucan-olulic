@@ -13,6 +13,7 @@ namespace ServisiranjeVozila
     public partial class pocetnaZaposlenikForm : Form
     {
         Korisnik trenutniKorisnik;
+        KomunikacijaSBazom baza = new KomunikacijaSBazom();
         public pocetnaZaposlenikForm(Korisnik korisnik)
         {
             InitializeComponent();
@@ -39,61 +40,25 @@ namespace ServisiranjeVozila
 
         private void PrikaziZavrsene()
         {
-            using (var context = new EntitetiBaze())
-            {
-                var query = from n in context.Narudzba
-                            where n.Zavrsena == 1
-                            orderby n.Datum_narudzbe
-                            select n;
-                var podaci = query.ToList();
-                dgvSveNarudzbe.DataSource = null;
-                dgvSveNarudzbe.DataSource = podaci;
-            }
+            dgvSveNarudzbe.DataSource = baza.PrikaziZavrseneNarudzbe();
             PostaviNaslove();
         }
 
         private void PrikaziOtkazane()
         {
-            using (var context = new EntitetiBaze())
-            {
-                var query = from n in context.Narudzba
-                            where n.Otkazano == 1
-                            orderby n.Datum_narudzbe
-                            select n;
-                var podaci = query.ToList();
-                dgvSveNarudzbe.DataSource = null;
-                dgvSveNarudzbe.DataSource = podaci;
-            }
+            dgvSveNarudzbe.DataSource = baza.PrikaziOtkazaneNarudzbe();
             PostaviNaslove();
         }
 
         private void PrikaziPotvrdene()
         {
-            using (var context = new EntitetiBaze())
-            {
-                var query = from n in context.Narudzba
-                            where n.Potvrđeno == 1
-                            orderby n.Datum_narudzbe
-                            select n;
-                var podaci = query.ToList();
-                dgvSveNarudzbe.DataSource = null;
-                dgvSveNarudzbe.DataSource = podaci;
-            }
+            dgvSveNarudzbe.DataSource = baza.PrikaziPotvrdeneNarudzbe();
             PostaviNaslove();
         }
 
         private void PrikaziNepotvrdene()
         {
-            using (var context = new EntitetiBaze())
-            {
-                var query = from n in context.Narudzba
-                            where n.Potvrđeno == 0
-                            orderby n.Datum_narudzbe
-                            select n;
-                var podaci = query.ToList();
-                dgvSveNarudzbe.DataSource = null;
-                dgvSveNarudzbe.DataSource = podaci;
-            }
+            dgvSveNarudzbe.DataSource = baza.PrikaziNepotvrdeneNarudzbe();
             PostaviNaslove();
         }
 
@@ -122,20 +87,9 @@ namespace ServisiranjeVozila
 
         private void OsvjeziPodatke()
         {
-            using (var context = new EntitetiBaze())
-            {
-                var narudzbe = from n in context.Narudzba
-                            orderby n.Datum_narudzbe
-                            select n;
-                var podaciNarudzbe = narudzbe.ToList();
-                dgvSveNarudzbe.DataSource = podaciNarudzbe;
 
-                var kupovine = from k in context.Kupovina
-                               orderby k.Datum_kupovine
-                               select k;
-                var podaciKupovine = kupovine.ToList();
-                dgvKupovinaDijelova.DataSource = podaciKupovine;
-            }
+            dgvSveNarudzbe.DataSource = baza.DohvatiSveNarudzbeSortPoDatumu();
+            dgvKupovinaDijelova.DataSource = baza.DohvatiSveKupovineSortPoDatumu();
             PostaviNaslove();
             
 
@@ -186,12 +140,10 @@ namespace ServisiranjeVozila
 
         private void buttonPotvrdi_Click(object sender, EventArgs e)
         {
-            var selektiranaNarudzba = dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba;
-            using (var context = new EntitetiBaze())
+            if (dgvSveNarudzbe.SelectedRows.Count > 0)
             {
-                context.Narudzba.Attach(selektiranaNarudzba);
-                selektiranaNarudzba.Potvrđeno = 1;
-                context.SaveChanges();
+                var selektiranaNarudzba = dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba;
+                baza.PotvrdiNarudzbu(selektiranaNarudzba);
             }
             OsvjeziPodatke();
         }
@@ -207,12 +159,10 @@ namespace ServisiranjeVozila
 
         private void buttonZavrsi_Click(object sender, EventArgs e)
         {
-            var selektiranaNarudzba = dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba;
-            using (var context = new EntitetiBaze())
+            if (dgvSveNarudzbe.SelectedRows.Count > 0)
             {
-                context.Narudzba.Attach(selektiranaNarudzba);
-                selektiranaNarudzba.Zavrsena = 1;
-                context.SaveChanges();
+                var selektiranaNarudzba = dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba;
+                baza.ZavrsiNarudzbu(selektiranaNarudzba);
             }
             OsvjeziPodatke();
         }
@@ -226,18 +176,7 @@ namespace ServisiranjeVozila
 
         private void buttonKreirajKupovinu_Click(object sender, EventArgs e)
         {
-            using (var context = new EntitetiBaze())
-            {
-                Kupovina kupovina = new Kupovina
-                {
-                    Djelatnik = trenutniKorisnik.Korisnicko_ime,
-                    Ukupna_cijena = 0,
-                    Datum_kupovine = DateTime.Now,
-                    Status_kupovina = "U tijeku"
-                };
-                context.Kupovina.Add(kupovina);
-                context.SaveChanges();
-            }
+            baza.KreirajKupovinu(trenutniKorisnik);
             OsvjeziPodatke();
         }
 
@@ -250,12 +189,10 @@ namespace ServisiranjeVozila
 
         private void buttonKupovinaZavrsena_Click(object sender, EventArgs e)
         {
-            var selektiranaKupovina = dgvKupovinaDijelova.CurrentRow.DataBoundItem as Kupovina;
-            using (var context = new EntitetiBaze())
+            if (dgvKupovinaDijelova.SelectedRows.Count > 0)
             {
-                context.Kupovina.Attach(selektiranaKupovina);
-                selektiranaKupovina.Status_kupovina = "Završena";
-                context.SaveChanges();
+                Kupovina odabranaKupovina = dgvKupovinaDijelova.CurrentRow.DataBoundItem as Kupovina;
+                baza.ZavrsiKupovinu(odabranaKupovina);
             }
             OsvjeziPodatke();
         }

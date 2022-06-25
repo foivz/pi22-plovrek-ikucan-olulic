@@ -13,6 +13,7 @@ namespace ServisiranjeVozila
     public partial class detaljiNarudzbeKlijentForm : Form
     {
         private Narudzba odabranaNarudzba;
+        KomunikacijaSBazom baza = new KomunikacijaSBazom();
         public detaljiNarudzbeKlijentForm(Narudzba narudzba)
         {
             odabranaNarudzba = narudzba;
@@ -25,35 +26,22 @@ namespace ServisiranjeVozila
 
         private void DohvatiDijelove()
         {
-            using (var context = new EntitetiBaze())
-            {
-                var query = from d in context.Dijelovi
-                            where d.Narudzba.Any(n=>n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
-                            select d;
-                dgvDijelovi.DataSource = query.ToList();
-                dgvDijelovi.Columns["ID_dijela"].Visible = false;
-                dgvDijelovi.Columns["Sifra_dijela"].Visible = false;
-                dgvDijelovi.Columns["Kupovina"].Visible = false;
-                dgvDijelovi.Columns["Narudzba"].Visible = false;
-                dgvDijelovi.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
-                dgvDijelovi.Columns["Opis_dijela"].HeaderText = "Opis";
+            dgvDijelovi.DataSource = baza.DohvatiDijeloveZaOdabranuNarudzbu(odabranaNarudzba);
 
-            }
+            dgvDijelovi.Columns["ID_dijela"].Visible = false;
+            dgvDijelovi.Columns["Sifra_dijela"].Visible = false;
+            dgvDijelovi.Columns["Kupovina"].Visible = false;
+            dgvDijelovi.Columns["Narudzba"].Visible = false;
+            dgvDijelovi.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
+            dgvDijelovi.Columns["Opis_dijela"].HeaderText = "Opis";
         }
 
         private void DohvatiNapredak()
         {
-            using (var context = new EntitetiBaze())
+            var podaciNapredak = baza.DohvatiNapredakZaOdabranuNarudzbu(odabranaNarudzba);
+            foreach (var pod in podaciNapredak)
             {
-                context.Narudzba.Attach(odabranaNarudzba);
-                var query = from n in context.Napredak
-                            where n.ID_narudzbe == odabranaNarudzba.ID_narudzbe
-                            select n;
-                var podaci = query.ToList();
-                foreach (var pod in podaci)
-                {
-                    textBoxNapredak.Text += pod.Opis.ToString() + "\r\n";
-                }
+                textBoxNapredak.Text += pod.Opis.ToString() + "\r\n";
             }
         }
 
@@ -108,12 +96,7 @@ namespace ServisiranjeVozila
 
         private void buttonOtkazi_Click(object sender, EventArgs e)
         {
-            using (var context = new EntitetiBaze())
-            {
-                context.Narudzba.Attach(odabranaNarudzba);
-                odabranaNarudzba.Otkazano = 1;
-                context.SaveChanges();
-            }
+            baza.OtkaziNarudzbu(odabranaNarudzba);
             radioButtonOtkazano.Checked = true;
             buttonOtkazi.Enabled = false;
         }

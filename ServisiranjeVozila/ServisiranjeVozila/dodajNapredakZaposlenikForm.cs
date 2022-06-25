@@ -12,6 +12,7 @@ namespace ServisiranjeVozila
 {
     public partial class dodajNapredakZaposlenikForm : Form
     {
+        KomunikacijaSBazom baza = new KomunikacijaSBazom();
         private Narudzba odabranaNarudzba;
         public dodajNapredakZaposlenikForm(Narudzba narudzba)
         {
@@ -47,12 +48,9 @@ namespace ServisiranjeVozila
                 Opis = opis,
                 ID_narudzbe = id
             };
-            using (var context = new EntitetiBaze())
-            {
-                context.Narudzba.Attach(odabranaNarudzba); 
-                context.Napredak.Add(napredak);
-                context.SaveChanges();
-            }
+
+            baza.DodajNapredak(odabranaNarudzba, napredak);
+            
             MessageBox.Show("Napredak je uspješno dodan!");
         }
     }

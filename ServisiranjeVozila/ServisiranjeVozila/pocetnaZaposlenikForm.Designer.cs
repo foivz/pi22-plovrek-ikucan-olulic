@@ -89,7 +89,7 @@
             // 
             // buttonPotvrdi
             // 
-            this.buttonPotvrdi.Location = new System.Drawing.Point(545, 232);
+            this.buttonPotvrdi.Location = new System.Drawing.Point(12, 232);
             this.buttonPotvrdi.Name = "buttonPotvrdi";
             this.buttonPotvrdi.Size = new System.Drawing.Size(103, 37);
             this.buttonPotvrdi.TabIndex = 6;
@@ -99,7 +99,7 @@
             // 
             // buttonNapredak
             // 
-            this.buttonNapredak.Location = new System.Drawing.Point(436, 232);
+            this.buttonNapredak.Location = new System.Drawing.Point(121, 232);
             this.buttonNapredak.Name = "buttonNapredak";
             this.buttonNapredak.Size = new System.Drawing.Size(103, 37);
             this.buttonNapredak.TabIndex = 7;
@@ -109,7 +109,7 @@
             // 
             // buttonZavrsi
             // 
-            this.buttonZavrsi.Location = new System.Drawing.Point(327, 232);
+            this.buttonZavrsi.Location = new System.Drawing.Point(545, 232);
             this.buttonZavrsi.Name = "buttonZavrsi";
             this.buttonZavrsi.Size = new System.Drawing.Size(103, 37);
             this.buttonZavrsi.TabIndex = 8;
@@ -119,7 +119,7 @@
             // 
             // buttonDijelovi
             // 
-            this.buttonDijelovi.Location = new System.Drawing.Point(218, 232);
+            this.buttonDijelovi.Location = new System.Drawing.Point(230, 232);
             this.buttonDijelovi.Name = "buttonDijelovi";
             this.buttonDijelovi.Size = new System.Drawing.Size(103, 37);
             this.buttonDijelovi.TabIndex = 9;
@@ -147,7 +147,7 @@
             // 
             // buttonDijeloviKupovina
             // 
-            this.buttonDijeloviKupovina.Location = new System.Drawing.Point(436, 506);
+            this.buttonDijeloviKupovina.Location = new System.Drawing.Point(121, 506);
             this.buttonDijeloviKupovina.Name = "buttonDijeloviKupovina";
             this.buttonDijeloviKupovina.Size = new System.Drawing.Size(103, 37);
             this.buttonDijeloviKupovina.TabIndex = 12;
@@ -157,7 +157,7 @@
             // 
             // buttonKreirajKupovinu
             // 
-            this.buttonKreirajKupovinu.Location = new System.Drawing.Point(545, 506);
+            this.buttonKreirajKupovinu.Location = new System.Drawing.Point(12, 506);
             this.buttonKreirajKupovinu.Name = "buttonKreirajKupovinu";
             this.buttonKreirajKupovinu.Size = new System.Drawing.Size(103, 37);
             this.buttonKreirajKupovinu.TabIndex = 13;
@@ -167,7 +167,7 @@
             // 
             // buttonKupovinaZavrsena
             // 
-            this.buttonKupovinaZavrsena.Location = new System.Drawing.Point(327, 506);
+            this.buttonKupovinaZavrsena.Location = new System.Drawing.Point(545, 506);
             this.buttonKupovinaZavrsena.Name = "buttonKupovinaZavrsena";
             this.buttonKupovinaZavrsena.Size = new System.Drawing.Size(103, 37);
             this.buttonKupovinaZavrsena.TabIndex = 14;

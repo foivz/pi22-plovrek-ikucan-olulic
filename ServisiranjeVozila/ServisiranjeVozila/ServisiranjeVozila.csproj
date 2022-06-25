@@ -82,6 +82,7 @@
     <Compile Include="dodajNapredakZaposlenikForm.Designer.cs">
       <DependentUpon>dodajNapredakZaposlenikForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="KomunikacijaSBazom.cs" />
     <Compile Include="pocetnaKlijentForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -13,6 +13,7 @@ namespace ServisiranjeVozila
     public partial class PocetnaKlijentForm : Form
     {
         Korisnik trenutniKorisnik;
+        KomunikacijaSBazom baza = new KomunikacijaSBazom();
         public PocetnaKlijentForm(Korisnik korisnik)
         {
             InitializeComponent();
@@ -25,20 +26,13 @@ namespace ServisiranjeVozila
 
         private void OsvjeziPodatke()
         {
-            using (var context = new EntitetiBaze())
-            {
-                var query = from n in context.Narudzba
-                            where n.Korisnicko_ime == trenutniKorisnik.Korisnicko_ime
-                            orderby n.Datum_narudzbe
-                            select n;
-                var podaci = query.ToList();
-                dgvKorisnikoveNarudzbe.DataSource = podaci;
-            }
+
+            dgvKorisnikoveNarudzbe.DataSource = baza.DohvatiNarudzbeKorisnika(trenutniKorisnik);
+            PostaviNaslove();
         }
 
-        private void PocetnaKlijentForm_Load(object sender, EventArgs e)
+        private void PostaviNaslove()
         {
-            OsvjeziPodatke();
             dgvKorisnikoveNarudzbe.Columns["ID_narudzbe"].Visible = false;
             dgvKorisnikoveNarudzbe.Columns["Korisnicko_ime"].Visible = false;
             dgvKorisnikoveNarudzbe.Columns["Korisnik"].Visible = false;
@@ -54,6 +48,12 @@ namespace ServisiranjeVozila
             dgvKorisnikoveNarudzbe.Columns["Model_vozila"].HeaderText = "Model";
             dgvKorisnikoveNarudzbe.Columns["Stanje_brojaca"].HeaderText = "Stanje brojača";
             dgvKorisnikoveNarudzbe.Columns["Datum_narudzbe"].HeaderText = "Datum narudžbe";
+        }
+
+        private void PocetnaKlijentForm_Load(object sender, EventArgs e)
+        {
+            OsvjeziPodatke();
+            
 
         }
 
