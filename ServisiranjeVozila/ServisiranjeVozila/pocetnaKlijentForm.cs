@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using F1_pomoc;
 
 namespace ServisiranjeVozila
 {
@@ -67,7 +68,8 @@ namespace ServisiranjeVozila
 
         private void PocetnaKlijentForm_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            Help.ShowHelp(this, @"..\..\Resources\pomocKorisnik.chm", "pocetnaKlijent.htm");
+            Pomoc pomoc = new Pomoc();
+            pomoc.OtvoriPomocKorisnik(this, "pocetnaKlijent.htm");
         }
 
         private void buttonKreirajNarudzbu_Click(object sender, EventArgs e)

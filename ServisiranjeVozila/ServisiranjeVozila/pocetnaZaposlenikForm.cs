@@ -1,4 +1,5 @@
-﻿using System;
+﻿using F1_pomoc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -214,7 +215,8 @@ namespace ServisiranjeVozila
 
         private void pocetnaZaposlenikForm_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            Help.ShowHelp(this, @"..\..\Resources\pomocZaposlenik.chm", "pocetnaZaposlenik.htm");
+            Pomoc pomoc = new Pomoc();
+            pomoc.OtvoriPomocDjelatnik(this, "pocetnaZaposlenik.htm");
         }
     }
 }

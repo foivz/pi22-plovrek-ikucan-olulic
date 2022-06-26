@@ -226,5 +226,11 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\F1_pomoc\F1_pomoc.csproj">
+      <Project>{1a3d1e1b-f564-46ec-8708-6dba340a5b59}</Project>
+      <Name>F1_pomoc</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

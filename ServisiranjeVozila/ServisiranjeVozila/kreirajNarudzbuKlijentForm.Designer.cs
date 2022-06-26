@@ -162,7 +162,6 @@
             this.Controls.Add(this.label2);
             this.Name = "kreirajNarudzbuKlijentForm";
             this.Text = "Kreiraj narudžbu";
-            this.Load += new System.EventHandler(this.kreirajNarudzbuKlijentForm_Load);
             this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.kreirajNarudzbuKlijentForm_HelpRequested);
             this.ResumeLayout(false);
             this.PerformLayout();
