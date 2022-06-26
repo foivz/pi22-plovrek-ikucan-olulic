@@ -54,6 +54,7 @@ namespace ServisiranjeVozila
             baza.DodajNapredak(odabranaNarudzba, napredak);
             
             MessageBox.Show("Napredak je uspješno dodan!");
+            this.Close();
         }
 
         private void dodajNapredakZaposlenikForm_HelpRequested(object sender, HelpEventArgs hlpevent)

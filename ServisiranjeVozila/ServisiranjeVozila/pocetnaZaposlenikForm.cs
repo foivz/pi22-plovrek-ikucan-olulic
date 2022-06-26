@@ -110,7 +110,7 @@ namespace ServisiranjeVozila
         private void dgvSveNarudzbe_SelectionChanged(object sender, EventArgs e)
         {
             Narudzba odabranaNarudzba = dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba;
-            if (odabranaNarudzba.Potvrđeno == 0)
+            if (odabranaNarudzba.Potvrđeno == 0 && odabranaNarudzba.Otkazano != 1 && odabranaNarudzba.Zavrsena == 0)
             {
                 buttonPotvrdi.Enabled = true;
             }
