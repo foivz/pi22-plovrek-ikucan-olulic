@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServisiranjeVozila
+namespace Baza
 {
     public class KomunikacijaSBazom
     {
@@ -49,8 +49,8 @@ namespace ServisiranjeVozila
             {
                 context.Narudzba.Attach(odabranaNarudzba);
                 var napredak = from n in context.Napredak
-                            where n.ID_narudzbe == odabranaNarudzba.ID_narudzbe
-                            select n;
+                               where n.ID_narudzbe == odabranaNarudzba.ID_narudzbe
+                               select n;
                 return napredak.ToList();
             }
         }
@@ -60,8 +60,8 @@ namespace ServisiranjeVozila
             using (var context = new EntitetiBaze())
             {
                 var dijelovi = from d in context.Dijelovi
-                            where d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
-                            select d;
+                               where d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
+                               select d;
                 return dijelovi.ToList();
 
             }
@@ -220,7 +220,7 @@ namespace ServisiranjeVozila
             {
                 context.Dijelovi.Attach(odabraniDio);
                 context.Narudzba.Attach(odabranaNarudzba);
-                
+
                 if (!odabraniDio.Narudzba.Contains(odabranaNarudzba))
                 {
                     odabraniDio.Narudzba = new List<Narudzba>();

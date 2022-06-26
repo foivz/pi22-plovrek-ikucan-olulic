@@ -7,26 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ServisiranjeVozila
+namespace Baza
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Kupovina
+    public partial class TipKorisnika
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Kupovina()
+        public TipKorisnika()
         {
-            this.Dijelovi = new HashSet<Dijelovi>();
+            this.Korisnik = new HashSet<Korisnik>();
         }
     
-        public int ID_kupovine { get; set; }
-        public string Djelatnik { get; set; }
-        public double Ukupna_cijena { get; set; }
-        public System.DateTime Datum_kupovine { get; set; }
-        public string Status_kupovina { get; set; }
+        public int ID_tipa { get; set; }
+        public string Naziv_tipa { get; set; }
+        public string Opis_tipa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Dijelovi> Dijelovi { get; set; }
+        public virtual ICollection<Korisnik> Korisnik { get; set; }
     }
 }

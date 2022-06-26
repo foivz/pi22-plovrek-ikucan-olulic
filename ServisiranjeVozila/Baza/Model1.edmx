@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ModelBaze.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="PI2238_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Dijelovi">
           <Key>
             <PropertyRef Name="ID_dijela" />
@@ -214,7 +214,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ModelBazeStoreContainer">
+        <EntityContainer Name="PI2238_DBModelStoreContainer">
           <EntitySet Name="Dijelovi" EntityType="Self.Dijelovi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dio_u_kupovini" EntityType="Self.Dio_u_kupovini" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Korisnik" EntityType="Self.Korisnik" Schema="dbo" store:Type="Tables" />
@@ -262,10 +262,11 @@
             <End Role="Narudzba" EntitySet="Narudzba" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ModelBaze" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="PI2238_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Dijelovi">
           <Key>
             <PropertyRef Name="ID_dijela" />
@@ -289,10 +290,10 @@
           <Property Name="E_mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Broj_telefona" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ID_tipa" Type="Int32" Nullable="false" />
+          <Property Name="Lozinka" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="TipKorisnika" Relationship="Self.FK_Korisnik_TipKorisnika" FromRole="Korisnik" ToRole="TipKorisnika" />
           <NavigationProperty Name="Racun" Relationship="Self.FK_Racun_korisnik" FromRole="Korisnik" ToRole="Racun" />
           <NavigationProperty Name="Narudzba" Relationship="Self.korisnik_narudzba" FromRole="Korisnik" ToRole="Narudzba" />
-          <Property Name="Lozinka" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Kupovina">
           <Key>
@@ -309,10 +310,10 @@
           <Key>
             <PropertyRef Name="ID_napretka" />
           </Key>
-          <Property Name="ID_napretka" Type="Int32" Nullable="false" />
+          <Property Name="ID_napretka" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Opis" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ID_narudzbe" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Narudzba" Relationship="Self.FK_napredak_narudzba" FromRole="Napredak" ToRole="Narudzba" />
+          <NavigationProperty Name="Narudzba" Relationship="Self.FK_Napredak_Narudzba" FromRole="Napredak" ToRole="Narudzba" />
         </EntityType>
         <EntityType Name="Narudzba">
           <Key>
@@ -330,7 +331,7 @@
           <Property Name="Otkazano" Type="Byte" />
           <Property Name="Zavrsena" Type="Byte" />
           <NavigationProperty Name="Korisnik" Relationship="Self.korisnik_narudzba" FromRole="Narudzba" ToRole="Korisnik" />
-          <NavigationProperty Name="Napredak" Relationship="Self.FK_napredak_narudzba" FromRole="Narudzba" ToRole="Napredak" />
+          <NavigationProperty Name="Napredak" Relationship="Self.FK_Napredak_Narudzba" FromRole="Narudzba" ToRole="Napredak" />
           <NavigationProperty Name="Racun" Relationship="Self.FK_Racun_narudzba" FromRole="Narudzba" ToRole="Racun" />
           <NavigationProperty Name="Dijelovi" Relationship="Self.Sadrzi_dio" FromRole="Narudzba" ToRole="Dijelovi" />
         </EntityType>
@@ -401,7 +402,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_napredak_narudzba">
+        <Association Name="FK_Napredak_Narudzba">
           <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
           <End Role="Napredak" Type="Self.Napredak" Multiplicity="*" />
           <ReferentialConstraint>
@@ -454,7 +455,7 @@
             <End Role="Korisnik" EntitySet="Korisnik" />
             <End Role="Narudzba" EntitySet="Narudzba" />
           </AssociationSet>
-          <AssociationSet Name="FK_napredak_narudzba" Association="Self.FK_napredak_narudzba">
+          <AssociationSet Name="FK_Napredak_Narudzba" Association="Self.FK_Napredak_Narudzba">
             <End Role="Narudzba" EntitySet="Narudzba" />
             <End Role="Napredak" EntitySet="Napredak" />
           </AssociationSet>
@@ -476,9 +477,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelBazeStoreContainer" CdmEntityContainer="EntitetiBaze">
+        <EntityContainerMapping StorageEntityContainer="PI2238_DBModelStoreContainer" CdmEntityContainer="EntitetiBaze">
           <EntitySetMapping Name="Dijelovi">
-            <EntityTypeMapping TypeName="ModelBaze.Dijelovi">
+            <EntityTypeMapping TypeName="PI2238_DBModel.Dijelovi">
               <MappingFragment StoreEntitySet="Dijelovi">
                 <ScalarProperty Name="ID_dijela" ColumnName="ID_dijela" />
                 <ScalarProperty Name="Naziv_dijela" ColumnName="Naziv_dijela" />
@@ -489,9 +490,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Korisnik">
-            <EntityTypeMapping TypeName="ModelBaze.Korisnik">
+            <EntityTypeMapping TypeName="PI2238_DBModel.Korisnik">
               <MappingFragment StoreEntitySet="Korisnik">
-                <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
                 <ScalarProperty Name="Korisnicko_ime" ColumnName="Korisnicko_ime" />
                 <ScalarProperty Name="Ime" ColumnName="Ime" />
                 <ScalarProperty Name="Prezime" ColumnName="Prezime" />
@@ -499,11 +499,12 @@
                 <ScalarProperty Name="E_mail" ColumnName="E-mail" />
                 <ScalarProperty Name="Broj_telefona" ColumnName="Broj_telefona" />
                 <ScalarProperty Name="ID_tipa" ColumnName="ID_tipa" />
+                <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Kupovina">
-            <EntityTypeMapping TypeName="ModelBaze.Kupovina">
+            <EntityTypeMapping TypeName="PI2238_DBModel.Kupovina">
               <MappingFragment StoreEntitySet="Kupovina">
                 <ScalarProperty Name="ID_kupovine" ColumnName="ID_kupovine" />
                 <ScalarProperty Name="Djelatnik" ColumnName="Djelatnik" />
@@ -514,7 +515,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Napredak">
-            <EntityTypeMapping TypeName="ModelBaze.Napredak">
+            <EntityTypeMapping TypeName="PI2238_DBModel.Napredak">
               <MappingFragment StoreEntitySet="Napredak">
                 <ScalarProperty Name="ID_napretka" ColumnName="ID_napretka" />
                 <ScalarProperty Name="Opis" ColumnName="Opis" />
@@ -523,7 +524,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Narudzba">
-            <EntityTypeMapping TypeName="ModelBaze.Narudzba">
+            <EntityTypeMapping TypeName="PI2238_DBModel.Narudzba">
               <MappingFragment StoreEntitySet="Narudzba">
                 <ScalarProperty Name="ID_narudzbe" ColumnName="ID_narudzbe" />
                 <ScalarProperty Name="Korisnicko_ime" ColumnName="Korisnicko_ime" />
@@ -540,7 +541,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Racun">
-            <EntityTypeMapping TypeName="ModelBaze.Racun">
+            <EntityTypeMapping TypeName="PI2238_DBModel.Racun">
               <MappingFragment StoreEntitySet="Racun">
                 <ScalarProperty Name="ID_racuna" ColumnName="ID_racuna" />
                 <ScalarProperty Name="ID_narudzbe" ColumnName="ID_narudzbe" />
@@ -551,7 +552,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ModelBaze.sysdiagrams">
+            <EntityTypeMapping TypeName="PI2238_DBModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -562,7 +563,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TipKorisnika">
-            <EntityTypeMapping TypeName="ModelBaze.TipKorisnika">
+            <EntityTypeMapping TypeName="PI2238_DBModel.TipKorisnika">
               <MappingFragment StoreEntitySet="TipKorisnika">
                 <ScalarProperty Name="ID_tipa" ColumnName="ID_tipa" />
                 <ScalarProperty Name="Naziv_tipa" ColumnName="Naziv_tipa" />
@@ -570,7 +571,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Dio_u_kupovini" TypeName="ModelBaze.Dio_u_kupovini" StoreEntitySet="Dio_u_kupovini">
+          <AssociationSetMapping Name="Dio_u_kupovini" TypeName="PI2238_DBModel.Dio_u_kupovini" StoreEntitySet="Dio_u_kupovini">
             <EndProperty Name="Dijelovi">
               <ScalarProperty Name="ID_dijela" ColumnName="ID_dijela" />
             </EndProperty>
@@ -578,7 +579,7 @@
               <ScalarProperty Name="ID_kupovine" ColumnName="ID_kupovina" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="Sadrzi_dio" TypeName="ModelBaze.Sadrzi_dio" StoreEntitySet="Sadrzi_dio">
+          <AssociationSetMapping Name="Sadrzi_dio" TypeName="PI2238_DBModel.Sadrzi_dio" StoreEntitySet="Sadrzi_dio">
             <EndProperty Name="Dijelovi">
               <ScalarProperty Name="ID_dijela" ColumnName="ID_dijela" />
             </EndProperty>

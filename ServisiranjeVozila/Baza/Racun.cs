@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ServisiranjeVozila
+namespace Baza
 {
     using System;
     using System.Collections.Generic;

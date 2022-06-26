@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Baza;
 
 namespace ServisiranjeVozila
 {
@@ -57,10 +58,10 @@ namespace ServisiranjeVozila
         {
             using (var context= new EntitetiBaze())
             {
-               var zastavica = false;
-               List<Korisnik> korisnici = new List<Korisnik>();
+                var zastavica = false;
+                List<Korisnik> korisnici = new List<Korisnik>();
 
-               korisnici= context.Korisnik.ToList();
+                korisnici= context.Korisnik.ToList();
 
                 foreach(var item in korisnici)
                 {

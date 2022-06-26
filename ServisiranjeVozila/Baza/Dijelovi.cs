@@ -7,32 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ServisiranjeVozila
+namespace Baza
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Korisnik
+    public partial class Dijelovi
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Korisnik()
+        public Dijelovi()
         {
-            this.Racun = new HashSet<Racun>();
+            this.Kupovina = new HashSet<Kupovina>();
             this.Narudzba = new HashSet<Narudzba>();
         }
     
-        public string Korisnicko_ime { get; set; }
-        public string Ime { get; set; }
-        public string Prezime { get; set; }
-        public string Adresa { get; set; }
-        public string E_mail { get; set; }
-        public string Broj_telefona { get; set; }
-        public int ID_tipa { get; set; }
-        public string Lozinka { get; set; }
+        public int ID_dijela { get; set; }
+        public string Naziv_dijela { get; set; }
+        public string Sifra_dijela { get; set; }
+        public string Opis_dijela { get; set; }
+        public double Cijena { get; set; }
     
-        public virtual TipKorisnika TipKorisnika { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Racun> Racun { get; set; }
+        public virtual ICollection<Kupovina> Kupovina { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Narudzba> Narudzba { get; set; }
     }
