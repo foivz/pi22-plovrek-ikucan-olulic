@@ -64,5 +64,19 @@ namespace ServisiranjeVozila
             detaljiNarudzbeForm.ShowDialog();
             OsvjeziPodatke();
         }
+
+        private void PocetnaKlijentForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            Help.ShowHelp(this, "pomocKorisnik.chm", "pocetnaKlijent.htm");
+        }
+
+        private void buttonKreirajNarudzbu_Click(object sender, EventArgs e)
+        {
+            kreirajNarudzbuKlijentForm kreirajNarudzbu = new kreirajNarudzbuKlijentForm(trenutniKorisnik);
+            this.Hide();
+            kreirajNarudzbu.ShowDialog();
+            this.Show();
+            OsvjeziPodatke();
+        }
     }
 }

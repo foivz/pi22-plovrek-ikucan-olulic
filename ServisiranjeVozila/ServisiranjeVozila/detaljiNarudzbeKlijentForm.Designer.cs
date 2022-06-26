@@ -341,6 +341,7 @@
             this.Name = "detaljiNarudzbeKlijentForm";
             this.Text = "Detalji narudžbe";
             this.Load += new System.EventHandler(this.detaljiNarudzbeForm_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.detaljiNarudzbeKlijentForm_HelpRequested);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDijelovi)).EndInit();
             this.groupBox3.ResumeLayout(false);

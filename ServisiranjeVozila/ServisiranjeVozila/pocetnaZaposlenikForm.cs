@@ -196,5 +196,25 @@ namespace ServisiranjeVozila
             }
             OsvjeziPodatke();
         }
+
+        private void dgvKupovinaDijelova_SelectionChanged(object sender, EventArgs e)
+        {
+            Kupovina odabranaKupovina = dgvKupovinaDijelova.CurrentRow.DataBoundItem as Kupovina;
+            if(odabranaKupovina.Status_kupovina == "Završena")
+            {
+                buttonDijeloviKupovina.Enabled = false;
+                buttonKupovinaZavrsena.Enabled = false;
+            }
+            else
+            {
+                buttonDijeloviKupovina.Enabled = true;
+                buttonKupovinaZavrsena.Enabled = true;
+            }
+        }
+
+        private void pocetnaZaposlenikForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            Help.ShowHelp(this, "pomocZaposlenik.chm", "pocetnaZaposlenik.htm");
+        }
     }
 }

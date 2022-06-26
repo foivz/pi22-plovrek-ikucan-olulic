@@ -154,23 +154,45 @@ namespace ServisiranjeVozila
             }
         }
 
-        public List<Dijelovi> FiltrirajDijelovePremaNazivu(string tekst)
+        public List<Dijelovi> FiltrirajDijelovePremaNazivuZaNarudzbu(string tekst, Narudzba odabranaNarudzba)
         {
             using (var context = new EntitetiBaze())
             {
                 var dijeloviPremaNazivu = from d in context.Dijelovi
-                                         where d.Naziv_dijela.Contains(tekst)
-                                         select d;
+                                          where d.Naziv_dijela.Contains(tekst) && !d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
+                                          select d;
                 return dijeloviPremaNazivu.ToList();
             }
         }
 
-        public List<Dijelovi> FiltrirajDijelovePremaSifri(string tekst)
+        public List<Dijelovi> FiltrirajDijelovePremaNazivuZaKupovinu(string tekst, Kupovina odabranaKupovina)
+        {
+            using (var context = new EntitetiBaze())
+            {
+                var dijeloviPremaNazivu = from d in context.Dijelovi
+                                          where d.Naziv_dijela.Contains(tekst) && !d.Kupovina.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
+                                          select d;
+                return dijeloviPremaNazivu.ToList();
+            }
+        }
+
+        public List<Dijelovi> FiltrirajDijelovePremaSifriZaNarudzbu(string tekst, Narudzba odabranaNarudzba)
         {
             using (var context = new EntitetiBaze())
             {
                 var dijeloviPremaSifri = from d in context.Dijelovi
-                                         where d.Sifra_dijela.Contains(tekst)
+                                         where d.Sifra_dijela.Contains(tekst) && !d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
+                                         select d;
+                return dijeloviPremaSifri.ToList();
+            }
+        }
+
+        public List<Dijelovi> FiltrirajDijelovePremaSifriZaKupovinu(string tekst, Kupovina odabranaKupovina)
+        {
+            using (var context = new EntitetiBaze())
+            {
+                var dijeloviPremaSifri = from d in context.Dijelovi
+                                         where d.Sifra_dijela.Contains(tekst) && !d.Kupovina.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
                                          select d;
                 return dijeloviPremaSifri.ToList();
             }
@@ -289,6 +311,15 @@ namespace ServisiranjeVozila
                             orderby n.Datum_narudzbe
                             select n;
                 return query.ToList();
+            }
+        }
+
+        public void DodajNarudzbu(Narudzba narudzba)
+        {
+            using (var context = new EntitetiBaze())
+            {
+                context.Narudzba.Add(narudzba);
+                context.SaveChanges();
             }
         }
     }

@@ -53,5 +53,10 @@ namespace ServisiranjeVozila
             
             MessageBox.Show("Napredak je uspješno dodan!");
         }
+
+        private void dodajNapredakZaposlenikForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            Help.ShowHelp(this, "pomocZaposlenik.chm", "dodajNapredakZaposlenik.htm");
+        }
     }
 }

@@ -209,6 +209,7 @@
             this.Name = "dodajNapredakZaposlenikForm";
             this.Text = "dodajNapredakForm";
             this.Load += new System.EventHandler(this.dodajNapredakForm_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.dodajNapredakZaposlenikForm_HelpRequested);
             this.ResumeLayout(false);
             this.PerformLayout();
 

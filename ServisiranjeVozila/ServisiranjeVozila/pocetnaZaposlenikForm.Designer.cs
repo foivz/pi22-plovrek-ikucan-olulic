@@ -135,6 +135,7 @@
             this.dgvKupovinaDijelova.Name = "dgvKupovinaDijelova";
             this.dgvKupovinaDijelova.Size = new System.Drawing.Size(636, 187);
             this.dgvKupovinaDijelova.TabIndex = 10;
+            this.dgvKupovinaDijelova.SelectionChanged += new System.EventHandler(this.dgvKupovinaDijelova_SelectionChanged);
             // 
             // label2
             // 
@@ -196,6 +197,7 @@
             this.Name = "pocetnaZaposlenikForm";
             this.Text = "Glavni izbornik";
             this.Load += new System.EventHandler(this.pocetnaZaposlenikForm_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.pocetnaZaposlenikForm_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSveNarudzbe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKupovinaDijelova)).EndInit();
             this.ResumeLayout(false);

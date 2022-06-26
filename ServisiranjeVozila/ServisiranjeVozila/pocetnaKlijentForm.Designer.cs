@@ -31,6 +31,7 @@
             this.dgvKorisnikoveNarudzbe = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.detaljiNarudzbe = new System.Windows.Forms.Button();
+            this.buttonKreirajNarudzbu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnikoveNarudzbe)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,17 +63,29 @@
             this.detaljiNarudzbe.UseVisualStyleBackColor = true;
             this.detaljiNarudzbe.Click += new System.EventHandler(this.detaljiNarudzbe_Click);
             // 
+            // buttonKreirajNarudzbu
+            // 
+            this.buttonKreirajNarudzbu.Location = new System.Drawing.Point(27, 231);
+            this.buttonKreirajNarudzbu.Name = "buttonKreirajNarudzbu";
+            this.buttonKreirajNarudzbu.Size = new System.Drawing.Size(117, 42);
+            this.buttonKreirajNarudzbu.TabIndex = 3;
+            this.buttonKreirajNarudzbu.Text = "Kreiraj novu narudžbu";
+            this.buttonKreirajNarudzbu.UseVisualStyleBackColor = true;
+            this.buttonKreirajNarudzbu.Click += new System.EventHandler(this.buttonKreirajNarudzbu_Click);
+            // 
             // PocetnaKlijentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 286);
+            this.Controls.Add(this.buttonKreirajNarudzbu);
             this.Controls.Add(this.detaljiNarudzbe);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvKorisnikoveNarudzbe);
             this.Name = "PocetnaKlijentForm";
             this.Text = "Glavni izbornik";
             this.Load += new System.EventHandler(this.PocetnaKlijentForm_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.PocetnaKlijentForm_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnikoveNarudzbe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -84,5 +97,6 @@
         private System.Windows.Forms.DataGridView dgvKorisnikoveNarudzbe;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button detaljiNarudzbe;
+        private System.Windows.Forms.Button buttonKreirajNarudzbu;
     }
 }

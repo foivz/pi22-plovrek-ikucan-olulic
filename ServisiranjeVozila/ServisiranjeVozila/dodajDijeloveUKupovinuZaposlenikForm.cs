@@ -62,14 +62,14 @@ namespace ServisiranjeVozila
         private void textBoxPretrazivanjeNaziv_TextChanged(object sender, EventArgs e)
         {
 
-            dgvDijelovi.DataSource = baza.FiltrirajDijelovePremaNazivu(textBoxPretrazivanjeNaziv.Text);
+            dgvDijelovi.DataSource = baza.FiltrirajDijelovePremaNazivuZaKupovinu(textBoxPretrazivanjeNaziv.Text, odabranaKupovina);
             PostaviNaslove();
         }
 
         private void textBoxPretrazivanjeSifra_TextChanged(object sender, EventArgs e)
         {
             
-            dgvDijelovi.DataSource = baza.FiltrirajDijelovePremaSifri(textBoxPretrazivanjeSifra.Text);
+            dgvDijelovi.DataSource = baza.FiltrirajDijelovePremaSifriZaKupovinu(textBoxPretrazivanjeSifra.Text, odabranaKupovina);
             PostaviNaslove();
         }
 
@@ -90,6 +90,11 @@ namespace ServisiranjeVozila
         private void buttonZatvori_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dodajDijeloveUKupovinuZaposlenikForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            Help.ShowHelp(this, "pomocZaposlenik.chm", "dodajDijeloveKupoviniZaposlenik.htm");
         }
     }
 }

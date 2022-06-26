@@ -36,6 +36,8 @@
             this.buttonUNarudzbu = new System.Windows.Forms.Button();
             this.dgvDijeloviUNarudzbi = new System.Windows.Forms.DataGridView();
             this.buttonZatvori = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDijelovi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDijeloviUNarudzbi)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +53,7 @@
             // 
             // textBoxPretrazivanjeSifra
             // 
-            this.textBoxPretrazivanjeSifra.Location = new System.Drawing.Point(216, 59);
+            this.textBoxPretrazivanjeSifra.Location = new System.Drawing.Point(216, 50);
             this.textBoxPretrazivanjeSifra.Name = "textBoxPretrazivanjeSifra";
             this.textBoxPretrazivanjeSifra.Size = new System.Drawing.Size(185, 20);
             this.textBoxPretrazivanjeSifra.TabIndex = 5;
@@ -60,7 +62,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 62);
+            this.label1.Location = new System.Drawing.Point(19, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 13);
             this.label1.TabIndex = 6;
@@ -69,7 +71,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 36);
+            this.label2.Location = new System.Drawing.Point(19, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(137, 13);
             this.label2.TabIndex = 7;
@@ -77,7 +79,7 @@
             // 
             // textBoxPretrazivanjeNaziv
             // 
-            this.textBoxPretrazivanjeNaziv.Location = new System.Drawing.Point(216, 33);
+            this.textBoxPretrazivanjeNaziv.Location = new System.Drawing.Point(216, 24);
             this.textBoxPretrazivanjeNaziv.Name = "textBoxPretrazivanjeNaziv";
             this.textBoxPretrazivanjeNaziv.Size = new System.Drawing.Size(185, 20);
             this.textBoxPretrazivanjeNaziv.TabIndex = 8;
@@ -104,7 +106,7 @@
             // 
             // buttonZatvori
             // 
-            this.buttonZatvori.Location = new System.Drawing.Point(792, 436);
+            this.buttonZatvori.Location = new System.Drawing.Point(792, 431);
             this.buttonZatvori.Name = "buttonZatvori";
             this.buttonZatvori.Size = new System.Drawing.Size(75, 23);
             this.buttonZatvori.TabIndex = 11;
@@ -112,11 +114,31 @@
             this.buttonZatvori.UseVisualStyleBackColor = true;
             this.buttonZatvori.Click += new System.EventHandler(this.buttonZatvori_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 72);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Svi dijelovi:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(485, 72);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(96, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Dijelovi u kupovini:";
+            // 
             // dodajDijeloveUKupovinuZaposlenikForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 471);
+            this.ClientSize = new System.Drawing.Size(882, 465);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonZatvori);
             this.Controls.Add(this.buttonUNarudzbu);
             this.Controls.Add(this.dgvDijeloviUNarudzbi);
@@ -128,6 +150,7 @@
             this.Name = "dodajDijeloveUKupovinuZaposlenikForm";
             this.Text = "Dodaj dijelove u kupovinu";
             this.Load += new System.EventHandler(this.dodajDijeloveUKupovinuZaposlenikForm_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.dodajDijeloveUKupovinuZaposlenikForm_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDijelovi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDijeloviUNarudzbi)).EndInit();
             this.ResumeLayout(false);
@@ -145,5 +168,7 @@
         private System.Windows.Forms.Button buttonUNarudzbu;
         private System.Windows.Forms.DataGridView dgvDijeloviUNarudzbi;
         private System.Windows.Forms.Button buttonZatvori;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

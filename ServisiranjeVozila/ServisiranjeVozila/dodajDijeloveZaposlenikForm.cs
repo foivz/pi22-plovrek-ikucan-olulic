@@ -27,20 +27,20 @@ namespace ServisiranjeVozila
         private void PostaviNaslove()
         {
             dgvSviDijelovi.Columns["ID_dijela"].Visible = false;
-            dgvSviDijelovi.Columns["Sifra_dijela"].Visible = false;
             dgvSviDijelovi.Columns["Kupovina"].Visible = false;
             dgvSviDijelovi.Columns["Narudzba"].Visible = false;
 
             dgvSviDijelovi.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
             dgvSviDijelovi.Columns["Opis_dijela"].HeaderText = "Opis";
+            dgvSviDijelovi.Columns["Sifra_dijela"].HeaderText = "Šifra dijela";
 
             dgvDijeloviUNarudzbi.Columns["ID_dijela"].Visible = false;
-            dgvDijeloviUNarudzbi.Columns["Sifra_dijela"].Visible = false;
             dgvDijeloviUNarudzbi.Columns["Kupovina"].Visible = false;
             dgvDijeloviUNarudzbi.Columns["Narudzba"].Visible = false;
 
             dgvDijeloviUNarudzbi.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
             dgvDijeloviUNarudzbi.Columns["Opis_dijela"].HeaderText = "Opis";
+            dgvDijeloviUNarudzbi.Columns["Sifra_dijela"].HeaderText = "Šifra dijela";
         }
 
         private void OsvjeziPodatke()
@@ -63,7 +63,7 @@ namespace ServisiranjeVozila
 
         private void textBoxPretrazivanje_TextChanged(object sender, EventArgs e)
         {
-            dgvSviDijelovi.DataSource = baza.FiltrirajDijelovePremaNazivu(textBoxPretrazivanje.Text);
+            dgvSviDijelovi.DataSource = baza.FiltrirajDijelovePremaNazivuZaNarudzbu(textBoxPretrazivanje.Text, odabranaNarudzba);
             PostaviNaslove();
         }
 
@@ -86,6 +86,17 @@ namespace ServisiranjeVozila
         private void buttonZatvori_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void textBoxPretrazivanjeSifra_TextChanged(object sender, EventArgs e)
+        {
+            dgvSviDijelovi.DataSource = baza.FiltrirajDijelovePremaSifriZaNarudzbu(textBoxPretrazivanjeSifra.Text, odabranaNarudzba);
+            PostaviNaslove();
+        }
+
+        private void dodajDijeloveZaposlenikForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            Help.ShowHelp(this, "pomocZaposlenik.chm", "dodajDijeloveNarudzbiZaposlenik.htm");
         }
     }
 }

@@ -83,6 +83,12 @@
       <DependentUpon>dodajNapredakZaposlenikForm.cs</DependentUpon>
     </Compile>
     <Compile Include="KomunikacijaSBazom.cs" />
+    <Compile Include="kreirajNarudzbuKlijentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="kreirajNarudzbuKlijentForm.Designer.cs">
+      <DependentUpon>kreirajNarudzbuKlijentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="pocetnaKlijentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dodajNapredakZaposlenikForm.resx">
       <DependentUpon>dodajNapredakZaposlenikForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="kreirajNarudzbuKlijentForm.resx">
+      <DependentUpon>kreirajNarudzbuKlijentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pocetnaKlijentForm.resx">
       <DependentUpon>pocetnaKlijentForm.cs</DependentUpon>
