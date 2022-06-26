@@ -56,7 +56,7 @@ namespace ServisiranjeVozila
 
         private void dodajNapredakZaposlenikForm_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            Help.ShowHelp(this, "pomocZaposlenik.chm", "dodajNapredakZaposlenik.htm");
+            Help.ShowHelp(this, @"..\..\Resources\pomocZaposlenik.chm", "dodajNapredakZaposlenik.htm");
         }
     }
 }

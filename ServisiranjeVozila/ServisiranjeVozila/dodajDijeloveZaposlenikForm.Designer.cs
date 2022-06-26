@@ -148,7 +148,7 @@
             this.Controls.Add(this.dgvDijeloviUNarudzbi);
             this.Controls.Add(this.dgvSviDijelovi);
             this.Name = "dodajDijeloveZaposlenikForm";
-            this.Text = "Dodaj dijelove";
+            this.Text = "Dodaj dijelove u narudžbu";
             this.Load += new System.EventHandler(this.dodajDijeloveZaposlenikForm_Load);
             this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.dodajDijeloveZaposlenikForm_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSviDijelovi)).EndInit();

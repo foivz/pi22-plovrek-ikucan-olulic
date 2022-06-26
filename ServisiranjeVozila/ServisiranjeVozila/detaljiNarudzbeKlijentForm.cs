@@ -108,7 +108,7 @@ namespace ServisiranjeVozila
 
         private void detaljiNarudzbeKlijentForm_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            Help.ShowHelp(this, "pomocKorisnik.chm", "detaljiNarudzbe.htm");
+            Help.ShowHelp(this, @"..\..\Resources\pomocKorisnik.chm", "detaljiNarudzbe.htm");
         }
     }
 }

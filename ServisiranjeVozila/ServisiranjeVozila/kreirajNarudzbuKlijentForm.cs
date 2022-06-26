@@ -46,7 +46,17 @@ namespace ServisiranjeVozila
 
         private void kreirajNarudzbuKlijentForm_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            Help.ShowHelp(this, "pomocKorisnik.chm", "kreirajNarudzbu.htm");
+            Help.ShowHelp(this, @"..\..\Resources\pomocKorisnik.chm", "kreirajNarudzbu.htm");
+        }
+
+        private void kreirajNarudzbuKlijentForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

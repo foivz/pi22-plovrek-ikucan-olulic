@@ -207,7 +207,7 @@
             this.Controls.Add(this.textBoxKorime);
             this.Controls.Add(this.label1);
             this.Name = "dodajNapredakZaposlenikForm";
-            this.Text = "dodajNapredakForm";
+            this.Text = "Dodaj napredak";
             this.Load += new System.EventHandler(this.dodajNapredakForm_Load);
             this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.dodajNapredakZaposlenikForm_HelpRequested);
             this.ResumeLayout(false);

@@ -67,7 +67,7 @@ namespace ServisiranjeVozila
 
         private void PocetnaKlijentForm_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            Help.ShowHelp(this, "pomocKorisnik.chm", "pocetnaKlijent.htm");
+            Help.ShowHelp(this, @"..\..\Resources\pomocKorisnik.chm", "pocetnaKlijent.htm");
         }
 
         private void buttonKreirajNarudzbu_Click(object sender, EventArgs e)

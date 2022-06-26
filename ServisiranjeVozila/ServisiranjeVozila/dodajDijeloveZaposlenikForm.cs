@@ -96,7 +96,7 @@ namespace ServisiranjeVozila
 
         private void dodajDijeloveZaposlenikForm_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
-            Help.ShowHelp(this, "pomocZaposlenik.chm", "dodajDijeloveNarudzbiZaposlenik.htm");
+            Help.ShowHelp(this, @"..\..\Resources\pomocZaposlenik.chm", "dodajDijeloveNarudzbiZaposlenik.htm");
         }
     }
 }

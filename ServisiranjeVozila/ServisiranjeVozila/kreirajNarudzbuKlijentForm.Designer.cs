@@ -39,11 +39,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxRegistracija = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonDodaj
             // 
-            this.buttonDodaj.Location = new System.Drawing.Point(82, 225);
+            this.buttonDodaj.Location = new System.Drawing.Point(22, 204);
             this.buttonDodaj.Name = "buttonDodaj";
             this.buttonDodaj.Size = new System.Drawing.Size(106, 23);
             this.buttonDodaj.TabIndex = 46;
@@ -132,11 +133,22 @@
             this.label2.TabIndex = 28;
             this.label2.Text = "Registracija vozila:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(171, 204);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(106, 23);
+            this.button1.TabIndex = 47;
+            this.button1.Text = "Zatvori";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // kreirajNarudzbuKlijentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(301, 279);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonDodaj);
             this.Controls.Add(this.textBoxNapomena);
             this.Controls.Add(this.label6);
@@ -149,7 +161,8 @@
             this.Controls.Add(this.textBoxRegistracija);
             this.Controls.Add(this.label2);
             this.Name = "kreirajNarudzbuKlijentForm";
-            this.Text = "kreirajNarudzbuKlijent";
+            this.Text = "Kreiraj narudžbu";
+            this.Load += new System.EventHandler(this.kreirajNarudzbuKlijentForm_Load);
             this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.kreirajNarudzbuKlijentForm_HelpRequested);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -169,5 +182,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxRegistracija;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }
