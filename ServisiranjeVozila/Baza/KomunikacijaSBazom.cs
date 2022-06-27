@@ -8,6 +8,8 @@ namespace Baza
 {
     public class KomunikacijaSBazom
     {
+        //Vraća listu svih narudžbi u kojima je korisničko ime u narudžbi jednako korisničkom
+        //imenu korisnika koji trenutno koristi aplikaciju
         public List<Narudzba> DohvatiNarudzbeKorisnika(Korisnik trenutniKorisnik)
         {
             using (var context = new EntitetiBaze())
@@ -21,6 +23,7 @@ namespace Baza
 
         }
 
+        //Vraća listu svih narudžbi sortirane prema datumu od sada prema prošlosti
         public List<Narudzba> DohvatiSveNarudzbeSortPoDatumu()
         {
             using (var context = new EntitetiBaze())
@@ -32,6 +35,7 @@ namespace Baza
             }
         }
 
+        //Vraća listu svih kupovina sortiranih prema datumu od sada prema prošlosti
         public List<Kupovina> DohvatiSveKupovineSortPoDatumu()
         {
             using (var context = new EntitetiBaze())
@@ -43,6 +47,7 @@ namespace Baza
             }
         }
 
+        //Vraća listu podataka iz tablice "Napredak" gdje je ID odabrane narudžbe jednak ID-u iz tablice
         public List<Napredak> DohvatiNapredakZaOdabranuNarudzbu(Narudzba odabranaNarudzba)
         {
             using (var context = new EntitetiBaze())
@@ -55,6 +60,7 @@ namespace Baza
             }
         }
 
+        //Vraća listu svih dijelova koji su pridruženi odabranoj narudžbi
         public List<Dijelovi> DohvatiDijeloveZaOdabranuNarudzbu(Narudzba odabranaNarudzba)
         {
             using (var context = new EntitetiBaze())
@@ -67,6 +73,7 @@ namespace Baza
             }
         }
 
+        //U bazu podataka zapisuje da narudžba otkazana
         public void OtkaziNarudzbu(Narudzba odabranaNarudzba)
         {
             using (var context = new EntitetiBaze())
@@ -77,6 +84,7 @@ namespace Baza
             }
         }
 
+        //U bazu podataka zapisuje da je narudžba potvrđena
         public void PotvrdiNarudzbu(Narudzba odabranaNarudzba)
         {
             using (var context = new EntitetiBaze())
@@ -87,6 +95,7 @@ namespace Baza
             }
         }
 
+        //U bazu podataka zapisuje da je narudžba završena
         public void ZavrsiNarudzbu(Narudzba odabranaNarudzba)
         {
             using (var context = new EntitetiBaze())
@@ -97,6 +106,7 @@ namespace Baza
             }
         }
 
+        //Vraća listu svih dijelova iz baze podataka
         public List<Dijelovi> DohvatiSveDijelove()
         {
             using (var context = new EntitetiBaze())
@@ -107,7 +117,7 @@ namespace Baza
             }
         }
 
-
+        //Vraća listu svih dijelova koji su pridruženi odabranoj kupovini
         public List<Dijelovi> DohvatiDijeloveUKupovini(Kupovina odabranaKupovina)
         {
             using (var context = new EntitetiBaze())
@@ -120,6 +130,7 @@ namespace Baza
             }
         }
 
+        //Vraća listu svih dijelova koji nisu pridruženi odabranoj kupovini
         public List<Dijelovi> DohvatiDijeloveOsimUKupovini(Kupovina odabranaKupovina)
         {
             using (var context = new EntitetiBaze())
@@ -132,6 +143,7 @@ namespace Baza
             }
         }
 
+        //Vraća listu svih dijelova koji su pridruženi odabranoj narudžbi
         public List<Dijelovi> DohvatiDijeloveUNarudzbi(Narudzba odabranaNarudzba)
         {
             using (var context = new EntitetiBaze())
@@ -143,6 +155,7 @@ namespace Baza
             }
         }
 
+        //Vraća listu svih dijelova koji nisu pridruženi odabranoj narudžbi
         public List<Dijelovi> DohvatiDijeloveOsimUNarudzbi(Narudzba odabranaNarudzba)
         {
             using (var context = new EntitetiBaze())
@@ -154,6 +167,7 @@ namespace Baza
             }
         }
 
+        //Vraća listu dijelova koji u nazivu sadrže upisan tekst, a nisu već pridruženi narudžbi
         public List<Dijelovi> FiltrirajDijelovePremaNazivuZaNarudzbu(string tekst, Narudzba odabranaNarudzba)
         {
             using (var context = new EntitetiBaze())
@@ -165,6 +179,7 @@ namespace Baza
             }
         }
 
+        //Vraća listu dijelova koji u nazivu sadrže upisan tekst, a nisu već pridruženi kupovini
         public List<Dijelovi> FiltrirajDijelovePremaNazivuZaKupovinu(string tekst, Kupovina odabranaKupovina)
         {
             using (var context = new EntitetiBaze())
@@ -176,6 +191,7 @@ namespace Baza
             }
         }
 
+        //Vraća listu dijelova koji u šifri sadrže upisan tekst, a nisu već pridruženi narudžbi
         public List<Dijelovi> FiltrirajDijelovePremaSifriZaNarudzbu(string tekst, Narudzba odabranaNarudzba)
         {
             using (var context = new EntitetiBaze())
@@ -187,6 +203,7 @@ namespace Baza
             }
         }
 
+        //Vraća listu dijelova koji u šifri sadrže upisan tekst, a nisu već pridruženi kupovini
         public List<Dijelovi> FiltrirajDijelovePremaSifriZaKupovinu(string tekst, Kupovina odabranaKupovina)
         {
             using (var context = new EntitetiBaze())
@@ -198,6 +215,7 @@ namespace Baza
             }
         }
 
+        //Odabranoj kupovini pridružuje odabrani dio
         public void DodajDioUKupovinu(Dijelovi odabraniDio, Kupovina odabranaKupovina)
         {
             using (var context = new EntitetiBaze())
@@ -214,6 +232,7 @@ namespace Baza
             }
         }
 
+        //Odabranoj narudžbi pridružuje odabrani dio
         public void DodajDioUNarudzbu(Dijelovi odabraniDio, Narudzba odabranaNarudzba)
         {
             using (var context = new EntitetiBaze())
@@ -230,6 +249,7 @@ namespace Baza
             }
         }
 
+        //Dodaje novi zapis u tablicu "Napredak"
         public void DodajNapredak(Narudzba odabranaNarudzba, Napredak napredak)
         {
             using (var context = new EntitetiBaze())
@@ -240,6 +260,9 @@ namespace Baza
             }
         }
 
+        //Dodaje novi zapis u tablicu "Kupovina" s podacima:
+        //korisničko ime trenutnog korisnika, ukupna cijena je na početku 0,
+        //datum kreiranja kupovine je sada, a status kupovine "U tijeku"
         public void KreirajKupovinu(Korisnik trenutniKorisnik)
         {
             using (var context = new EntitetiBaze())
@@ -256,6 +279,7 @@ namespace Baza
             }
         }
 
+        //Postavlja odabranu kupovinu kao završenu
         public void ZavrsiKupovinu(Kupovina odabranaKupovina)
         {
             using (var context = new EntitetiBaze())
@@ -266,6 +290,7 @@ namespace Baza
             }
         }
 
+        //Vraća listu narudžbi koje su postavljene kao završene
         public List<Narudzba> PrikaziZavrseneNarudzbe()
         {
             using (var context = new EntitetiBaze())
@@ -278,6 +303,7 @@ namespace Baza
             }
         }
 
+        //Vraća listu narudžbi koje su postavljene kao otkazane
         public List<Narudzba> PrikaziOtkazaneNarudzbe()
         {
             using (var context = new EntitetiBaze())
@@ -290,6 +316,7 @@ namespace Baza
             }
         }
 
+        //Vraća listu narudžbi koje su postavljene kao potvrđene
         public List<Narudzba> PrikaziPotvrdeneNarudzbe()
         {
             using (var context = new EntitetiBaze())
@@ -302,6 +329,7 @@ namespace Baza
             }
         }
 
+        //Vraća listu narudžbi koje nisu potvrđene
         public List<Narudzba> PrikaziNepotvrdeneNarudzbe()
         {
             using (var context = new EntitetiBaze())
@@ -314,6 +342,7 @@ namespace Baza
             }
         }
 
+        //Dodaje novi zapis u tablicu "Narudzba" s podacima koje je korisnik unio
         public void DodajNarudzbu(Narudzba narudzba)
         {
             using (var context = new EntitetiBaze())

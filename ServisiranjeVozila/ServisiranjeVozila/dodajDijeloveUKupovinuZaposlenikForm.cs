@@ -21,6 +21,8 @@ namespace ServisiranjeVozila
             odabranaKupovina = kupovina;
             InitializeComponent();
         }
+
+        //Postavlja naslove dataGridView-ova i sakriva stupce koji nisu potrebni za korisnika
         private void PostaviNaslove()
         {
             dgvDijelovi.Columns["ID_dijela"].Visible = false;
@@ -46,6 +48,7 @@ namespace ServisiranjeVozila
             InitializeComponent();
         }
 
+        //Iz klase "Baza" dohvaća podatke i prikazuje ih u tablicama
         private void OsvjeziPodatke()
         {
             dgvDijelovi.DataSource = baza.DohvatiDijeloveOsimUKupovini(odabranaKupovina);
@@ -58,9 +61,9 @@ namespace ServisiranjeVozila
         private void dodajDijeloveUKupovinuZaposlenikForm_Load(object sender, EventArgs e)
         {
             OsvjeziPodatke();
-            
         }
 
+        //Upisivanjem teksta poziva se metoda te se prikazuju podaci prema upisanom tekstu
         private void textBoxPretrazivanjeNaziv_TextChanged(object sender, EventArgs e)
         {
 
@@ -68,6 +71,7 @@ namespace ServisiranjeVozila
             PostaviNaslove();
         }
 
+        //Upisivanjem teksta poziva se metoda te se prikazuju podaci prema upisanom tekstu
         private void textBoxPretrazivanjeSifra_TextChanged(object sender, EventArgs e)
         {
             
@@ -75,6 +79,7 @@ namespace ServisiranjeVozila
             PostaviNaslove();
         }
 
+        //Odabrani dio pridružuje kupovini
         private void buttonUNarudzbu_Click(object sender, EventArgs e)
         {
             if(dgvDijelovi.SelectedRows.Count > 0)

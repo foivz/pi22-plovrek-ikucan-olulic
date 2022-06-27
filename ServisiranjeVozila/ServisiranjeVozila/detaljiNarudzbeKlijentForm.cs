@@ -26,6 +26,8 @@ namespace ServisiranjeVozila
             InitializeComponent();
         }
 
+        //Iz klase "Baza" dohvaća podatke, pridružuje ih dataGridView-u,
+        //sakriva podatke koji korisniku nisu potrebni te postavlja naslove stupaca
         private void DohvatiDijelove()
         {
             dgvDijelovi.DataSource = baza.DohvatiDijeloveZaOdabranuNarudzbu(odabranaNarudzba);
@@ -38,6 +40,7 @@ namespace ServisiranjeVozila
             dgvDijelovi.Columns["Opis_dijela"].HeaderText = "Opis";
         }
 
+        //Iz klase "Baza" dohvaća podatke i prikazuje ih u textBox
         private void DohvatiNapredak()
         {
             var podaciNapredak = baza.DohvatiNapredakZaOdabranuNarudzbu(odabranaNarudzba);
@@ -47,6 +50,7 @@ namespace ServisiranjeVozila
             }
         }
 
+        //Kod učitavanja forme dohvaćaju se i prikazuju podaci
         private void detaljiNarudzbeForm_Load(object sender, EventArgs e)
         {
             DohvatiDijelove();
@@ -96,6 +100,7 @@ namespace ServisiranjeVozila
 
         }
 
+        //Klikom na gumb poziva metodu OtkaziNarudzbu
         private void buttonOtkazi_Click(object sender, EventArgs e)
         {
             baza.OtkaziNarudzbu(odabranaNarudzba);
@@ -103,11 +108,13 @@ namespace ServisiranjeVozila
             buttonOtkazi.Enabled = false;
         }
 
+        //Klikom na gumb za zatvaranje zatvara formu
         private void buttonZatvori_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //Pritiskom na F1 otvara se pomoć
         private void detaljiNarudzbeKlijentForm_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
             Pomoc pomoc = new Pomoc();
