@@ -26,22 +26,16 @@ namespace ServisiranjeVozila
         private void PostaviNaslove()
         {
             dgvDijelovi.Columns["ID_dijela"].Visible = false;
-            dgvDijelovi.Columns["Kupovina"].Visible = false;
-            dgvDijelovi.Columns["Narudzba"].Visible = false;
+            dgvDijelovi.Columns["Dio_u_kupovini"].Visible = false;
+            dgvDijelovi.Columns["Sadrzi_dio"].Visible = false;
 
             dgvDijelovi.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
             dgvDijelovi.Columns["Opis_dijela"].HeaderText = "Opis";
             dgvDijelovi.Columns["Sifra_dijela"].HeaderText = "Šifra dijela";
 
             dgvDijeloviUNarudzbi.Columns["ID_dijela"].Visible = false;
-            dgvDijeloviUNarudzbi.Columns["Kupovina"].Visible = false;
-            dgvDijeloviUNarudzbi.Columns["Narudzba"].Visible = false;
 
             dgvDijeloviUNarudzbi.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
-            dgvDijeloviUNarudzbi.Columns["Opis_dijela"].HeaderText = "Opis";
-            dgvDijeloviUNarudzbi.Columns["Sifra_dijela"].HeaderText = "Šifra dijela";
-
-
         }
         public dodajDijeloveUKupovinuZaposlenikForm()
         {
@@ -84,7 +78,9 @@ namespace ServisiranjeVozila
         {
             if(dgvDijelovi.SelectedRows.Count > 0)
             {
-            //    baza.DodajDioUKupovinu(dgvDijelovi.CurrentRow.DataBoundItem as Dijelovi, odabranaKupovina);
+                Dijelovi odabraniDio = dgvDijelovi.CurrentRow.DataBoundItem as Dijelovi;
+                dodajDijeloveUKupovinuKolicinaForm forma = new dodajDijeloveUKupovinuKolicinaForm(odabranaKupovina, odabraniDio);
+                forma.ShowDialog();
                 OsvjeziPodatke();
             }
             else

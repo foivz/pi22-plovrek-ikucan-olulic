@@ -30,20 +30,16 @@ namespace ServisiranjeVozila
         private void PostaviNaslove()
         {
             dgvSviDijelovi.Columns["ID_dijela"].Visible = false;
-            dgvSviDijelovi.Columns["Kupovina"].Visible = false;
-            dgvSviDijelovi.Columns["Narudzba"].Visible = false;
+            dgvSviDijelovi.Columns["Dio_u_kupovini"].Visible = false;
+            dgvSviDijelovi.Columns["Sadrzi_dio"].Visible = false;
 
             dgvSviDijelovi.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
             dgvSviDijelovi.Columns["Opis_dijela"].HeaderText = "Opis";
             dgvSviDijelovi.Columns["Sifra_dijela"].HeaderText = "Šifra dijela";
 
             dgvDijeloviUNarudzbi.Columns["ID_dijela"].Visible = false;
-            dgvDijeloviUNarudzbi.Columns["Kupovina"].Visible = false;
-            dgvDijeloviUNarudzbi.Columns["Narudzba"].Visible = false;
 
             dgvDijeloviUNarudzbi.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
-            dgvDijeloviUNarudzbi.Columns["Opis_dijela"].HeaderText = "Opis";
-            dgvDijeloviUNarudzbi.Columns["Sifra_dijela"].HeaderText = "Šifra dijela";
         }
 
         //Iz klase "Baza" dohvaća podatke, pridružuje ih dataGridView-u
@@ -52,12 +48,6 @@ namespace ServisiranjeVozila
         {
             dgvSviDijelovi.DataSource = baza.DohvatiDijeloveOsimUNarudzbi(odabranaNarudzba);
             dgvDijeloviUNarudzbi.DataSource = baza.DohvatiDijeloveUNarudzbi(odabranaNarudzba);
-
-            if(baza.DohvatiSveDijelove().Count == baza.DohvatiDijeloveUNarudzbi(odabranaNarudzba).Count)
-            {
-                buttonUNarudzbu.Enabled = false;
-            }
-            
         }
 
         private void dodajDijeloveZaposlenikForm_Load(object sender, EventArgs e)
@@ -77,7 +67,8 @@ namespace ServisiranjeVozila
             if (dgvSviDijelovi.SelectedRows.Count > 0)
             {
                 Dijelovi odabraniDio = dgvSviDijelovi.CurrentRow.DataBoundItem as Dijelovi;
-            //    baza.DodajDioUNarudzbu(odabraniDio, odabranaNarudzba);
+                dodajDijeloveUNarudzbuKolicinaForm forma = new dodajDijeloveUNarudzbuKolicinaForm(odabranaNarudzba, odabraniDio);
+                forma.ShowDialog();
                 OsvjeziPodatke();
                 PostaviNaslove();
             }

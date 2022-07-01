@@ -16,7 +16,7 @@ namespace Baza
     {
         public string Registracija_vozila { get; set; }
         public string Korisnicko_ime { get; set; }
-        public byte[] Od { get; set; }
+        public System.DateTime Od { get; set; }
         public Nullable<System.DateTime> Do { get; set; }
     
         public virtual Korisnik Korisnik { get; set; }

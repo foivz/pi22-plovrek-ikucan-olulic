@@ -67,24 +67,25 @@ namespace ServisiranjeVozila
         private void PostaviNaslove()
         {
             dgvSveNarudzbe.Columns["Korisnik"].Visible = false;
-            dgvSveNarudzbe.Columns["Racun"].Visible = false;
-            dgvSveNarudzbe.Columns["Dijelovi"].Visible = false;
+            dgvSveNarudzbe.Columns["Korisnik1"].Visible = false;
             dgvSveNarudzbe.Columns["Napredak"].Visible = false;
+            dgvSveNarudzbe.Columns["Vozilo1"].Visible = false;
+            dgvSveNarudzbe.Columns["Sadrzi_dio"].Visible = false;
 
-            dgvSveNarudzbe.Columns["Registracija_vozila"].HeaderText = "Registracija vozila";
-            dgvSveNarudzbe.Columns["Marka_vozila"].HeaderText = "Marka";
-            dgvSveNarudzbe.Columns["Model_vozila"].HeaderText = "Model";
-            dgvSveNarudzbe.Columns["Stanje_brojaca"].HeaderText = "Stanje brojača";
+            dgvSveNarudzbe.Columns["Vozilo"].HeaderText = "Registracija vozila";
             dgvSveNarudzbe.Columns["Datum_narudzbe"].HeaderText = "Datum narudžbe";
             dgvSveNarudzbe.Columns["Korisnicko_ime"].HeaderText = "Korisničko ime";
             dgvSveNarudzbe.Columns["ID_narudzbe"].HeaderText = "ID narudžbe";
             dgvSveNarudzbe.Columns["Zavrsena"].HeaderText = "Završeno";
+            dgvSveNarudzbe.Columns["Ukupna_cijena"].HeaderText = "Cijena";
 
-            dgvKupovinaDijelova.Columns["Dijelovi"].Visible = false;
+            dgvKupovinaDijelova.Columns["Dio_u_kupovini"].Visible = false;
+            dgvKupovinaDijelova.Columns["Korisnik"].Visible = false;
+
             dgvKupovinaDijelova.Columns["ID_kupovine"].HeaderText = "ID Kupovine";
             dgvKupovinaDijelova.Columns["Ukupna_cijena"].HeaderText = "Ukupna cijena";
             dgvKupovinaDijelova.Columns["Datum_kupovine"].HeaderText = "Datum kupovine";
-            dgvKupovinaDijelova.Columns["Status_kupovina"].HeaderText = "Status kupovine";
+            dgvKupovinaDijelova.Columns["Status_kupovine"].HeaderText = "Status kupovine";
         }
 
         private void OsvjeziPodatke()
@@ -202,8 +203,8 @@ namespace ServisiranjeVozila
         private void dgvKupovinaDijelova_SelectionChanged(object sender, EventArgs e)
         {
             Kupovina odabranaKupovina = dgvKupovinaDijelova.CurrentRow.DataBoundItem as Kupovina;
-            /*
-            if(odabranaKupovina.Status_kupovina == "Završena")
+            
+            if(odabranaKupovina.Status_kupovine == "Završena")
             {
                 buttonDijeloviKupovina.Enabled = false;
                 buttonKupovinaZavrsena.Enabled = false;
@@ -213,7 +214,7 @@ namespace ServisiranjeVozila
                 buttonDijeloviKupovina.Enabled = true;
                 buttonKupovinaZavrsena.Enabled = true;
             }
-            */
+            
         }
 
         private void pocetnaZaposlenikForm_HelpRequested(object sender, HelpEventArgs hlpevent)

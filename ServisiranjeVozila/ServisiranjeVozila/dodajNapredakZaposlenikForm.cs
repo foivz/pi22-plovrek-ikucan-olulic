@@ -29,7 +29,12 @@ namespace ServisiranjeVozila
         private void dodajNapredakForm_Load(object sender, EventArgs e)
         {
             textBoxIDNarudzbe.Text = odabranaNarudzba.ID_narudzbe.ToString();
-            textBoxKorime.Text = odabranaNarudzba.Korisnicko_ime.ToString();
+            textBoxRegistracija.Text = odabranaNarudzba.Vozilo.ToString();
+            dgvNapredak.DataSource = baza.DohvatiNapredakZaOdabranuNarudzbu(odabranaNarudzba);
+
+            cmbNapredak.DataSource = baza.DohvatiTipoveNapretka(odabranaNarudzba);
+            cmbNapredak.ValueMember = "ID_tipa_napretka";
+            cmbNapredak.DisplayMember = "Opis";
         }
 
         private void buttonZatvori_Click(object sender, EventArgs e)
@@ -39,16 +44,13 @@ namespace ServisiranjeVozila
 
         private void buttonDodajNapredak_Click(object sender, EventArgs e)
         {
-            string opis = textBoxNapredak.Text;
-            int id = odabranaNarudzba.ID_narudzbe;
-            Napredak napredak = new Napredak
+            Napredak addNapredak = new Napredak
             {
-             //   Opis = opis,
-                ID_narudzbe = id
+                ID_tipa_napretka = (cmbNapredak.SelectedItem as Tip_napretka).ID_tipa_napretka,
+                ID_narudzbe = odabranaNarudzba.ID_narudzbe,
+                Datum_vrijeme = DateTime.Now
             };
-
-            //baza.DodajNapredak(odabranaNarudzba, napredak);
-            
+            baza.DodajNapredak(addNapredak);
             MessageBox.Show("Napredak je uspješno dodan!");
             this.Close();
         }

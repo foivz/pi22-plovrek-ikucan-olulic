@@ -34,8 +34,8 @@ namespace Baza
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tip_napretka> Tip_napretka { get; set; }
         public virtual DbSet<TipKorisnika> TipKorisnika { get; set; }
-        public virtual DbSet<Vlasnistvo> Vlasnistvo { get; set; }
         public virtual DbSet<Vozilo> Vozilo { get; set; }
         public virtual DbSet<Napredak> Napredak { get; set; }
+        public virtual DbSet<Vlasnistvo> Vlasnistvo { get; set; }
     }
 }

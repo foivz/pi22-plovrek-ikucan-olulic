@@ -30,14 +30,11 @@ namespace ServisiranjeVozila
         //sakriva podatke koji korisniku nisu potrebni te postavlja naslove stupaca
         private void DohvatiDijelove()
         {
-            dgvDijelovi.DataSource = baza.DohvatiDijeloveZaOdabranuNarudzbu(odabranaNarudzba);
+            dgvDijelovi.DataSource = baza.DohvatiDijeloveUNarudzbi(odabranaNarudzba);
 
             dgvDijelovi.Columns["ID_dijela"].Visible = false;
-            dgvDijelovi.Columns["Sifra_dijela"].Visible = false;
-            dgvDijelovi.Columns["Dio_u_kupovini"].Visible = false;
-            dgvDijelovi.Columns["Sadrzi_dio"].Visible = false;
+
             dgvDijelovi.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
-            dgvDijelovi.Columns["Opis_dijela"].HeaderText = "Opis";
         }
 
         //Iz klase "Baza" dohvaća podatke i prikazuje ih u textBox
@@ -55,6 +52,7 @@ namespace ServisiranjeVozila
             textBoxKorime.Text = odabranaNarudzba.Korisnicko_ime.ToString();
             textBoxNapomena.Text = odabranaNarudzba.Napomene.ToString();
             textBoxDatum.Text = odabranaNarudzba.Datum_narudzbe.ToString();
+            textBoxRegistracija.Text = odabranaNarudzba.Vozilo.ToString();
 
             if(odabranaNarudzba.Potvrđeno == 0)
             {

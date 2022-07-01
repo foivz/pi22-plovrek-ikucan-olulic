@@ -19,8 +19,8 @@ namespace Baza
         {
             this.Kupovina = new HashSet<Kupovina>();
             this.Narudzba = new HashSet<Narudzba>();
-            this.Vlasnistvo = new HashSet<Vlasnistvo>();
             this.Narudzba1 = new HashSet<Narudzba>();
+            this.Vlasnistvo = new HashSet<Vlasnistvo>();
         }
     
         public string Korisnicko_ime { get; set; }
@@ -39,8 +39,8 @@ namespace Baza
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Narudzba> Narudzba { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vlasnistvo> Vlasnistvo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Narudzba> Narudzba1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Vlasnistvo> Vlasnistvo { get; set; }
     }
 }

@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="PI2238_DBModel.sysdiagrams" Width="1.5" PointX="12.5" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PI2238_DBModel.Tip_napretka" Width="1.5" PointX="0.5" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PI2238_DBModel.TipKorisnika" Width="1.5" PointX="5" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PI2238_DBModel.Vlasnistvo" Width="1.5" PointX="2.75" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PI2238_DBModel.Vozilo" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
         <AssociationConnector Association="PI2238_DBModel.FK_dioukupovini_dijelovi" ManuallyRouted="false" />
         <AssociationConnector Association="PI2238_DBModel.FK_sadrzidio_dijelovi" ManuallyRouted="false" />
@@ -23,15 +22,16 @@
         <AssociationConnector Association="PI2238_DBModel.FK_Kupovina_Zaposlenik" ManuallyRouted="false" />
         <AssociationConnector Association="PI2238_DBModel.korisnik_narudzba" ManuallyRouted="false" >
         </AssociationConnector>
-        <AssociationConnector Association="PI2238_DBModel.vlasnistvo_korisnika" ManuallyRouted="false" />
         <AssociationConnector Association="PI2238_DBModel.zaposlenik_narudzba" ManuallyRouted="false" />
         <AssociationConnector Association="PI2238_DBModel.sadrzidio_narudzba" ManuallyRouted="false" />
         <AssociationConnector Association="PI2238_DBModel.vozilo_narudzba" ManuallyRouted="false" >
         </AssociationConnector>
-        <AssociationConnector Association="PI2238_DBModel.vlasnistvo_vozila" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PI2238_DBModel.Napredak" Width="1.5" PointX="0.5" PointY="0.875" />
         <AssociationConnector Association="PI2238_DBModel.napredak_narudzba" />
         <AssociationConnector Association="PI2238_DBModel.napredak_tipnapretka" />
+        <EntityTypeShape EntityType="PI2238_DBModel.Vlasnistvo" Width="1.5" PointX="2.75" PointY="7" />
+        <AssociationConnector Association="PI2238_DBModel.vlasnistvo_korisnika" />
+        <AssociationConnector Association="PI2238_DBModel.vlasnistvo_vozila" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

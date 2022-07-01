@@ -61,6 +61,18 @@
     <Compile Include="detaljiNarudzbeKlijentForm.Designer.cs">
       <DependentUpon>detaljiNarudzbeKlijentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="dodajDijeloveUKupovinuKolicinaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dodajDijeloveUKupovinuKolicinaForm.Designer.cs">
+      <DependentUpon>dodajDijeloveUKupovinuKolicinaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dodajDijeloveUNarudzbuKolicinaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dodajDijeloveUNarudzbuKolicinaForm.Designer.cs">
+      <DependentUpon>dodajDijeloveUNarudzbuKolicinaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="dodajDijeloveZaposlenikForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,8 +132,14 @@
     <EmbeddedResource Include="detaljiNarudzbeKlijentForm.resx">
       <DependentUpon>detaljiNarudzbeKlijentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="dodajDijeloveUKupovinuKolicinaForm.resx">
+      <DependentUpon>dodajDijeloveUKupovinuKolicinaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dodajDijeloveUKupovinuZaposlenikForm.resx">
       <DependentUpon>dodajDijeloveUKupovinuZaposlenikForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dodajDijeloveUNarudzbuKolicinaForm.resx">
+      <DependentUpon>dodajDijeloveUNarudzbuKolicinaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dodajDijeloveZaposlenikForm.resx">
       <DependentUpon>dodajDijeloveZaposlenikForm.cs</DependentUpon>

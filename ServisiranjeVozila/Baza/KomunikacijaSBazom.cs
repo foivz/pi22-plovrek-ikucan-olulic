@@ -136,13 +136,21 @@ namespace Baza
         }
 
         //Vraća listu svih dijelova koji su pridruženi odabranoj kupovini
-        public List<Dijelovi> DohvatiDijeloveUKupovini(Kupovina odabranaKupovina)
+        public object DohvatiDijeloveUKupovini(Kupovina odabranaKupovina)
         {
             using (var context = new PI2238_DBEntities())
             {
                 var queryUKupovini = from d in context.Dijelovi
-        //                             where d.Kupovina.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
-                                     select d;
+                                     join dk in context.Dio_u_kupovini on d.ID_dijela equals dk.ID_dijela
+                                     where dk.ID_kupovine == odabranaKupovina.ID_kupovine
+                                     select new
+                                     {
+                                         d.Naziv_dijela,
+                                         d.Sifra_dijela,
+                                         d.Cijena,
+                                         dk.Kolicina,
+                                         d.ID_dijela
+                                     };
                 return queryUKupovini.ToList();
 
             }
@@ -154,7 +162,7 @@ namespace Baza
             using (var context = new PI2238_DBEntities())
             {
                 var queryUKupovini = from d in context.Dijelovi
-         //                            where !d.Kupovina.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
+                                     where !d.Dio_u_kupovini.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
                                      select d;
                 return queryUKupovini.ToList();
 
@@ -162,13 +170,21 @@ namespace Baza
         }
 
         //Vraća listu svih dijelova koji su pridruženi odabranoj narudžbi
-        public List<Dijelovi> DohvatiDijeloveUNarudzbi(Narudzba odabranaNarudzba)
+        public object DohvatiDijeloveUNarudzbi(Narudzba odabranaNarudzba)
         {
             using (var context = new PI2238_DBEntities())
             {
                 var queryUNarudzbi = from d in context.Dijelovi
-        //                             where d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
-                                     select d;
+                                     join sd in context.Sadrzi_dio on d.ID_dijela equals sd.ID_dijela
+                                     where sd.ID_narudzbe == odabranaNarudzba.ID_narudzbe
+                                     select new
+                                     {
+                                         d.Naziv_dijela,
+                                         d.Sifra_dijela,
+                                         d.Cijena,
+                                         sd.Kolicina,
+                                         d.ID_dijela
+                                     };
                 return queryUNarudzbi.ToList();
             }
         }
@@ -179,7 +195,7 @@ namespace Baza
             using (var context = new PI2238_DBEntities())
             {
                 var queryUNarudzbi = from d in context.Dijelovi
-         //                            where !d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
+                                     where !d.Sadrzi_dio.Any(x => x.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
                                      select d;
                 return queryUNarudzbi.ToList();
             }
@@ -191,7 +207,7 @@ namespace Baza
             using (var context = new PI2238_DBEntities())
             {
                 var dijeloviPremaNazivu = from d in context.Dijelovi
-        //                                  where d.Naziv_dijela.Contains(tekst) && !d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
+                                          where d.Naziv_dijela.Contains(tekst) && !d.Sadrzi_dio.Any(x => x.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
                                           select d;
                 return dijeloviPremaNazivu.ToList();
             }
@@ -203,7 +219,7 @@ namespace Baza
             using (var context = new PI2238_DBEntities())
             {
                 var dijeloviPremaNazivu = from d in context.Dijelovi
-        //                                  where d.Naziv_dijela.Contains(tekst) && !d.Kupovina.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
+                                          where d.Naziv_dijela.Contains(tekst) && !d.Dio_u_kupovini.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
                                           select d;
                 return dijeloviPremaNazivu.ToList();
             }
@@ -215,7 +231,7 @@ namespace Baza
             using (var context = new PI2238_DBEntities())
             {
                 var dijeloviPremaSifri = from d in context.Dijelovi
-         //                                where d.Sifra_dijela.Contains(tekst) && !d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
+                                         where d.Sifra_dijela.Contains(tekst) && !d.Sadrzi_dio.Any(x => x.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
                                          select d;
                 return dijeloviPremaSifri.ToList();
             }
@@ -227,56 +243,124 @@ namespace Baza
             using (var context = new PI2238_DBEntities())
             {
                 var dijeloviPremaSifri = from d in context.Dijelovi
-        //                                 where d.Sifra_dijela.Contains(tekst) && !d.Kupovina.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
+                                         where d.Sifra_dijela.Contains(tekst) && !d.Dio_u_kupovini.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
                                          select d;
                 return dijeloviPremaSifri.ToList();
             }
         }
 
         //Odabranoj kupovini pridružuje odabrani dio
-        /*
-        public void DodajDioUKupovinu(Dijelovi odabraniDio, Kupovina odabranaKupovina)
+        
+        public int DodajDioUKupovinu(Dijelovi odabraniDio, Kupovina odabranaKupovina, int kolicina)
         {
             using (var context = new PI2238_DBEntities())
             {
+                if (odabraniDio.Kolicina < kolicina) return 1;
+                if (kolicina < 0) return 2;
                 context.Dijelovi.Attach(odabraniDio);
                 context.Kupovina.Attach(odabranaKupovina);
-                if (!odabraniDio.Kupovina.Contains(odabranaKupovina))
+                Dio_u_kupovini dodaj = new Dio_u_kupovini
                 {
-                    odabraniDio.Kupovina = new List<Kupovina>();
-                    odabraniDio.Kupovina.Add(odabranaKupovina);
-                    odabranaKupovina.Ukupna_cijena += odabraniDio.Cijena;
-                    context.SaveChanges();
-                }
+                    ID_kupovine = odabranaKupovina.ID_kupovine,
+                    ID_dijela = odabraniDio.ID_dijela,
+                    Kolicina = kolicina
+                };
+                context.Dio_u_kupovini.Add(dodaj);
+                context.SaveChanges();
+                return 0;
             }
         }
-        */
+        
 
         //Odabranoj narudžbi pridružuje odabrani dio
-        /*
-        public void DodajDioUNarudzbu(Dijelovi odabraniDio, Narudzba odabranaNarudzba)
+        
+        public int DodajDioUNarudzbu(Dijelovi odabraniDio, Narudzba odabranaNarudzba, int kolicina)
         {
             using (var context = new PI2238_DBEntities())
             {
+                if (odabraniDio.Kolicina < kolicina) return 1;
+                if (kolicina < 0) return 2;
                 context.Dijelovi.Attach(odabraniDio);
                 context.Narudzba.Attach(odabranaNarudzba);
-
-                if (!odabraniDio.Narudzba.Contains(odabranaNarudzba))
+                Sadrzi_dio dodaj = new Sadrzi_dio
                 {
-                    odabraniDio.Narudzba = new List<Narudzba>();
-                    odabraniDio.Narudzba.Add(odabranaNarudzba);
-                    context.SaveChanges();
-                }
+                    ID_narudzbe = odabranaNarudzba.ID_narudzbe,
+                    ID_dijela = odabraniDio.ID_dijela,
+                    Kolicina = kolicina
+                };
+                context.Sadrzi_dio.Add(dodaj);
+                context.SaveChanges();
+                return 0;
             }
         }
-        */
-        //Dodaje novi zapis u tablicu "Napredak"
-        public void DodajNapredak(Narudzba odabranaNarudzba, Napredak napredak)
+
+        public void PovecajKolicinuZaJedan(Narudzba odabranaNarudzba, string idDijela)
         {
             using (var context = new PI2238_DBEntities())
             {
+                Sadrzi_dio zapis = context.Sadrzi_dio.Find(odabranaNarudzba.ID_narudzbe, int.Parse(idDijela));
+                context.Sadrzi_dio.Attach(zapis);
+                zapis.Kolicina += 1;
+
+                Dijelovi dio = context.Dijelovi.Find(int.Parse(idDijela));
+                context.Dijelovi.Attach(dio);
+                dio.Kolicina -= 1;
+
                 context.Narudzba.Attach(odabranaNarudzba);
-                context.Napredak.Add(napredak);
+                odabranaNarudzba.Ukupna_cijena += dio.Cijena;
+
+                context.SaveChanges();
+            }
+        }
+
+        public List<Tip_napretka> DohvatiTipoveNapretka(Narudzba odabranaNarudzba)
+        {
+            using (var context = new PI2238_DBEntities())
+            {
+                var tipoviNapretka = from tn in context.Tip_napretka
+                                     where !tn.Napredak.Any(x => x.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
+                                     select tn;
+                return tipoviNapretka.ToList();
+            }
+
+        }
+
+        public int SmanjiKolicinuZaJedan(Narudzba odabranaNarudzba, string idDijela)
+        {
+            using (var context = new PI2238_DBEntities())
+            {
+                Sadrzi_dio zapis = context.Sadrzi_dio.Find(odabranaNarudzba.ID_narudzbe, int.Parse(idDijela));
+                context.Sadrzi_dio.Attach(zapis);
+                if(zapis.Kolicina > 0)
+                {
+                    zapis.Kolicina -= 1;
+
+                    Dijelovi dio = context.Dijelovi.Find(int.Parse(idDijela));
+                    context.Dijelovi.Attach(dio);
+                    dio.Kolicina += 1;
+
+                    context.Narudzba.Attach(odabranaNarudzba);
+                    odabranaNarudzba.Ukupna_cijena -= dio.Cijena;
+
+                    context.SaveChanges();
+                }
+                else
+                {
+                    return 1;
+                }
+                return 0;
+                
+                
+            }
+        }
+
+
+        //Dodaje novi zapis u tablicu "Napredak"
+        public void DodajNapredak(Napredak addNapredak)
+        {
+            using (var context = new PI2238_DBEntities())
+            {
+                context.Napredak.Add(addNapredak);
                 context.SaveChanges();
             }
         }
@@ -284,30 +368,30 @@ namespace Baza
         //Dodaje novi zapis u tablicu "Kupovina" s podacima:
         //korisničko ime trenutnog korisnika, ukupna cijena je na početku 0,
         //datum kreiranja kupovine je sada, a status kupovine "U tijeku"
-        /*
+        
         public void KreirajKupovinu(Korisnik trenutniKorisnik)
         {
             using (var context = new PI2238_DBEntities())
             {
                 Kupovina kupovina = new Kupovina
                 {
-                    Djelatnik = trenutniKorisnik.Korisnicko_ime,
+                    Zaposlenik_korime = trenutniKorisnik.Korisnicko_ime,
                     Ukupna_cijena = 0,
                     Datum_kupovine = DateTime.Now,
-                    Status_kupovina = "U tijeku"
+                    Status_kupovine = "U tijeku"
                 };
                 context.Kupovina.Add(kupovina);
                 context.SaveChanges();
             }
         }
-        */
+        
         //Postavlja odabranu kupovinu kao završenu
         public void ZavrsiKupovinu(Kupovina odabranaKupovina)
         {
             using (var context = new PI2238_DBEntities())
             {
                 context.Kupovina.Attach(odabranaKupovina);
-        //        odabranaKupovina.Status_kupovina = "Završena";
+                odabranaKupovina.Status_kupovine = "Završena";
                 context.SaveChanges();
             }
         }

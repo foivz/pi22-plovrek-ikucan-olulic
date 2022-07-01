@@ -114,7 +114,7 @@
           </Key>
           <Property Name="Registracija_vozila" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Korisnicko_ime" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Od" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Od" Type="datetime" Nullable="false" />
           <Property Name="Do" Type="datetime" />
         </EntityType>
         <EntityType Name="Vozilo">
@@ -392,8 +392,8 @@
           <NavigationProperty Name="TipKorisnika" Relationship="Self.FK_Korisnik_TipKorisnika" FromRole="Korisnik" ToRole="TipKorisnika" />
           <NavigationProperty Name="Kupovina" Relationship="Self.FK_Kupovina_Zaposlenik" FromRole="Korisnik" ToRole="Kupovina" />
           <NavigationProperty Name="Narudzba" Relationship="Self.korisnik_narudzba" FromRole="Korisnik" ToRole="Narudzba" />
-          <NavigationProperty Name="Vlasnistvo" Relationship="Self.vlasnistvo_korisnika" FromRole="Korisnik" ToRole="Vlasnistvo" />
           <NavigationProperty Name="Narudzba1" Relationship="Self.zaposlenik_narudzba" FromRole="Korisnik" ToRole="Narudzba" />
+          <NavigationProperty Name="Vlasnistvo" Relationship="PI2238_DBModel.vlasnistvo_korisnika" FromRole="Korisnik" ToRole="Vlasnistvo" />
         </EntityType>
         <EntityType Name="Kupovina">
           <Key>
@@ -465,18 +465,6 @@
           <Property Name="Opis_tipa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Korisnik" Relationship="Self.FK_Korisnik_TipKorisnika" FromRole="TipKorisnika" ToRole="Korisnik" />
         </EntityType>
-        <EntityType Name="Vlasnistvo">
-          <Key>
-            <PropertyRef Name="Registracija_vozila" />
-            <PropertyRef Name="Korisnicko_ime" />
-          </Key>
-          <Property Name="Registracija_vozila" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Korisnicko_ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Od" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="Do" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Korisnik" Relationship="Self.vlasnistvo_korisnika" FromRole="Vlasnistvo" ToRole="Korisnik" />
-          <NavigationProperty Name="Vozilo" Relationship="Self.vlasnistvo_vozila" FromRole="Vlasnistvo" ToRole="Vozilo" />
-        </EntityType>
         <EntityType Name="Vozilo">
           <Key>
             <PropertyRef Name="Registracija_vozila" />
@@ -486,7 +474,7 @@
           <Property Name="Model_vozila" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Stanje_brojaca" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Narudzba" Relationship="Self.vozilo_narudzba" FromRole="Vozilo" ToRole="Narudzba" />
-          <NavigationProperty Name="Vlasnistvo" Relationship="Self.vlasnistvo_vozila" FromRole="Vozilo" ToRole="Vlasnistvo" />
+          <NavigationProperty Name="Vlasnistvo" Relationship="PI2238_DBModel.vlasnistvo_vozila" FromRole="Vozilo" ToRole="Vlasnistvo" />
         </EntityType>
         <Association Name="FK_dioukupovini_dijelovi">
           <End Role="Dijelovi" Type="Self.Dijelovi" Multiplicity="1" />
@@ -560,18 +548,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="vlasnistvo_korisnika">
-          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
-          <End Role="Vlasnistvo" Type="Self.Vlasnistvo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Korisnik">
-              <PropertyRef Name="Korisnicko_ime" />
-            </Principal>
-            <Dependent Role="Vlasnistvo">
-              <PropertyRef Name="Korisnicko_ime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="zaposlenik_narudzba">
           <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="0..1" />
           <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="*" />
@@ -608,18 +584,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="vlasnistvo_vozila">
-          <End Role="Vozilo" Type="Self.Vozilo" Multiplicity="1" />
-          <End Role="Vlasnistvo" Type="Self.Vlasnistvo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Vozilo">
-              <PropertyRef Name="Registracija_vozila" />
-            </Principal>
-            <Dependent Role="Vlasnistvo">
-              <PropertyRef Name="Registracija_vozila" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="PI2238_DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Dijelovi" EntityType="Self.Dijelovi" />
           <EntitySet Name="Dio_u_kupovini" EntityType="Self.Dio_u_kupovini" />
@@ -630,7 +594,6 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tip_napretka" EntityType="Self.Tip_napretka" />
           <EntitySet Name="TipKorisnika" EntityType="Self.TipKorisnika" />
-          <EntitySet Name="Vlasnistvo" EntityType="Self.Vlasnistvo" />
           <EntitySet Name="Vozilo" EntityType="Self.Vozilo" />
           <AssociationSet Name="FK_dioukupovini_dijelovi" Association="Self.FK_dioukupovini_dijelovi">
             <End Role="Dijelovi" EntitySet="Dijelovi" />
@@ -656,10 +619,6 @@
             <End Role="Korisnik" EntitySet="Korisnik" />
             <End Role="Narudzba" EntitySet="Narudzba" />
           </AssociationSet>
-          <AssociationSet Name="vlasnistvo_korisnika" Association="Self.vlasnistvo_korisnika">
-            <End Role="Korisnik" EntitySet="Korisnik" />
-            <End Role="Vlasnistvo" EntitySet="Vlasnistvo" />
-          </AssociationSet>
           <AssociationSet Name="zaposlenik_narudzba" Association="Self.zaposlenik_narudzba">
             <End Role="Korisnik" EntitySet="Korisnik" />
             <End Role="Narudzba" EntitySet="Narudzba" />
@@ -672,10 +631,6 @@
             <End Role="Vozilo" EntitySet="Vozilo" />
             <End Role="Narudzba" EntitySet="Narudzba" />
           </AssociationSet>
-          <AssociationSet Name="vlasnistvo_vozila" Association="Self.vlasnistvo_vozila">
-            <End Role="Vozilo" EntitySet="Vozilo" />
-            <End Role="Vlasnistvo" EntitySet="Vlasnistvo" />
-          </AssociationSet>
           <EntitySet Name="Napredak" EntityType="PI2238_DBModel.Napredak" />
           <AssociationSet Name="napredak_narudzba" Association="PI2238_DBModel.napredak_narudzba">
             <End Role="Narudzba" EntitySet="Narudzba" />
@@ -684,6 +639,15 @@
           <AssociationSet Name="napredak_tipnapretka" Association="PI2238_DBModel.napredak_tipnapretka">
             <End Role="Tip_napretka" EntitySet="Tip_napretka" />
             <End Role="Napredak" EntitySet="Napredak" />
+          </AssociationSet>
+          <EntitySet Name="Vlasnistvo" EntityType="PI2238_DBModel.Vlasnistvo" />
+          <AssociationSet Name="vlasnistvo_korisnika" Association="PI2238_DBModel.vlasnistvo_korisnika">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Vlasnistvo" EntitySet="Vlasnistvo" />
+          </AssociationSet>
+          <AssociationSet Name="vlasnistvo_vozila" Association="PI2238_DBModel.vlasnistvo_vozila">
+            <End Role="Vozilo" EntitySet="Vozilo" />
+            <End Role="Vlasnistvo" EntitySet="Vlasnistvo" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Napredak">
@@ -718,6 +682,42 @@
             </Principal>
             <Dependent Role="Napredak">
               <PropertyRef Name="ID_tipa_napretka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Vlasnistvo">
+          <Key>
+            <PropertyRef Name="Registracija_vozila" />
+            <PropertyRef Name="Korisnicko_ime" />
+          </Key>
+          <Property Name="Registracija_vozila" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Korisnicko_ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Od" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Do" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Korisnik" Relationship="PI2238_DBModel.vlasnistvo_korisnika" FromRole="Vlasnistvo" ToRole="Korisnik" />
+          <NavigationProperty Name="Vozilo" Relationship="PI2238_DBModel.vlasnistvo_vozila" FromRole="Vlasnistvo" ToRole="Vozilo" />
+        </EntityType>
+        <Association Name="vlasnistvo_korisnika">
+          <End Type="PI2238_DBModel.Korisnik" Role="Korisnik" Multiplicity="1" />
+          <End Type="PI2238_DBModel.Vlasnistvo" Role="Vlasnistvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="Korisnicko_ime" />
+            </Principal>
+            <Dependent Role="Vlasnistvo">
+              <PropertyRef Name="Korisnicko_ime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="vlasnistvo_vozila">
+          <End Type="PI2238_DBModel.Vozilo" Role="Vozilo" Multiplicity="1" />
+          <End Type="PI2238_DBModel.Vlasnistvo" Role="Vlasnistvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vozilo">
+              <PropertyRef Name="Registracija_vozila" />
+            </Principal>
+            <Dependent Role="Vlasnistvo">
+              <PropertyRef Name="Registracija_vozila" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -827,16 +827,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Vlasnistvo">
-            <EntityTypeMapping TypeName="PI2238_DBModel.Vlasnistvo">
-              <MappingFragment StoreEntitySet="Vlasnistvo">
-                <ScalarProperty Name="Registracija_vozila" ColumnName="Registracija_vozila" />
-                <ScalarProperty Name="Korisnicko_ime" ColumnName="Korisnicko_ime" />
-                <ScalarProperty Name="Od" ColumnName="Od" />
-                <ScalarProperty Name="Do" ColumnName="Do" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Vozilo">
             <EntityTypeMapping TypeName="PI2238_DBModel.Vozilo">
               <MappingFragment StoreEntitySet="Vozilo">
@@ -853,6 +843,16 @@
                 <ScalarProperty Name="Datum_vrijeme" ColumnName="Datum_vrijeme" />
                 <ScalarProperty Name="ID_narudzbe" ColumnName="ID_narudzbe" />
                 <ScalarProperty Name="ID_tipa_napretka" ColumnName="ID_tipa_napretka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vlasnistvo">
+            <EntityTypeMapping TypeName="PI2238_DBModel.Vlasnistvo">
+              <MappingFragment StoreEntitySet="Vlasnistvo">
+                <ScalarProperty Name="Do" ColumnName="Do" />
+                <ScalarProperty Name="Od" ColumnName="Od" />
+                <ScalarProperty Name="Korisnicko_ime" ColumnName="Korisnicko_ime" />
+                <ScalarProperty Name="Registracija_vozila" ColumnName="Registracija_vozila" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
