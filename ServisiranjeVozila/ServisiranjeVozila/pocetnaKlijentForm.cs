@@ -38,17 +38,16 @@ namespace ServisiranjeVozila
             dgvKorisnikoveNarudzbe.Columns["ID_narudzbe"].Visible = false;
             dgvKorisnikoveNarudzbe.Columns["Korisnicko_ime"].Visible = false;
             dgvKorisnikoveNarudzbe.Columns["Korisnik"].Visible = false;
-            dgvKorisnikoveNarudzbe.Columns["Racun"].Visible = false;
-            dgvKorisnikoveNarudzbe.Columns["Dijelovi"].Visible = false;
+            dgvKorisnikoveNarudzbe.Columns["Korisnik1"].Visible = false;
             dgvKorisnikoveNarudzbe.Columns["Napredak"].Visible = false;
+            dgvKorisnikoveNarudzbe.Columns["Sadrzi_dio"].Visible = false;
             dgvKorisnikoveNarudzbe.Columns["Potvrđeno"].Visible = false;
             dgvKorisnikoveNarudzbe.Columns["Otkazano"].Visible = false;
             dgvKorisnikoveNarudzbe.Columns["Zavrsena"].Visible = false;
+            dgvKorisnikoveNarudzbe.Columns["Vozilo1"].Visible = false;
+            dgvKorisnikoveNarudzbe.Columns["Ukupna_cijena"].Visible = false;
 
-            dgvKorisnikoveNarudzbe.Columns["Registracija_vozila"].HeaderText = "Registracija vozila";
-            dgvKorisnikoveNarudzbe.Columns["Marka_vozila"].HeaderText = "Marka";
-            dgvKorisnikoveNarudzbe.Columns["Model_vozila"].HeaderText = "Model";
-            dgvKorisnikoveNarudzbe.Columns["Stanje_brojaca"].HeaderText = "Stanje brojača";
+
             dgvKorisnikoveNarudzbe.Columns["Datum_narudzbe"].HeaderText = "Datum narudžbe";
         }
 
@@ -80,6 +79,14 @@ namespace ServisiranjeVozila
             kreirajNarudzbu.ShowDialog();
             this.Show();
             OsvjeziPodatke();
+        }
+
+        private void buttonPregledVozila_Click(object sender, EventArgs e)
+        {
+            pregledVozilaKlijentForm pregledVozila = new pregledVozilaKlijentForm(trenutniKorisnik);
+            this.Hide();
+            pregledVozila.ShowDialog();
+            this.Show();
         }
     }
 }

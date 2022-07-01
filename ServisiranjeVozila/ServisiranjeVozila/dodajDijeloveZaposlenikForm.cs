@@ -25,7 +25,8 @@ namespace ServisiranjeVozila
         {
             InitializeComponent();
         }
-
+        
+        //Postavljaju se naslovi stupaca tablice i sakrivaju stupci koji korisniku nisu potrebni
         private void PostaviNaslove()
         {
             dgvSviDijelovi.Columns["ID_dijela"].Visible = false;
@@ -45,6 +46,8 @@ namespace ServisiranjeVozila
             dgvDijeloviUNarudzbi.Columns["Sifra_dijela"].HeaderText = "Šifra dijela";
         }
 
+        //Iz klase "Baza" dohvaća podatke, pridružuje ih dataGridView-u
+        //Isključuje gumb ako su već dodani svi mogući dijelovi
         private void OsvjeziPodatke()
         {
             dgvSviDijelovi.DataSource = baza.DohvatiDijeloveOsimUNarudzbi(odabranaNarudzba);
@@ -74,7 +77,7 @@ namespace ServisiranjeVozila
             if (dgvSviDijelovi.SelectedRows.Count > 0)
             {
                 Dijelovi odabraniDio = dgvSviDijelovi.CurrentRow.DataBoundItem as Dijelovi;
-                baza.DodajDioUNarudzbu(odabraniDio, odabranaNarudzba);
+            //    baza.DodajDioUNarudzbu(odabraniDio, odabranaNarudzba);
                 OsvjeziPodatke();
                 PostaviNaslove();
             }

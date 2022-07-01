@@ -4,22 +4,34 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="46cda2372231426db909b916430198fa" Name="Diagram1">
-        <EntityTypeShape EntityType="PI2238_DBModel.Dijelovi" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PI2238_DBModel.Korisnik" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PI2238_DBModel.Kupovina" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PI2238_DBModel.Napredak" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PI2238_DBModel.Narudzba" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PI2238_DBModel.Racun" Width="1.5" PointX="8.25" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PI2238_DBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="PI2238_DBModel.TipKorisnika" Width="1.5" PointX="1.5" PointY="1.875" IsExpanded="true" />
+      <Diagram DiagramId="e4d00023255b4e33986d52d0768183dd" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="PI2238_DBModel.Dijelovi" Width="1.5" PointX="6.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI2238_DBModel.Dio_u_kupovini" Width="1.5" PointX="6.875" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI2238_DBModel.Korisnik" Width="1.5" PointX="4.875" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI2238_DBModel.Kupovina" Width="1.5" PointX="7" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI2238_DBModel.Narudzba" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI2238_DBModel.Sadrzi_dio" Width="1.5" PointX="4.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI2238_DBModel.sysdiagrams" Width="1.5" PointX="12.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI2238_DBModel.Tip_napretka" Width="1.5" PointX="0.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI2238_DBModel.TipKorisnika" Width="1.5" PointX="5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI2238_DBModel.Vlasnistvo" Width="1.5" PointX="2.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PI2238_DBModel.Vozilo" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="PI2238_DBModel.FK_dioukupovini_dijelovi" ManuallyRouted="false" />
+        <AssociationConnector Association="PI2238_DBModel.FK_sadrzidio_dijelovi" ManuallyRouted="false" />
+        <AssociationConnector Association="PI2238_DBModel.FK_dioukupovini_kupovina" ManuallyRouted="false" />
         <AssociationConnector Association="PI2238_DBModel.FK_Korisnik_TipKorisnika" ManuallyRouted="false" />
-        <AssociationConnector Association="PI2238_DBModel.FK_Racun_korisnik" ManuallyRouted="false" />
-        <AssociationConnector Association="PI2238_DBModel.korisnik_narudzba" ManuallyRouted="false" />
-        <AssociationConnector Association="PI2238_DBModel.FK_Napredak_Narudzba" ManuallyRouted="false" />
-        <AssociationConnector Association="PI2238_DBModel.FK_Racun_narudzba" ManuallyRouted="false" />
-        <AssociationConnector Association="PI2238_DBModel.Dio_u_kupovini" ManuallyRouted="false" />
-        <AssociationConnector Association="PI2238_DBModel.Sadrzi_dio" ManuallyRouted="false" />
+        <AssociationConnector Association="PI2238_DBModel.FK_Kupovina_Zaposlenik" ManuallyRouted="false" />
+        <AssociationConnector Association="PI2238_DBModel.korisnik_narudzba" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="PI2238_DBModel.vlasnistvo_korisnika" ManuallyRouted="false" />
+        <AssociationConnector Association="PI2238_DBModel.zaposlenik_narudzba" ManuallyRouted="false" />
+        <AssociationConnector Association="PI2238_DBModel.sadrzidio_narudzba" ManuallyRouted="false" />
+        <AssociationConnector Association="PI2238_DBModel.vozilo_narudzba" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="PI2238_DBModel.vlasnistvo_vozila" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PI2238_DBModel.Napredak" Width="1.5" PointX="0.5" PointY="0.875" />
+        <AssociationConnector Association="PI2238_DBModel.napredak_narudzba" />
+        <AssociationConnector Association="PI2238_DBModel.napredak_tipnapretka" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

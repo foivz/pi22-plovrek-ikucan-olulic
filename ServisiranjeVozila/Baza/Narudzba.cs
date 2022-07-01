@@ -17,29 +17,27 @@ namespace Baza
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Narudzba()
         {
+            this.Sadrzi_dio = new HashSet<Sadrzi_dio>();
             this.Napredak = new HashSet<Napredak>();
-            this.Racun = new HashSet<Racun>();
-            this.Dijelovi = new HashSet<Dijelovi>();
         }
     
         public int ID_narudzbe { get; set; }
         public string Korisnicko_ime { get; set; }
-        public string Registracija_vozila { get; set; }
-        public string Marka_vozila { get; set; }
-        public string Model_vozila { get; set; }
-        public int Stanje_brojaca { get; set; }
         public string Napomene { get; set; }
         public System.DateTime Datum_narudzbe { get; set; }
         public Nullable<byte> Potvrđeno { get; set; }
         public Nullable<byte> Otkazano { get; set; }
         public Nullable<byte> Zavrsena { get; set; }
+        public string Zaposlenik { get; set; }
+        public Nullable<double> Ukupna_cijena { get; set; }
+        public string Vozilo { get; set; }
     
         public virtual Korisnik Korisnik { get; set; }
+        public virtual Korisnik Korisnik1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sadrzi_dio> Sadrzi_dio { get; set; }
+        public virtual Vozilo Vozilo1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Napredak> Napredak { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Racun> Racun { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Dijelovi> Dijelovi { get; set; }
     }
 }

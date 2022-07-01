@@ -30,10 +30,6 @@ namespace ServisiranjeVozila
         {
             textBoxIDNarudzbe.Text = odabranaNarudzba.ID_narudzbe.ToString();
             textBoxKorime.Text = odabranaNarudzba.Korisnicko_ime.ToString();
-            textBoxRegistracija.Text = odabranaNarudzba.Registracija_vozila.ToString();
-            textBoxMarka.Text = odabranaNarudzba.Marka_vozila.ToString();
-            textBoxModel.Text = odabranaNarudzba.Model_vozila.ToString();
-            textBoxStanje.Text = odabranaNarudzba.Stanje_brojaca.ToString();
         }
 
         private void buttonZatvori_Click(object sender, EventArgs e)
@@ -47,11 +43,11 @@ namespace ServisiranjeVozila
             int id = odabranaNarudzba.ID_narudzbe;
             Napredak napredak = new Napredak
             {
-                Opis = opis,
+             //   Opis = opis,
                 ID_narudzbe = id
             };
 
-            baza.DodajNapredak(odabranaNarudzba, napredak);
+            //baza.DodajNapredak(odabranaNarudzba, napredak);
             
             MessageBox.Show("Napredak je uspješno dodan!");
             this.Close();

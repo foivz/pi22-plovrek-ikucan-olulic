@@ -79,12 +79,12 @@ namespace ServisiranjeVozila
             PostaviNaslove();
         }
 
-        //Odabrani dio pridružuje kupovini
+        //Odabrani dio pridružuje kupovini nakon klika na gumb, ako je odabran red tablice
         private void buttonUNarudzbu_Click(object sender, EventArgs e)
         {
             if(dgvDijelovi.SelectedRows.Count > 0)
             {
-                baza.DodajDioUKupovinu(dgvDijelovi.CurrentRow.DataBoundItem as Dijelovi, odabranaKupovina);
+            //    baza.DodajDioUKupovinu(dgvDijelovi.CurrentRow.DataBoundItem as Dijelovi, odabranaKupovina);
                 OsvjeziPodatke();
             }
             else
@@ -94,11 +94,13 @@ namespace ServisiranjeVozila
             
         }
 
+        //zatvara formu klikom na gumb "Zatvori"
         private void buttonZatvori_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //Pritiskom na F1 otvara se pomoć
         private void dodajDijeloveUKupovinuZaposlenikForm_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
             Pomoc pomoc = new Pomoc();

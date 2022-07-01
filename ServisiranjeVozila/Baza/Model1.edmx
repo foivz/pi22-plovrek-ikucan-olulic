@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PI2238_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PI2238_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Dijelovi">
           <Key>
             <PropertyRef Name="ID_dijela" />
@@ -14,14 +14,16 @@
           <Property Name="Sifra_dijela" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Opis_dijela" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Cijena" Type="float" Nullable="false" />
+          <Property Name="Kolicina" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Dio_u_kupovini">
           <Key>
-            <PropertyRef Name="ID_kupovina" />
+            <PropertyRef Name="ID_kupovine" />
             <PropertyRef Name="ID_dijela" />
           </Key>
-          <Property Name="ID_kupovina" Type="int" Nullable="false" />
+          <Property Name="ID_kupovine" Type="int" Nullable="false" />
           <Property Name="ID_dijela" Type="int" Nullable="false" />
+          <Property Name="Kolicina" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Korisnik">
           <Key>
@@ -35,24 +37,26 @@
           <Property Name="Broj_telefona" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="ID_tipa" Type="int" Nullable="false" />
           <Property Name="Lozinka" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cijena" Type="float" />
         </EntityType>
         <EntityType Name="Kupovina">
           <Key>
             <PropertyRef Name="ID_kupovine" />
           </Key>
           <Property Name="ID_kupovine" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Djelatnik" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Zaposlenik_korime" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Ukupna_cijena" Type="float" Nullable="false" />
           <Property Name="Datum_kupovine" Type="date" Nullable="false" />
-          <Property Name="Status_kupovina" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status_kupovine" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Napredak">
           <Key>
-            <PropertyRef Name="ID_napretka" />
+            <PropertyRef Name="ID_tipa_napretka" />
+            <PropertyRef Name="ID_narudzbe" />
           </Key>
-          <Property Name="ID_napretka" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Opis" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ID_tipa_napretka" Type="int" Nullable="false" />
           <Property Name="ID_narudzbe" Type="int" Nullable="false" />
+          <Property Name="Datum_vrijeme" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Narudzba">
           <Key>
@@ -60,25 +64,14 @@
           </Key>
           <Property Name="ID_narudzbe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Korisnicko_ime" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Registracija_vozila" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Marka_vozila" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Model_vozila" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Stanje_brojaca" Type="int" Nullable="false" />
           <Property Name="Napomene" Type="varchar" MaxLength="300" Nullable="false" />
           <Property Name="Datum_narudzbe" Type="date" Nullable="false" />
           <Property Name="Potvrđeno" Type="tinyint" />
           <Property Name="Otkazano" Type="tinyint" />
           <Property Name="Zavrsena" Type="tinyint" />
-        </EntityType>
-        <EntityType Name="Racun">
-          <Key>
-            <PropertyRef Name="ID_racuna" />
-          </Key>
-          <Property Name="ID_racuna" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_narudzbe" Type="int" Nullable="false" />
-          <Property Name="Zaposlenik" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Datum_vrijeme" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
-          <Property Name="Cijena" Type="float" Nullable="false" />
+          <Property Name="Zaposlenik" Type="varchar" MaxLength="50" />
+          <Property Name="Ukupna_cijena" Type="float" />
+          <Property Name="Vozilo" Type="varchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="Sadrzi_dio">
           <Key>
@@ -87,6 +80,7 @@
           </Key>
           <Property Name="ID_narudzbe" Type="int" Nullable="false" />
           <Property Name="ID_dijela" Type="int" Nullable="false" />
+          <Property Name="Kolicina" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -98,6 +92,13 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="Tip_napretka">
+          <Key>
+            <PropertyRef Name="ID_tipa_napretka" />
+          </Key>
+          <Property Name="ID_tipa_napretka" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Opis" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
         <EntityType Name="TipKorisnika">
           <Key>
             <PropertyRef Name="ID_tipa" />
@@ -105,6 +106,25 @@
           <Property Name="ID_tipa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Naziv_tipa" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Opis_tipa" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vlasnistvo">
+          <Key>
+            <PropertyRef Name="Registracija_vozila" />
+            <PropertyRef Name="Korisnicko_ime" />
+          </Key>
+          <Property Name="Registracija_vozila" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Korisnicko_ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Od" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Do" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Vozilo">
+          <Key>
+            <PropertyRef Name="Registracija_vozila" />
+          </Key>
+          <Property Name="Registracija_vozila" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Marka_vozila" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Model_vozila" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Stanje_brojaca" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_dioukupovini_dijelovi">
           <End Role="Dijelovi" Type="Self.Dijelovi" Multiplicity="1" />
@@ -126,7 +146,7 @@
               <PropertyRef Name="ID_kupovine" />
             </Principal>
             <Dependent Role="Dio_u_kupovini">
-              <PropertyRef Name="ID_kupovina" />
+              <PropertyRef Name="ID_kupovine" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -142,39 +162,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Napredak_Narudzba">
-          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
-          <End Role="Napredak" Type="Self.Napredak" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Narudzba">
-              <PropertyRef Name="ID_narudzbe" />
-            </Principal>
-            <Dependent Role="Napredak">
-              <PropertyRef Name="ID_narudzbe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Racun_korisnik">
+        <Association Name="FK_Kupovina_Zaposlenik">
           <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
-          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <End Role="Kupovina" Type="Self.Kupovina" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Korisnik">
               <PropertyRef Name="Korisnicko_ime" />
             </Principal>
-            <Dependent Role="Racun">
-              <PropertyRef Name="Zaposlenik" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Racun_narudzba">
-          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
-          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Narudzba">
-              <PropertyRef Name="ID_narudzbe" />
-            </Principal>
-            <Dependent Role="Racun">
-              <PropertyRef Name="ID_narudzbe" />
+            <Dependent Role="Kupovina">
+              <PropertyRef Name="Zaposlenik_korime" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -190,18 +186,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_sadrzidio_narudzba">
-          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
-          <End Role="Sadrzi_dio" Type="Self.Sadrzi_dio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Narudzba">
-              <PropertyRef Name="ID_narudzbe" />
-            </Principal>
-            <Dependent Role="Sadrzi_dio">
-              <PropertyRef Name="ID_narudzbe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="korisnik_narudzba">
           <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
           <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="*" />
@@ -214,6 +198,90 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="napredak_narudzba">
+          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
+          <End Role="Napredak" Type="Self.Napredak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Narudzba">
+              <PropertyRef Name="ID_narudzbe" />
+            </Principal>
+            <Dependent Role="Napredak">
+              <PropertyRef Name="ID_narudzbe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="napredak_tipnapretka">
+          <End Role="Tip_napretka" Type="Self.Tip_napretka" Multiplicity="1" />
+          <End Role="Napredak" Type="Self.Napredak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_napretka">
+              <PropertyRef Name="ID_tipa_napretka" />
+            </Principal>
+            <Dependent Role="Napredak">
+              <PropertyRef Name="ID_tipa_napretka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="sadrzidio_narudzba">
+          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
+          <End Role="Sadrzi_dio" Type="Self.Sadrzi_dio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Narudzba">
+              <PropertyRef Name="ID_narudzbe" />
+            </Principal>
+            <Dependent Role="Sadrzi_dio">
+              <PropertyRef Name="ID_narudzbe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="vlasnistvo_korisnika">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="Vlasnistvo" Type="Self.Vlasnistvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="Korisnicko_ime" />
+            </Principal>
+            <Dependent Role="Vlasnistvo">
+              <PropertyRef Name="Korisnicko_ime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="vlasnistvo_vozila">
+          <End Role="Vozilo" Type="Self.Vozilo" Multiplicity="1" />
+          <End Role="Vlasnistvo" Type="Self.Vlasnistvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vozilo">
+              <PropertyRef Name="Registracija_vozila" />
+            </Principal>
+            <Dependent Role="Vlasnistvo">
+              <PropertyRef Name="Registracija_vozila" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="vozilo_narudzba">
+          <End Role="Vozilo" Type="Self.Vozilo" Multiplicity="0..1" />
+          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vozilo">
+              <PropertyRef Name="Registracija_vozila" />
+            </Principal>
+            <Dependent Role="Narudzba">
+              <PropertyRef Name="Vozilo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="zaposlenik_narudzba">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="0..1" />
+          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="Korisnicko_ime" />
+            </Principal>
+            <Dependent Role="Narudzba">
+              <PropertyRef Name="Zaposlenik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PI2238_DBModelStoreContainer">
           <EntitySet Name="Dijelovi" EntityType="Self.Dijelovi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dio_u_kupovini" EntityType="Self.Dio_u_kupovini" Schema="dbo" store:Type="Tables" />
@@ -221,10 +289,12 @@
           <EntitySet Name="Kupovina" EntityType="Self.Kupovina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Napredak" EntityType="Self.Napredak" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Narudzba" EntityType="Self.Narudzba" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Racun" EntityType="Self.Racun" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sadrzi_dio" EntityType="Self.Sadrzi_dio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tip_napretka" EntityType="Self.Tip_napretka" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipKorisnika" EntityType="Self.TipKorisnika" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vlasnistvo" EntityType="Self.Vlasnistvo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vozilo" EntityType="Self.Vozilo" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dioukupovini_dijelovi" Association="Self.FK_dioukupovini_dijelovi">
             <End Role="Dijelovi" EntitySet="Dijelovi" />
             <End Role="Dio_u_kupovini" EntitySet="Dio_u_kupovini" />
@@ -237,33 +307,48 @@
             <End Role="TipKorisnika" EntitySet="TipKorisnika" />
             <End Role="Korisnik" EntitySet="Korisnik" />
           </AssociationSet>
-          <AssociationSet Name="FK_Napredak_Narudzba" Association="Self.FK_Napredak_Narudzba">
-            <End Role="Narudzba" EntitySet="Narudzba" />
-            <End Role="Napredak" EntitySet="Napredak" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Racun_korisnik" Association="Self.FK_Racun_korisnik">
+          <AssociationSet Name="FK_Kupovina_Zaposlenik" Association="Self.FK_Kupovina_Zaposlenik">
             <End Role="Korisnik" EntitySet="Korisnik" />
-            <End Role="Racun" EntitySet="Racun" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Racun_narudzba" Association="Self.FK_Racun_narudzba">
-            <End Role="Narudzba" EntitySet="Narudzba" />
-            <End Role="Racun" EntitySet="Racun" />
+            <End Role="Kupovina" EntitySet="Kupovina" />
           </AssociationSet>
           <AssociationSet Name="FK_sadrzidio_dijelovi" Association="Self.FK_sadrzidio_dijelovi">
             <End Role="Dijelovi" EntitySet="Dijelovi" />
-            <End Role="Sadrzi_dio" EntitySet="Sadrzi_dio" />
-          </AssociationSet>
-          <AssociationSet Name="FK_sadrzidio_narudzba" Association="Self.FK_sadrzidio_narudzba">
-            <End Role="Narudzba" EntitySet="Narudzba" />
             <End Role="Sadrzi_dio" EntitySet="Sadrzi_dio" />
           </AssociationSet>
           <AssociationSet Name="korisnik_narudzba" Association="Self.korisnik_narudzba">
             <End Role="Korisnik" EntitySet="Korisnik" />
             <End Role="Narudzba" EntitySet="Narudzba" />
           </AssociationSet>
+          <AssociationSet Name="napredak_narudzba" Association="Self.napredak_narudzba">
+            <End Role="Narudzba" EntitySet="Narudzba" />
+            <End Role="Napredak" EntitySet="Napredak" />
+          </AssociationSet>
+          <AssociationSet Name="napredak_tipnapretka" Association="Self.napredak_tipnapretka">
+            <End Role="Tip_napretka" EntitySet="Tip_napretka" />
+            <End Role="Napredak" EntitySet="Napredak" />
+          </AssociationSet>
+          <AssociationSet Name="sadrzidio_narudzba" Association="Self.sadrzidio_narudzba">
+            <End Role="Narudzba" EntitySet="Narudzba" />
+            <End Role="Sadrzi_dio" EntitySet="Sadrzi_dio" />
+          </AssociationSet>
+          <AssociationSet Name="vlasnistvo_korisnika" Association="Self.vlasnistvo_korisnika">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Vlasnistvo" EntitySet="Vlasnistvo" />
+          </AssociationSet>
+          <AssociationSet Name="vlasnistvo_vozila" Association="Self.vlasnistvo_vozila">
+            <End Role="Vozilo" EntitySet="Vozilo" />
+            <End Role="Vlasnistvo" EntitySet="Vlasnistvo" />
+          </AssociationSet>
+          <AssociationSet Name="vozilo_narudzba" Association="Self.vozilo_narudzba">
+            <End Role="Vozilo" EntitySet="Vozilo" />
+            <End Role="Narudzba" EntitySet="Narudzba" />
+          </AssociationSet>
+          <AssociationSet Name="zaposlenik_narudzba" Association="Self.zaposlenik_narudzba">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Narudzba" EntitySet="Narudzba" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PI2238_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -276,8 +361,20 @@
           <Property Name="Sifra_dijela" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Opis_dijela" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cijena" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Kupovina" Relationship="Self.Dio_u_kupovini" FromRole="Dijelovi" ToRole="Kupovina" />
-          <NavigationProperty Name="Narudzba" Relationship="Self.Sadrzi_dio" FromRole="Dijelovi" ToRole="Narudzba" />
+          <Property Name="Kolicina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dio_u_kupovini" Relationship="Self.FK_dioukupovini_dijelovi" FromRole="Dijelovi" ToRole="Dio_u_kupovini" />
+          <NavigationProperty Name="Sadrzi_dio" Relationship="Self.FK_sadrzidio_dijelovi" FromRole="Dijelovi" ToRole="Sadrzi_dio" />
+        </EntityType>
+        <EntityType Name="Dio_u_kupovini">
+          <Key>
+            <PropertyRef Name="ID_kupovine" />
+            <PropertyRef Name="ID_dijela" />
+          </Key>
+          <Property Name="ID_kupovine" Type="Int32" Nullable="false" />
+          <Property Name="ID_dijela" Type="Int32" Nullable="false" />
+          <Property Name="Kolicina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dijelovi" Relationship="Self.FK_dioukupovini_dijelovi" FromRole="Dio_u_kupovini" ToRole="Dijelovi" />
+          <NavigationProperty Name="Kupovina" Relationship="Self.FK_dioukupovini_kupovina" FromRole="Dio_u_kupovini" ToRole="Kupovina" />
         </EntityType>
         <EntityType Name="Korisnik">
           <Key>
@@ -291,29 +388,24 @@
           <Property Name="Broj_telefona" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ID_tipa" Type="Int32" Nullable="false" />
           <Property Name="Lozinka" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cijena" Type="Double" />
           <NavigationProperty Name="TipKorisnika" Relationship="Self.FK_Korisnik_TipKorisnika" FromRole="Korisnik" ToRole="TipKorisnika" />
-          <NavigationProperty Name="Racun" Relationship="Self.FK_Racun_korisnik" FromRole="Korisnik" ToRole="Racun" />
+          <NavigationProperty Name="Kupovina" Relationship="Self.FK_Kupovina_Zaposlenik" FromRole="Korisnik" ToRole="Kupovina" />
           <NavigationProperty Name="Narudzba" Relationship="Self.korisnik_narudzba" FromRole="Korisnik" ToRole="Narudzba" />
+          <NavigationProperty Name="Vlasnistvo" Relationship="Self.vlasnistvo_korisnika" FromRole="Korisnik" ToRole="Vlasnistvo" />
+          <NavigationProperty Name="Narudzba1" Relationship="Self.zaposlenik_narudzba" FromRole="Korisnik" ToRole="Narudzba" />
         </EntityType>
         <EntityType Name="Kupovina">
           <Key>
             <PropertyRef Name="ID_kupovine" />
           </Key>
           <Property Name="ID_kupovine" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Djelatnik" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Zaposlenik_korime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Ukupna_cijena" Type="Double" Nullable="false" />
           <Property Name="Datum_kupovine" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Status_kupovina" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Dijelovi" Relationship="Self.Dio_u_kupovini" FromRole="Kupovina" ToRole="Dijelovi" />
-        </EntityType>
-        <EntityType Name="Napredak">
-          <Key>
-            <PropertyRef Name="ID_napretka" />
-          </Key>
-          <Property Name="ID_napretka" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Opis" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ID_narudzbe" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Narudzba" Relationship="Self.FK_Napredak_Narudzba" FromRole="Napredak" ToRole="Narudzba" />
+          <Property Name="Status_kupovine" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Dio_u_kupovini" Relationship="Self.FK_dioukupovini_kupovina" FromRole="Kupovina" ToRole="Dio_u_kupovini" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.FK_Kupovina_Zaposlenik" FromRole="Kupovina" ToRole="Korisnik" />
         </EntityType>
         <EntityType Name="Narudzba">
           <Key>
@@ -321,31 +413,30 @@
           </Key>
           <Property Name="ID_narudzbe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Korisnicko_ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Registracija_vozila" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Marka_vozila" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Model_vozila" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Stanje_brojaca" Type="Int32" Nullable="false" />
           <Property Name="Napomene" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Datum_narudzbe" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Potvrđeno" Type="Byte" />
           <Property Name="Otkazano" Type="Byte" />
           <Property Name="Zavrsena" Type="Byte" />
+          <Property Name="Zaposlenik" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ukupna_cijena" Type="Double" />
+          <Property Name="Vozilo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Korisnik" Relationship="Self.korisnik_narudzba" FromRole="Narudzba" ToRole="Korisnik" />
-          <NavigationProperty Name="Napredak" Relationship="Self.FK_Napredak_Narudzba" FromRole="Narudzba" ToRole="Napredak" />
-          <NavigationProperty Name="Racun" Relationship="Self.FK_Racun_narudzba" FromRole="Narudzba" ToRole="Racun" />
-          <NavigationProperty Name="Dijelovi" Relationship="Self.Sadrzi_dio" FromRole="Narudzba" ToRole="Dijelovi" />
+          <NavigationProperty Name="Korisnik1" Relationship="Self.zaposlenik_narudzba" FromRole="Narudzba" ToRole="Korisnik" />
+          <NavigationProperty Name="Sadrzi_dio" Relationship="Self.sadrzidio_narudzba" FromRole="Narudzba" ToRole="Sadrzi_dio" />
+          <NavigationProperty Name="Vozilo1" Relationship="Self.vozilo_narudzba" FromRole="Narudzba" ToRole="Vozilo" />
+          <NavigationProperty Name="Napredak" Relationship="PI2238_DBModel.napredak_narudzba" FromRole="Narudzba" ToRole="Napredak" />
         </EntityType>
-        <EntityType Name="Racun">
+        <EntityType Name="Sadrzi_dio">
           <Key>
-            <PropertyRef Name="ID_racuna" />
+            <PropertyRef Name="ID_narudzbe" />
+            <PropertyRef Name="ID_dijela" />
           </Key>
-          <Property Name="ID_racuna" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_narudzbe" Type="Int32" Nullable="false" />
-          <Property Name="Zaposlenik" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Datum_vrijeme" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="Cijena" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Korisnik" Relationship="Self.FK_Racun_korisnik" FromRole="Racun" ToRole="Korisnik" />
-          <NavigationProperty Name="Narudzba" Relationship="Self.FK_Racun_narudzba" FromRole="Racun" ToRole="Narudzba" />
+          <Property Name="ID_dijela" Type="Int32" Nullable="false" />
+          <Property Name="Kolicina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dijelovi" Relationship="Self.FK_sadrzidio_dijelovi" FromRole="Sadrzi_dio" ToRole="Dijelovi" />
+          <NavigationProperty Name="Narudzba" Relationship="Self.sadrzidio_narudzba" FromRole="Sadrzi_dio" ToRole="Narudzba" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -357,6 +448,14 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="Tip_napretka">
+          <Key>
+            <PropertyRef Name="ID_tipa_napretka" />
+          </Key>
+          <Property Name="ID_tipa_napretka" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Opis" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Napredak" Relationship="PI2238_DBModel.napredak_tipnapretka" FromRole="Tip_napretka" ToRole="Napredak" />
+        </EntityType>
         <EntityType Name="TipKorisnika">
           <Key>
             <PropertyRef Name="ID_tipa" />
@@ -366,6 +465,65 @@
           <Property Name="Opis_tipa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Korisnik" Relationship="Self.FK_Korisnik_TipKorisnika" FromRole="TipKorisnika" ToRole="Korisnik" />
         </EntityType>
+        <EntityType Name="Vlasnistvo">
+          <Key>
+            <PropertyRef Name="Registracija_vozila" />
+            <PropertyRef Name="Korisnicko_ime" />
+          </Key>
+          <Property Name="Registracija_vozila" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Korisnicko_ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Od" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Do" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.vlasnistvo_korisnika" FromRole="Vlasnistvo" ToRole="Korisnik" />
+          <NavigationProperty Name="Vozilo" Relationship="Self.vlasnistvo_vozila" FromRole="Vlasnistvo" ToRole="Vozilo" />
+        </EntityType>
+        <EntityType Name="Vozilo">
+          <Key>
+            <PropertyRef Name="Registracija_vozila" />
+          </Key>
+          <Property Name="Registracija_vozila" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Marka_vozila" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Model_vozila" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stanje_brojaca" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Narudzba" Relationship="Self.vozilo_narudzba" FromRole="Vozilo" ToRole="Narudzba" />
+          <NavigationProperty Name="Vlasnistvo" Relationship="Self.vlasnistvo_vozila" FromRole="Vozilo" ToRole="Vlasnistvo" />
+        </EntityType>
+        <Association Name="FK_dioukupovini_dijelovi">
+          <End Role="Dijelovi" Type="Self.Dijelovi" Multiplicity="1" />
+          <End Role="Dio_u_kupovini" Type="Self.Dio_u_kupovini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dijelovi">
+              <PropertyRef Name="ID_dijela" />
+            </Principal>
+            <Dependent Role="Dio_u_kupovini">
+              <PropertyRef Name="ID_dijela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sadrzidio_dijelovi">
+          <End Role="Dijelovi" Type="Self.Dijelovi" Multiplicity="1" />
+          <End Role="Sadrzi_dio" Type="Self.Sadrzi_dio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dijelovi">
+              <PropertyRef Name="ID_dijela" />
+            </Principal>
+            <Dependent Role="Sadrzi_dio">
+              <PropertyRef Name="ID_dijela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dioukupovini_kupovina">
+          <End Role="Kupovina" Type="Self.Kupovina" Multiplicity="1" />
+          <End Role="Dio_u_kupovini" Type="Self.Dio_u_kupovini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kupovina">
+              <PropertyRef Name="ID_kupovine" />
+            </Principal>
+            <Dependent Role="Dio_u_kupovini">
+              <PropertyRef Name="ID_kupovine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Korisnik_TipKorisnika">
           <End Role="TipKorisnika" Type="Self.TipKorisnika" Multiplicity="1" />
           <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="*" />
@@ -378,15 +536,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Racun_korisnik">
+        <Association Name="FK_Kupovina_Zaposlenik">
           <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
-          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <End Role="Kupovina" Type="Self.Kupovina" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Korisnik">
               <PropertyRef Name="Korisnicko_ime" />
             </Principal>
-            <Dependent Role="Racun">
-              <PropertyRef Name="Zaposlenik" />
+            <Dependent Role="Kupovina">
+              <PropertyRef Name="Zaposlenik_korime" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -402,9 +560,146 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Napredak_Narudzba">
+        <Association Name="vlasnistvo_korisnika">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="Vlasnistvo" Type="Self.Vlasnistvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="Korisnicko_ime" />
+            </Principal>
+            <Dependent Role="Vlasnistvo">
+              <PropertyRef Name="Korisnicko_ime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="zaposlenik_narudzba">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="0..1" />
+          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="Korisnicko_ime" />
+            </Principal>
+            <Dependent Role="Narudzba">
+              <PropertyRef Name="Zaposlenik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="sadrzidio_narudzba">
           <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
-          <End Role="Napredak" Type="Self.Napredak" Multiplicity="*" />
+          <End Role="Sadrzi_dio" Type="Self.Sadrzi_dio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Narudzba">
+              <PropertyRef Name="ID_narudzbe" />
+            </Principal>
+            <Dependent Role="Sadrzi_dio">
+              <PropertyRef Name="ID_narudzbe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="vozilo_narudzba">
+          <End Role="Vozilo" Type="Self.Vozilo" Multiplicity="0..1" />
+          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vozilo">
+              <PropertyRef Name="Registracija_vozila" />
+            </Principal>
+            <Dependent Role="Narudzba">
+              <PropertyRef Name="Vozilo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="vlasnistvo_vozila">
+          <End Role="Vozilo" Type="Self.Vozilo" Multiplicity="1" />
+          <End Role="Vlasnistvo" Type="Self.Vlasnistvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vozilo">
+              <PropertyRef Name="Registracija_vozila" />
+            </Principal>
+            <Dependent Role="Vlasnistvo">
+              <PropertyRef Name="Registracija_vozila" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PI2238_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dijelovi" EntityType="Self.Dijelovi" />
+          <EntitySet Name="Dio_u_kupovini" EntityType="Self.Dio_u_kupovini" />
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" />
+          <EntitySet Name="Kupovina" EntityType="Self.Kupovina" />
+          <EntitySet Name="Narudzba" EntityType="Self.Narudzba" />
+          <EntitySet Name="Sadrzi_dio" EntityType="Self.Sadrzi_dio" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tip_napretka" EntityType="Self.Tip_napretka" />
+          <EntitySet Name="TipKorisnika" EntityType="Self.TipKorisnika" />
+          <EntitySet Name="Vlasnistvo" EntityType="Self.Vlasnistvo" />
+          <EntitySet Name="Vozilo" EntityType="Self.Vozilo" />
+          <AssociationSet Name="FK_dioukupovini_dijelovi" Association="Self.FK_dioukupovini_dijelovi">
+            <End Role="Dijelovi" EntitySet="Dijelovi" />
+            <End Role="Dio_u_kupovini" EntitySet="Dio_u_kupovini" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sadrzidio_dijelovi" Association="Self.FK_sadrzidio_dijelovi">
+            <End Role="Dijelovi" EntitySet="Dijelovi" />
+            <End Role="Sadrzi_dio" EntitySet="Sadrzi_dio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dioukupovini_kupovina" Association="Self.FK_dioukupovini_kupovina">
+            <End Role="Kupovina" EntitySet="Kupovina" />
+            <End Role="Dio_u_kupovini" EntitySet="Dio_u_kupovini" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Korisnik_TipKorisnika" Association="Self.FK_Korisnik_TipKorisnika">
+            <End Role="TipKorisnika" EntitySet="TipKorisnika" />
+            <End Role="Korisnik" EntitySet="Korisnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kupovina_Zaposlenik" Association="Self.FK_Kupovina_Zaposlenik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Kupovina" EntitySet="Kupovina" />
+          </AssociationSet>
+          <AssociationSet Name="korisnik_narudzba" Association="Self.korisnik_narudzba">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Narudzba" EntitySet="Narudzba" />
+          </AssociationSet>
+          <AssociationSet Name="vlasnistvo_korisnika" Association="Self.vlasnistvo_korisnika">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Vlasnistvo" EntitySet="Vlasnistvo" />
+          </AssociationSet>
+          <AssociationSet Name="zaposlenik_narudzba" Association="Self.zaposlenik_narudzba">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Narudzba" EntitySet="Narudzba" />
+          </AssociationSet>
+          <AssociationSet Name="sadrzidio_narudzba" Association="Self.sadrzidio_narudzba">
+            <End Role="Narudzba" EntitySet="Narudzba" />
+            <End Role="Sadrzi_dio" EntitySet="Sadrzi_dio" />
+          </AssociationSet>
+          <AssociationSet Name="vozilo_narudzba" Association="Self.vozilo_narudzba">
+            <End Role="Vozilo" EntitySet="Vozilo" />
+            <End Role="Narudzba" EntitySet="Narudzba" />
+          </AssociationSet>
+          <AssociationSet Name="vlasnistvo_vozila" Association="Self.vlasnistvo_vozila">
+            <End Role="Vozilo" EntitySet="Vozilo" />
+            <End Role="Vlasnistvo" EntitySet="Vlasnistvo" />
+          </AssociationSet>
+          <EntitySet Name="Napredak" EntityType="PI2238_DBModel.Napredak" />
+          <AssociationSet Name="napredak_narudzba" Association="PI2238_DBModel.napredak_narudzba">
+            <End Role="Narudzba" EntitySet="Narudzba" />
+            <End Role="Napredak" EntitySet="Napredak" />
+          </AssociationSet>
+          <AssociationSet Name="napredak_tipnapretka" Association="PI2238_DBModel.napredak_tipnapretka">
+            <End Role="Tip_napretka" EntitySet="Tip_napretka" />
+            <End Role="Napredak" EntitySet="Napredak" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Napredak">
+          <Key>
+            <PropertyRef Name="ID_tipa_napretka" />
+            <PropertyRef Name="ID_narudzbe" />
+          </Key>
+          <Property Name="ID_tipa_napretka" Type="Int32" Nullable="false" />
+          <Property Name="ID_narudzbe" Type="Int32" Nullable="false" />
+          <Property Name="Datum_vrijeme" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Narudzba" Relationship="PI2238_DBModel.napredak_narudzba" FromRole="Napredak" ToRole="Narudzba" />
+          <NavigationProperty Name="Tip_napretka" Relationship="PI2238_DBModel.napredak_tipnapretka" FromRole="Napredak" ToRole="Tip_napretka" />
+        </EntityType>
+        <Association Name="napredak_narudzba">
+          <End Type="PI2238_DBModel.Narudzba" Role="Narudzba" Multiplicity="1" />
+          <End Type="PI2238_DBModel.Napredak" Role="Napredak" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Narudzba">
               <PropertyRef Name="ID_narudzbe" />
@@ -414,70 +709,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Racun_narudzba">
-          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
-          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+        <Association Name="napredak_tipnapretka">
+          <End Type="PI2238_DBModel.Tip_napretka" Role="Tip_napretka" Multiplicity="1" />
+          <End Type="PI2238_DBModel.Napredak" Role="Napredak" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Narudzba">
-              <PropertyRef Name="ID_narudzbe" />
+            <Principal Role="Tip_napretka">
+              <PropertyRef Name="ID_tipa_napretka" />
             </Principal>
-            <Dependent Role="Racun">
-              <PropertyRef Name="ID_narudzbe" />
+            <Dependent Role="Napredak">
+              <PropertyRef Name="ID_tipa_napretka" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Dio_u_kupovini">
-          <End Role="Dijelovi" Type="Self.Dijelovi" Multiplicity="*" />
-          <End Role="Kupovina" Type="Self.Kupovina" Multiplicity="*" />
-        </Association>
-        <Association Name="Sadrzi_dio">
-          <End Role="Dijelovi" Type="Self.Dijelovi" Multiplicity="*" />
-          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="EntitetiBaze" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Dijelovi" EntityType="Self.Dijelovi" />
-          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" />
-          <EntitySet Name="Kupovina" EntityType="Self.Kupovina" />
-          <EntitySet Name="Napredak" EntityType="Self.Napredak" />
-          <EntitySet Name="Narudzba" EntityType="Self.Narudzba" />
-          <EntitySet Name="Racun" EntityType="Self.Racun" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="TipKorisnika" EntityType="Self.TipKorisnika" />
-          <AssociationSet Name="FK_Korisnik_TipKorisnika" Association="Self.FK_Korisnik_TipKorisnika">
-            <End Role="TipKorisnika" EntitySet="TipKorisnika" />
-            <End Role="Korisnik" EntitySet="Korisnik" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Racun_korisnik" Association="Self.FK_Racun_korisnik">
-            <End Role="Korisnik" EntitySet="Korisnik" />
-            <End Role="Racun" EntitySet="Racun" />
-          </AssociationSet>
-          <AssociationSet Name="korisnik_narudzba" Association="Self.korisnik_narudzba">
-            <End Role="Korisnik" EntitySet="Korisnik" />
-            <End Role="Narudzba" EntitySet="Narudzba" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Napredak_Narudzba" Association="Self.FK_Napredak_Narudzba">
-            <End Role="Narudzba" EntitySet="Narudzba" />
-            <End Role="Napredak" EntitySet="Napredak" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Racun_narudzba" Association="Self.FK_Racun_narudzba">
-            <End Role="Narudzba" EntitySet="Narudzba" />
-            <End Role="Racun" EntitySet="Racun" />
-          </AssociationSet>
-          <AssociationSet Name="Dio_u_kupovini" Association="Self.Dio_u_kupovini">
-            <End Role="Dijelovi" EntitySet="Dijelovi" />
-            <End Role="Kupovina" EntitySet="Kupovina" />
-          </AssociationSet>
-          <AssociationSet Name="Sadrzi_dio" Association="Self.Sadrzi_dio">
-            <End Role="Dijelovi" EntitySet="Dijelovi" />
-            <End Role="Narudzba" EntitySet="Narudzba" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PI2238_DBModelStoreContainer" CdmEntityContainer="EntitetiBaze">
+        <EntityContainerMapping StorageEntityContainer="PI2238_DBModelStoreContainer" CdmEntityContainer="PI2238_DBEntities">
           <EntitySetMapping Name="Dijelovi">
             <EntityTypeMapping TypeName="PI2238_DBModel.Dijelovi">
               <MappingFragment StoreEntitySet="Dijelovi">
@@ -486,6 +735,16 @@
                 <ScalarProperty Name="Sifra_dijela" ColumnName="Sifra_dijela" />
                 <ScalarProperty Name="Opis_dijela" ColumnName="Opis_dijela" />
                 <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dio_u_kupovini">
+            <EntityTypeMapping TypeName="PI2238_DBModel.Dio_u_kupovini">
+              <MappingFragment StoreEntitySet="Dio_u_kupovini">
+                <ScalarProperty Name="ID_kupovine" ColumnName="ID_kupovine" />
+                <ScalarProperty Name="ID_dijela" ColumnName="ID_dijela" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -500,6 +759,7 @@
                 <ScalarProperty Name="Broj_telefona" ColumnName="Broj_telefona" />
                 <ScalarProperty Name="ID_tipa" ColumnName="ID_tipa" />
                 <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -507,19 +767,10 @@
             <EntityTypeMapping TypeName="PI2238_DBModel.Kupovina">
               <MappingFragment StoreEntitySet="Kupovina">
                 <ScalarProperty Name="ID_kupovine" ColumnName="ID_kupovine" />
-                <ScalarProperty Name="Djelatnik" ColumnName="Djelatnik" />
+                <ScalarProperty Name="Zaposlenik_korime" ColumnName="Zaposlenik_korime" />
                 <ScalarProperty Name="Ukupna_cijena" ColumnName="Ukupna_cijena" />
                 <ScalarProperty Name="Datum_kupovine" ColumnName="Datum_kupovine" />
-                <ScalarProperty Name="Status_kupovina" ColumnName="Status_kupovina" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Napredak">
-            <EntityTypeMapping TypeName="PI2238_DBModel.Napredak">
-              <MappingFragment StoreEntitySet="Napredak">
-                <ScalarProperty Name="ID_napretka" ColumnName="ID_napretka" />
-                <ScalarProperty Name="Opis" ColumnName="Opis" />
-                <ScalarProperty Name="ID_narudzbe" ColumnName="ID_narudzbe" />
+                <ScalarProperty Name="Status_kupovine" ColumnName="Status_kupovine" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -528,26 +779,23 @@
               <MappingFragment StoreEntitySet="Narudzba">
                 <ScalarProperty Name="ID_narudzbe" ColumnName="ID_narudzbe" />
                 <ScalarProperty Name="Korisnicko_ime" ColumnName="Korisnicko_ime" />
-                <ScalarProperty Name="Registracija_vozila" ColumnName="Registracija_vozila" />
-                <ScalarProperty Name="Marka_vozila" ColumnName="Marka_vozila" />
-                <ScalarProperty Name="Model_vozila" ColumnName="Model_vozila" />
-                <ScalarProperty Name="Stanje_brojaca" ColumnName="Stanje_brojaca" />
                 <ScalarProperty Name="Napomene" ColumnName="Napomene" />
                 <ScalarProperty Name="Datum_narudzbe" ColumnName="Datum_narudzbe" />
                 <ScalarProperty Name="Potvrđeno" ColumnName="Potvrđeno" />
                 <ScalarProperty Name="Otkazano" ColumnName="Otkazano" />
                 <ScalarProperty Name="Zavrsena" ColumnName="Zavrsena" />
+                <ScalarProperty Name="Zaposlenik" ColumnName="Zaposlenik" />
+                <ScalarProperty Name="Ukupna_cijena" ColumnName="Ukupna_cijena" />
+                <ScalarProperty Name="Vozilo" ColumnName="Vozilo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Racun">
-            <EntityTypeMapping TypeName="PI2238_DBModel.Racun">
-              <MappingFragment StoreEntitySet="Racun">
-                <ScalarProperty Name="ID_racuna" ColumnName="ID_racuna" />
+          <EntitySetMapping Name="Sadrzi_dio">
+            <EntityTypeMapping TypeName="PI2238_DBModel.Sadrzi_dio">
+              <MappingFragment StoreEntitySet="Sadrzi_dio">
                 <ScalarProperty Name="ID_narudzbe" ColumnName="ID_narudzbe" />
-                <ScalarProperty Name="Zaposlenik" ColumnName="Zaposlenik" />
-                <ScalarProperty Name="Datum_vrijeme" ColumnName="Datum_vrijeme" />
-                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="ID_dijela" ColumnName="ID_dijela" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -562,6 +810,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Tip_napretka">
+            <EntityTypeMapping TypeName="PI2238_DBModel.Tip_napretka">
+              <MappingFragment StoreEntitySet="Tip_napretka">
+                <ScalarProperty Name="ID_tipa_napretka" ColumnName="ID_tipa_napretka" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TipKorisnika">
             <EntityTypeMapping TypeName="PI2238_DBModel.TipKorisnika">
               <MappingFragment StoreEntitySet="TipKorisnika">
@@ -571,22 +827,35 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Dio_u_kupovini" TypeName="PI2238_DBModel.Dio_u_kupovini" StoreEntitySet="Dio_u_kupovini">
-            <EndProperty Name="Dijelovi">
-              <ScalarProperty Name="ID_dijela" ColumnName="ID_dijela" />
-            </EndProperty>
-            <EndProperty Name="Kupovina">
-              <ScalarProperty Name="ID_kupovine" ColumnName="ID_kupovina" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="Sadrzi_dio" TypeName="PI2238_DBModel.Sadrzi_dio" StoreEntitySet="Sadrzi_dio">
-            <EndProperty Name="Dijelovi">
-              <ScalarProperty Name="ID_dijela" ColumnName="ID_dijela" />
-            </EndProperty>
-            <EndProperty Name="Narudzba">
-              <ScalarProperty Name="ID_narudzbe" ColumnName="ID_narudzbe" />
-            </EndProperty>
-          </AssociationSetMapping>
+          <EntitySetMapping Name="Vlasnistvo">
+            <EntityTypeMapping TypeName="PI2238_DBModel.Vlasnistvo">
+              <MappingFragment StoreEntitySet="Vlasnistvo">
+                <ScalarProperty Name="Registracija_vozila" ColumnName="Registracija_vozila" />
+                <ScalarProperty Name="Korisnicko_ime" ColumnName="Korisnicko_ime" />
+                <ScalarProperty Name="Od" ColumnName="Od" />
+                <ScalarProperty Name="Do" ColumnName="Do" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vozilo">
+            <EntityTypeMapping TypeName="PI2238_DBModel.Vozilo">
+              <MappingFragment StoreEntitySet="Vozilo">
+                <ScalarProperty Name="Registracija_vozila" ColumnName="Registracija_vozila" />
+                <ScalarProperty Name="Marka_vozila" ColumnName="Marka_vozila" />
+                <ScalarProperty Name="Model_vozila" ColumnName="Model_vozila" />
+                <ScalarProperty Name="Stanje_brojaca" ColumnName="Stanje_brojaca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Napredak">
+            <EntityTypeMapping TypeName="PI2238_DBModel.Napredak">
+              <MappingFragment StoreEntitySet="Napredak">
+                <ScalarProperty Name="Datum_vrijeme" ColumnName="Datum_vrijeme" />
+                <ScalarProperty Name="ID_narudzbe" ColumnName="ID_narudzbe" />
+                <ScalarProperty Name="ID_tipa_napretka" ColumnName="ID_tipa_napretka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

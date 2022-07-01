@@ -56,12 +56,12 @@ namespace ServisiranjeVozila
 
         private void potvrdiButton_Click(object sender, EventArgs e)
         {
-            using (var context= new EntitetiBaze())
+            using (var context= new PI2238_DBEntities())
             {
                 var zastavica = false;
                 List<Korisnik> korisnici = new List<Korisnik>();
 
-                korisnici= context.Korisnik.ToList();
+                korisnici = context.Korisnik.ToList();
 
                 foreach(var item in korisnici)
                 {

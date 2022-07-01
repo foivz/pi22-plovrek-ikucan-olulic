@@ -13,10 +13,10 @@ namespace Baza
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EntitetiBaze : DbContext
+    public partial class PI2238_DBEntities : DbContext
     {
-        public EntitetiBaze()
-            : base("name=EntitetiBaze")
+        public PI2238_DBEntities()
+            : base("name=PI2238_DBEntities")
         {
         }
     
@@ -26,12 +26,16 @@ namespace Baza
         }
     
         public virtual DbSet<Dijelovi> Dijelovi { get; set; }
+        public virtual DbSet<Dio_u_kupovini> Dio_u_kupovini { get; set; }
         public virtual DbSet<Korisnik> Korisnik { get; set; }
         public virtual DbSet<Kupovina> Kupovina { get; set; }
-        public virtual DbSet<Napredak> Napredak { get; set; }
         public virtual DbSet<Narudzba> Narudzba { get; set; }
-        public virtual DbSet<Racun> Racun { get; set; }
+        public virtual DbSet<Sadrzi_dio> Sadrzi_dio { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Tip_napretka> Tip_napretka { get; set; }
         public virtual DbSet<TipKorisnika> TipKorisnika { get; set; }
+        public virtual DbSet<Vlasnistvo> Vlasnistvo { get; set; }
+        public virtual DbSet<Vozilo> Vozilo { get; set; }
+        public virtual DbSet<Napredak> Napredak { get; set; }
     }
 }

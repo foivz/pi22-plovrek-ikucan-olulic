@@ -34,8 +34,8 @@ namespace ServisiranjeVozila
 
             dgvDijelovi.Columns["ID_dijela"].Visible = false;
             dgvDijelovi.Columns["Sifra_dijela"].Visible = false;
-            dgvDijelovi.Columns["Kupovina"].Visible = false;
-            dgvDijelovi.Columns["Narudzba"].Visible = false;
+            dgvDijelovi.Columns["Dio_u_kupovini"].Visible = false;
+            dgvDijelovi.Columns["Sadrzi_dio"].Visible = false;
             dgvDijelovi.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
             dgvDijelovi.Columns["Opis_dijela"].HeaderText = "Opis";
         }
@@ -43,11 +43,8 @@ namespace ServisiranjeVozila
         //Iz klase "Baza" dohvaća podatke i prikazuje ih u textBox
         private void DohvatiNapredak()
         {
-            var podaciNapredak = baza.DohvatiNapredakZaOdabranuNarudzbu(odabranaNarudzba);
-            foreach (var pod in podaciNapredak)
-            {
-                textBoxNapredak.Text += pod.Opis.ToString() + "\r\n";
-            }
+            dgvNapredak.DataSource = baza.DohvatiNapredakZaOdabranuNarudzbu(odabranaNarudzba);
+            
         }
 
         //Kod učitavanja forme dohvaćaju se i prikazuju podaci
@@ -56,10 +53,6 @@ namespace ServisiranjeVozila
             DohvatiDijelove();
             DohvatiNapredak();
             textBoxKorime.Text = odabranaNarudzba.Korisnicko_ime.ToString();
-            textBoxRegistracija.Text = odabranaNarudzba.Registracija_vozila.ToString();
-            textBoxMarka.Text = odabranaNarudzba.Marka_vozila.ToString();
-            textBoxModel.Text = odabranaNarudzba.Model_vozila.ToString();
-            textBoxStanje.Text = odabranaNarudzba.Stanje_brojaca.ToString();
             textBoxNapomena.Text = odabranaNarudzba.Napomene.ToString();
             textBoxDatum.Text = odabranaNarudzba.Datum_narudzbe.ToString();
 

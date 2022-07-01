@@ -178,7 +178,7 @@ namespace ServisiranjeVozila
 
         private void buttonKreirajKupovinu_Click(object sender, EventArgs e)
         {
-            baza.KreirajKupovinu(trenutniKorisnik);
+            //baza.KreirajKupovinu(trenutniKorisnik);
             OsvjeziPodatke();
         }
 
@@ -202,6 +202,7 @@ namespace ServisiranjeVozila
         private void dgvKupovinaDijelova_SelectionChanged(object sender, EventArgs e)
         {
             Kupovina odabranaKupovina = dgvKupovinaDijelova.CurrentRow.DataBoundItem as Kupovina;
+            /*
             if(odabranaKupovina.Status_kupovina == "Završena")
             {
                 buttonDijeloviKupovina.Enabled = false;
@@ -212,6 +213,7 @@ namespace ServisiranjeVozila
                 buttonDijeloviKupovina.Enabled = true;
                 buttonKupovinaZavrsena.Enabled = true;
             }
+            */
         }
 
         private void pocetnaZaposlenikForm_HelpRequested(object sender, HelpEventArgs hlpevent)

@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.detaljiNarudzbe = new System.Windows.Forms.Button();
             this.buttonKreirajNarudzbu = new System.Windows.Forms.Button();
+            this.buttonPregledVozila = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnikoveNarudzbe)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,12 +74,23 @@
             this.buttonKreirajNarudzbu.UseVisualStyleBackColor = true;
             this.buttonKreirajNarudzbu.Click += new System.EventHandler(this.buttonKreirajNarudzbu_Click);
             // 
+            // buttonPregledVozila
+            // 
+            this.buttonPregledVozila.Location = new System.Drawing.Point(150, 231);
+            this.buttonPregledVozila.Name = "buttonPregledVozila";
+            this.buttonPregledVozila.Size = new System.Drawing.Size(117, 42);
+            this.buttonPregledVozila.TabIndex = 4;
+            this.buttonPregledVozila.Text = "Pregled vozila";
+            this.buttonPregledVozila.UseVisualStyleBackColor = true;
+            this.buttonPregledVozila.Click += new System.EventHandler(this.buttonPregledVozila_Click);
+            // 
             // PocetnaKlijentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(688, 286);
+            this.Controls.Add(this.buttonPregledVozila);
             this.Controls.Add(this.buttonKreirajNarudzbu);
             this.Controls.Add(this.detaljiNarudzbe);
             this.Controls.Add(this.label1);
@@ -99,5 +111,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button detaljiNarudzbe;
         private System.Windows.Forms.Button buttonKreirajNarudzbu;
+        private System.Windows.Forms.Button buttonPregledVozila;
     }
 }

@@ -8,11 +8,23 @@ namespace Baza
 {
     public class KomunikacijaSBazom
     {
+        public List<Vozilo> DohvatiVozilaKorisnika(Korisnik trenutniKorisnik)
+        {
+            using (var context = new PI2238_DBEntities())
+            {
+                var query = from v in context.Vozilo
+                            where v.Vlasnistvo.Any(x => x.Registracija_vozila == v.Registracija_vozila)
+                            && context.Vlasnistvo.Any(x => x.Korisnicko_ime == trenutniKorisnik.Korisnicko_ime)
+                            select v;
+                return query.ToList();
+            }
+        }
+
         //Vraća listu svih narudžbi u kojima je korisničko ime u narudžbi jednako korisničkom
         //imenu korisnika koji trenutno koristi aplikaciju
         public List<Narudzba> DohvatiNarudzbeKorisnika(Korisnik trenutniKorisnik)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var query = from n in context.Narudzba
                             where n.Korisnicko_ime == trenutniKorisnik.Korisnicko_ime
@@ -26,7 +38,7 @@ namespace Baza
         //Vraća listu svih narudžbi sortirane prema datumu od sada prema prošlosti
         public List<Narudzba> DohvatiSveNarudzbeSortPoDatumu()
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var narudzbe = from n in context.Narudzba
                                orderby n.Datum_narudzbe descending
@@ -38,7 +50,7 @@ namespace Baza
         //Vraća listu svih kupovina sortiranih prema datumu od sada prema prošlosti
         public List<Kupovina> DohvatiSveKupovineSortPoDatumu()
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var kupovine = from k in context.Kupovina
                                orderby k.Datum_kupovine descending
@@ -47,15 +59,21 @@ namespace Baza
             }
         }
 
-        //Vraća listu podataka iz tablice "Napredak" gdje je ID odabrane narudžbe jednak ID-u iz tablice
-        public List<Napredak> DohvatiNapredakZaOdabranuNarudzbu(Narudzba odabranaNarudzba)
+        
+        public object DohvatiNapredakZaOdabranuNarudzbu(Narudzba odabranaNarudzba)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 context.Narudzba.Attach(odabranaNarudzba);
-                var napredak = from n in context.Napredak
-                               where n.ID_narudzbe == odabranaNarudzba.ID_narudzbe
-                               select n;
+                var napredak = from tn in context.Tip_napretka
+                               join nap in context.Napredak on tn.ID_tipa_napretka equals nap.ID_tipa_napretka
+                               where nap.ID_narudzbe == odabranaNarudzba.ID_narudzbe
+                               select new
+                               {
+                                   tn.Opis,
+                                   nap.Datum_vrijeme
+                               };
+                               
                 return napredak.ToList();
             }
         }
@@ -63,10 +81,10 @@ namespace Baza
         //Vraća listu svih dijelova koji su pridruženi odabranoj narudžbi
         public List<Dijelovi> DohvatiDijeloveZaOdabranuNarudzbu(Narudzba odabranaNarudzba)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var dijelovi = from d in context.Dijelovi
-                               where d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
+                               where d.Sadrzi_dio.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
                                select d;
                 return dijelovi.ToList();
 
@@ -76,7 +94,7 @@ namespace Baza
         //U bazu podataka zapisuje da narudžba otkazana
         public void OtkaziNarudzbu(Narudzba odabranaNarudzba)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 context.Narudzba.Attach(odabranaNarudzba);
                 odabranaNarudzba.Otkazano = 1;
@@ -87,7 +105,7 @@ namespace Baza
         //U bazu podataka zapisuje da je narudžba potvrđena
         public void PotvrdiNarudzbu(Narudzba odabranaNarudzba)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 context.Narudzba.Attach(odabranaNarudzba);
                 odabranaNarudzba.Potvrđeno = 1;
@@ -98,7 +116,7 @@ namespace Baza
         //U bazu podataka zapisuje da je narudžba završena
         public void ZavrsiNarudzbu(Narudzba odabranaNarudzba)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 context.Narudzba.Attach(odabranaNarudzba);
                 odabranaNarudzba.Zavrsena = 1;
@@ -109,7 +127,7 @@ namespace Baza
         //Vraća listu svih dijelova iz baze podataka
         public List<Dijelovi> DohvatiSveDijelove()
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var querySvi = from d in context.Dijelovi
                                select d;
@@ -120,10 +138,10 @@ namespace Baza
         //Vraća listu svih dijelova koji su pridruženi odabranoj kupovini
         public List<Dijelovi> DohvatiDijeloveUKupovini(Kupovina odabranaKupovina)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var queryUKupovini = from d in context.Dijelovi
-                                     where d.Kupovina.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
+        //                             where d.Kupovina.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
                                      select d;
                 return queryUKupovini.ToList();
 
@@ -133,10 +151,10 @@ namespace Baza
         //Vraća listu svih dijelova koji nisu pridruženi odabranoj kupovini
         public List<Dijelovi> DohvatiDijeloveOsimUKupovini(Kupovina odabranaKupovina)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var queryUKupovini = from d in context.Dijelovi
-                                     where !d.Kupovina.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
+         //                            where !d.Kupovina.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
                                      select d;
                 return queryUKupovini.ToList();
 
@@ -146,10 +164,10 @@ namespace Baza
         //Vraća listu svih dijelova koji su pridruženi odabranoj narudžbi
         public List<Dijelovi> DohvatiDijeloveUNarudzbi(Narudzba odabranaNarudzba)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var queryUNarudzbi = from d in context.Dijelovi
-                                     where d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
+        //                             where d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
                                      select d;
                 return queryUNarudzbi.ToList();
             }
@@ -158,10 +176,10 @@ namespace Baza
         //Vraća listu svih dijelova koji nisu pridruženi odabranoj narudžbi
         public List<Dijelovi> DohvatiDijeloveOsimUNarudzbi(Narudzba odabranaNarudzba)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var queryUNarudzbi = from d in context.Dijelovi
-                                     where !d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
+         //                            where !d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
                                      select d;
                 return queryUNarudzbi.ToList();
             }
@@ -170,10 +188,10 @@ namespace Baza
         //Vraća listu dijelova koji u nazivu sadrže upisan tekst, a nisu već pridruženi narudžbi
         public List<Dijelovi> FiltrirajDijelovePremaNazivuZaNarudzbu(string tekst, Narudzba odabranaNarudzba)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var dijeloviPremaNazivu = from d in context.Dijelovi
-                                          where d.Naziv_dijela.Contains(tekst) && !d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
+        //                                  where d.Naziv_dijela.Contains(tekst) && !d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
                                           select d;
                 return dijeloviPremaNazivu.ToList();
             }
@@ -182,10 +200,10 @@ namespace Baza
         //Vraća listu dijelova koji u nazivu sadrže upisan tekst, a nisu već pridruženi kupovini
         public List<Dijelovi> FiltrirajDijelovePremaNazivuZaKupovinu(string tekst, Kupovina odabranaKupovina)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var dijeloviPremaNazivu = from d in context.Dijelovi
-                                          where d.Naziv_dijela.Contains(tekst) && !d.Kupovina.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
+        //                                  where d.Naziv_dijela.Contains(tekst) && !d.Kupovina.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
                                           select d;
                 return dijeloviPremaNazivu.ToList();
             }
@@ -194,10 +212,10 @@ namespace Baza
         //Vraća listu dijelova koji u šifri sadrže upisan tekst, a nisu već pridruženi narudžbi
         public List<Dijelovi> FiltrirajDijelovePremaSifriZaNarudzbu(string tekst, Narudzba odabranaNarudzba)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var dijeloviPremaSifri = from d in context.Dijelovi
-                                         where d.Sifra_dijela.Contains(tekst) && !d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
+         //                                where d.Sifra_dijela.Contains(tekst) && !d.Narudzba.Any(n => n.ID_narudzbe == odabranaNarudzba.ID_narudzbe)
                                          select d;
                 return dijeloviPremaSifri.ToList();
             }
@@ -206,19 +224,20 @@ namespace Baza
         //Vraća listu dijelova koji u šifri sadrže upisan tekst, a nisu već pridruženi kupovini
         public List<Dijelovi> FiltrirajDijelovePremaSifriZaKupovinu(string tekst, Kupovina odabranaKupovina)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var dijeloviPremaSifri = from d in context.Dijelovi
-                                         where d.Sifra_dijela.Contains(tekst) && !d.Kupovina.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
+        //                                 where d.Sifra_dijela.Contains(tekst) && !d.Kupovina.Any(x => x.ID_kupovine == odabranaKupovina.ID_kupovine)
                                          select d;
                 return dijeloviPremaSifri.ToList();
             }
         }
 
         //Odabranoj kupovini pridružuje odabrani dio
+        /*
         public void DodajDioUKupovinu(Dijelovi odabraniDio, Kupovina odabranaKupovina)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 context.Dijelovi.Attach(odabraniDio);
                 context.Kupovina.Attach(odabranaKupovina);
@@ -231,11 +250,13 @@ namespace Baza
                 }
             }
         }
+        */
 
         //Odabranoj narudžbi pridružuje odabrani dio
+        /*
         public void DodajDioUNarudzbu(Dijelovi odabraniDio, Narudzba odabranaNarudzba)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 context.Dijelovi.Attach(odabraniDio);
                 context.Narudzba.Attach(odabranaNarudzba);
@@ -248,11 +269,11 @@ namespace Baza
                 }
             }
         }
-
+        */
         //Dodaje novi zapis u tablicu "Napredak"
         public void DodajNapredak(Narudzba odabranaNarudzba, Napredak napredak)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 context.Narudzba.Attach(odabranaNarudzba);
                 context.Napredak.Add(napredak);
@@ -263,9 +284,10 @@ namespace Baza
         //Dodaje novi zapis u tablicu "Kupovina" s podacima:
         //korisničko ime trenutnog korisnika, ukupna cijena je na početku 0,
         //datum kreiranja kupovine je sada, a status kupovine "U tijeku"
+        /*
         public void KreirajKupovinu(Korisnik trenutniKorisnik)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 Kupovina kupovina = new Kupovina
                 {
@@ -278,14 +300,14 @@ namespace Baza
                 context.SaveChanges();
             }
         }
-
+        */
         //Postavlja odabranu kupovinu kao završenu
         public void ZavrsiKupovinu(Kupovina odabranaKupovina)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 context.Kupovina.Attach(odabranaKupovina);
-                odabranaKupovina.Status_kupovina = "Završena";
+        //        odabranaKupovina.Status_kupovina = "Završena";
                 context.SaveChanges();
             }
         }
@@ -293,7 +315,7 @@ namespace Baza
         //Vraća listu narudžbi koje su postavljene kao završene
         public List<Narudzba> PrikaziZavrseneNarudzbe()
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var query = from n in context.Narudzba
                             where n.Zavrsena == 1
@@ -306,7 +328,7 @@ namespace Baza
         //Vraća listu narudžbi koje su postavljene kao otkazane
         public List<Narudzba> PrikaziOtkazaneNarudzbe()
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var query = from n in context.Narudzba
                             where n.Otkazano == 1
@@ -319,7 +341,7 @@ namespace Baza
         //Vraća listu narudžbi koje su postavljene kao potvrđene
         public List<Narudzba> PrikaziPotvrdeneNarudzbe()
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var query = from n in context.Narudzba
                             where n.Potvrđeno == 1
@@ -332,7 +354,7 @@ namespace Baza
         //Vraća listu narudžbi koje nisu potvrđene
         public List<Narudzba> PrikaziNepotvrdeneNarudzbe()
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 var query = from n in context.Narudzba
                             where n.Potvrđeno == 0
@@ -345,7 +367,7 @@ namespace Baza
         //Dodaje novi zapis u tablicu "Narudzba" s podacima koje je korisnik unio
         public void DodajNarudzbu(Narudzba narudzba)
         {
-            using (var context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
             {
                 context.Narudzba.Add(narudzba);
                 context.SaveChanges();

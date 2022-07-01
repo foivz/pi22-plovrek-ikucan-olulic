@@ -12,25 +12,23 @@ namespace Baza
     using System;
     using System.Collections.Generic;
     
-    public partial class Dijelovi
+    public partial class Vozilo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Dijelovi()
+        public Vozilo()
         {
-            this.Dio_u_kupovini = new HashSet<Dio_u_kupovini>();
-            this.Sadrzi_dio = new HashSet<Sadrzi_dio>();
+            this.Narudzba = new HashSet<Narudzba>();
+            this.Vlasnistvo = new HashSet<Vlasnistvo>();
         }
     
-        public int ID_dijela { get; set; }
-        public string Naziv_dijela { get; set; }
-        public string Sifra_dijela { get; set; }
-        public string Opis_dijela { get; set; }
-        public double Cijena { get; set; }
-        public int Kolicina { get; set; }
+        public string Registracija_vozila { get; set; }
+        public string Marka_vozila { get; set; }
+        public string Model_vozila { get; set; }
+        public int Stanje_brojaca { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Dio_u_kupovini> Dio_u_kupovini { get; set; }
+        public virtual ICollection<Narudzba> Narudzba { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sadrzi_dio> Sadrzi_dio { get; set; }
+        public virtual ICollection<Vlasnistvo> Vlasnistvo { get; set; }
     }
 }

@@ -17,16 +17,17 @@ namespace Baza
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Kupovina()
         {
-            this.Dijelovi = new HashSet<Dijelovi>();
+            this.Dio_u_kupovini = new HashSet<Dio_u_kupovini>();
         }
     
         public int ID_kupovine { get; set; }
-        public string Djelatnik { get; set; }
+        public string Zaposlenik_korime { get; set; }
         public double Ukupna_cijena { get; set; }
         public System.DateTime Datum_kupovine { get; set; }
-        public string Status_kupovina { get; set; }
+        public string Status_kupovine { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Dijelovi> Dijelovi { get; set; }
+        public virtual ICollection<Dio_u_kupovini> Dio_u_kupovini { get; set; }
+        public virtual Korisnik Korisnik { get; set; }
     }
 }

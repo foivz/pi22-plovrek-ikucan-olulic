@@ -12,25 +12,18 @@ namespace Baza
     using System;
     using System.Collections.Generic;
     
-    public partial class Dijelovi
+    public partial class Tip_napretka
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Dijelovi()
+        public Tip_napretka()
         {
-            this.Dio_u_kupovini = new HashSet<Dio_u_kupovini>();
-            this.Sadrzi_dio = new HashSet<Sadrzi_dio>();
+            this.Napredak = new HashSet<Napredak>();
         }
     
-        public int ID_dijela { get; set; }
-        public string Naziv_dijela { get; set; }
-        public string Sifra_dijela { get; set; }
-        public string Opis_dijela { get; set; }
-        public double Cijena { get; set; }
-        public int Kolicina { get; set; }
+        public int ID_tipa_napretka { get; set; }
+        public string Opis { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Dio_u_kupovini> Dio_u_kupovini { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sadrzi_dio> Sadrzi_dio { get; set; }
+        public virtual ICollection<Napredak> Napredak { get; set; }
     }
 }

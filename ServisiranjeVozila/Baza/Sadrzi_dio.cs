@@ -12,13 +12,13 @@ namespace Baza
     using System;
     using System.Collections.Generic;
     
-    public partial class Napredak
+    public partial class Sadrzi_dio
     {
-        public int ID_tipa_napretka { get; set; }
         public int ID_narudzbe { get; set; }
-        public System.DateTime Datum_vrijeme { get; set; }
+        public int ID_dijela { get; set; }
+        public int Kolicina { get; set; }
     
+        public virtual Dijelovi Dijelovi { get; set; }
         public virtual Narudzba Narudzba { get; set; }
-        public virtual Tip_napretka Tip_napretka { get; set; }
     }
 }

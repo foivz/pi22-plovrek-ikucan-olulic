@@ -25,7 +25,7 @@ namespace ServisiranjeVozila
 
         private void IspuniComboBox()
         {
-            using (EntitetiBaze context = new EntitetiBaze())
+            using (var context = new PI2238_DBEntities())
              {
                 ulogaCmbBox.DataSource = context.TipKorisnika.ToList();
                 ulogaCmbBox.ValueMember = "ID_tipa";
@@ -41,7 +41,7 @@ namespace ServisiranjeVozila
 
         private void regPotvButton_Click(object sender, EventArgs e)
         {
-            using (var context = new EntitetiBaze()) 
+            using (var context = new PI2238_DBEntities()) 
             {
                 Korisnik korisnik = new Korisnik();
                 korisnik.Korisnicko_ime = korimeTxtBox.Text;

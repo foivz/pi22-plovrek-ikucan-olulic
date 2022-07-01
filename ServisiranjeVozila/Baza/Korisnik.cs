@@ -17,8 +17,10 @@ namespace Baza
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Korisnik()
         {
-            this.Racun = new HashSet<Racun>();
+            this.Kupovina = new HashSet<Kupovina>();
             this.Narudzba = new HashSet<Narudzba>();
+            this.Vlasnistvo = new HashSet<Vlasnistvo>();
+            this.Narudzba1 = new HashSet<Narudzba>();
         }
     
         public string Korisnicko_ime { get; set; }
@@ -29,11 +31,16 @@ namespace Baza
         public string Broj_telefona { get; set; }
         public int ID_tipa { get; set; }
         public string Lozinka { get; set; }
+        public Nullable<double> Cijena { get; set; }
     
         public virtual TipKorisnika TipKorisnika { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Racun> Racun { get; set; }
+        public virtual ICollection<Kupovina> Kupovina { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Narudzba> Narudzba { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Vlasnistvo> Vlasnistvo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Narudzba> Narudzba1 { get; set; }
     }
 }

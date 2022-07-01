@@ -12,15 +12,14 @@ namespace Baza
     using System;
     using System.Collections.Generic;
     
-    public partial class Racun
+    public partial class Vlasnistvo
     {
-        public int ID_racuna { get; set; }
-        public int ID_narudzbe { get; set; }
-        public string Zaposlenik { get; set; }
-        public byte[] Datum_vrijeme { get; set; }
-        public double Cijena { get; set; }
+        public string Registracija_vozila { get; set; }
+        public string Korisnicko_ime { get; set; }
+        public byte[] Od { get; set; }
+        public Nullable<System.DateTime> Do { get; set; }
     
         public virtual Korisnik Korisnik { get; set; }
-        public virtual Narudzba Narudzba { get; set; }
+        public virtual Vozilo Vozilo { get; set; }
     }
 }

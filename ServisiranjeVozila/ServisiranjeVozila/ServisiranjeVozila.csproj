@@ -79,6 +79,12 @@
     <Compile Include="dodajNapredakZaposlenikForm.Designer.cs">
       <DependentUpon>dodajNapredakZaposlenikForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="pregledVozilaKlijentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pregledVozilaKlijentForm.Designer.cs">
+      <DependentUpon>pregledVozilaKlijentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="kreirajNarudzbuKlijentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dodajNapredakZaposlenikForm.resx">
       <DependentUpon>dodajNapredakZaposlenikForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pregledVozilaKlijentForm.resx">
+      <DependentUpon>pregledVozilaKlijentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="kreirajNarudzbuKlijentForm.resx">
       <DependentUpon>kreirajNarudzbuKlijentForm.cs</DependentUpon>

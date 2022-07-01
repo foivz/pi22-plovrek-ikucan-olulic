@@ -31,10 +31,6 @@ namespace ServisiranjeVozila
             Narudzba narudzba = new Narudzba
             {
                 Korisnicko_ime = trenutniKorisnik.Korisnicko_ime,
-                Registracija_vozila = textBoxRegistracija.Text,
-                Marka_vozila = textBoxMarka.Text,
-                Model_vozila = textBoxModel.Text,
-                Stanje_brojaca = int.Parse(textBoxStanje.Text),
                 Napomene = textBoxNapomena.Text,
                 Datum_narudzbe = DateTime.Now,
                 Potvrđeno = 0,
