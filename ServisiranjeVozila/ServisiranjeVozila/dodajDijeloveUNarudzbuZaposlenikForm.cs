@@ -12,16 +12,16 @@ using Baza;
 
 namespace ServisiranjeVozila
 {
-    public partial class dodajDijeloveZaposlenikForm : Form
+    public partial class dodajDijeloveUNarudzbuZaposlenikForm : Form
     {
         Narudzba odabranaNarudzba;
         KomunikacijaSBazom baza = new KomunikacijaSBazom();
-        public dodajDijeloveZaposlenikForm(Narudzba narudzba)
+        public dodajDijeloveUNarudzbuZaposlenikForm(Narudzba narudzba)
         {
             odabranaNarudzba = narudzba;
             InitializeComponent();
         }
-        public dodajDijeloveZaposlenikForm()
+        public dodajDijeloveUNarudzbuZaposlenikForm()
         {
             InitializeComponent();
         }

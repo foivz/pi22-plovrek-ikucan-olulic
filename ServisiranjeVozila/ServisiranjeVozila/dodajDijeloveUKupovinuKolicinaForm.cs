@@ -38,12 +38,9 @@ namespace ServisiranjeVozila
             var rezultat = baza.DodajDioUKupovinu(odabraniDio, odabranaKupovina, int.Parse(textBoxKolicina.Text));
             if(rezultat == 1)
             {
-                MessageBox.Show("Količina koju ste unijeli veća je od količine na skladištu!");
-            }
-            else if(rezultat == 2)
-            {
                 MessageBox.Show("Količina ne može biti negativna!");
             }
+            
             this.Close();
         }
     }

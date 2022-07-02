@@ -1,6 +1,6 @@
 ﻿namespace ServisiranjeVozila
 {
-    partial class dodajDijeloveZaposlenikForm
+    partial class dodajDijeloveUNarudzbuZaposlenikForm
     {
         /// <summary>
         /// Required designer variable.

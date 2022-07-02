@@ -68,6 +68,7 @@
             this.cmbFilter.FormattingEnabled = true;
             this.cmbFilter.Items.AddRange(new object[] {
             "Sve narudžbe",
+            "U tijeku",
             "Nepotvrđene narudžbe",
             "Potvrđene narudžbe",
             "Otkazane narudžbe",

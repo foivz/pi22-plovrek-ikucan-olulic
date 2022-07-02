@@ -35,6 +35,8 @@ namespace Baza
 
         }
 
+        
+
         //Vraća listu svih narudžbi sortirane prema datumu od sada prema prošlosti
         public List<Narudzba> DohvatiSveNarudzbeSortPoDatumu()
         {
@@ -120,6 +122,20 @@ namespace Baza
             {
                 context.Narudzba.Attach(odabranaNarudzba);
                 odabranaNarudzba.Zavrsena = 1;
+
+                Korisnik zaposlenik = context.Korisnik.Find(odabranaNarudzba.Zaposlenik);
+                context.Korisnik.Attach(zaposlenik);
+
+                var query = from n in context.Napredak
+                            where n.ID_tipa_napretka == 2 && n.ID_narudzbe == odabranaNarudzba.ID_narudzbe
+                            select n;
+                DateTime vrijemePocetka = query.ToList()[0].Datum_vrijeme;
+                DateTime vrijemeKraja = DateTime.Now;
+
+                int brojSatiRada = vrijemeKraja.Subtract(vrijemePocetka).Hours;
+                double? cijenaRada = zaposlenik.Cijena * brojSatiRada;
+
+                odabranaNarudzba.Ukupna_cijena += cijenaRada;
                 context.SaveChanges();
             }
         }
@@ -255,8 +271,7 @@ namespace Baza
         {
             using (var context = new PI2238_DBEntities())
             {
-                if (odabraniDio.Kolicina < kolicina) return 1;
-                if (kolicina < 0) return 2;
+                if (kolicina < 0) return 1;
                 context.Dijelovi.Attach(odabraniDio);
                 context.Kupovina.Attach(odabranaKupovina);
                 Dio_u_kupovini dodaj = new Dio_u_kupovini
@@ -266,6 +281,7 @@ namespace Baza
                     Kolicina = kolicina
                 };
                 context.Dio_u_kupovini.Add(dodaj);
+                odabranaKupovina.Ukupna_cijena += (odabraniDio.Cijena * kolicina);
                 context.SaveChanges();
                 return 0;
             }
@@ -289,6 +305,7 @@ namespace Baza
                     Kolicina = kolicina
                 };
                 context.Sadrzi_dio.Add(dodaj);
+                odabranaNarudzba.Ukupna_cijena += (odabraniDio.Cijena * kolicina);
                 context.SaveChanges();
                 return 0;
             }
@@ -392,6 +409,16 @@ namespace Baza
             {
                 context.Kupovina.Attach(odabranaKupovina);
                 odabranaKupovina.Status_kupovine = "Završena";
+
+                var dijeloviUKUpovini = (from dk in context.Dio_u_kupovini
+                                        where dk.ID_kupovine == odabranaKupovina.ID_kupovine
+                                        select dk).ToList();
+                foreach(var item in dijeloviUKUpovini)
+                {
+                    var dio = context.Dijelovi.Find(item.ID_dijela);
+                    context.Dijelovi.Attach(dio);
+                    dio.Kolicina += item.Kolicina;
+                }
                 context.SaveChanges();
             }
         }
@@ -442,6 +469,18 @@ namespace Baza
             {
                 var query = from n in context.Narudzba
                             where n.Potvrđeno == 0
+                            orderby n.Datum_narudzbe
+                            select n;
+                return query.ToList();
+            }
+        }
+
+        public List<Narudzba> PrikaziNarudzbeUTijeku()
+        {
+            using (var context = new PI2238_DBEntities())
+            {
+                var query = from n in context.Narudzba
+                            where n.Potvrđeno == 1 && n.Otkazano == 0 && n.Zavrsena == 0
                             orderby n.Datum_narudzbe
                             select n;
                 return query.ToList();

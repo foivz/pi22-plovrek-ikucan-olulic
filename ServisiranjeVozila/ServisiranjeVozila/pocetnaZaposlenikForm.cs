@@ -31,13 +31,20 @@ namespace ServisiranjeVozila
             switch (optionIndex)
             {
                 case 0: OsvjeziPodatke(); break;
-                case 1: PrikaziNepotvrdene(); break;
-                case 2: PrikaziPotvrdene(); break;
-                case 3: PrikaziOtkazane(); break;
-                case 4: PrikaziZavrsene(); break;
+                case 1: PrikaziUTijeku(); break;
+                case 2: PrikaziNepotvrdene(); break;
+                case 3: PrikaziPotvrdene(); break;
+                case 4: PrikaziOtkazane(); break;
+                case 5: PrikaziZavrsene(); break;
                 default:
                     break;
             }
+        }
+
+        private void PrikaziUTijeku()
+        {
+            dgvSveNarudzbe.DataSource = baza.PrikaziNarudzbeUTijeku();
+            PostaviNaslove();
         }
 
         private void PrikaziZavrsene()
@@ -173,13 +180,13 @@ namespace ServisiranjeVozila
         private void buttonDijelovi_Click(object sender, EventArgs e)
         {
             var selektiranaNarudzba = dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba;
-            dodajDijeloveZaposlenikForm dodajDijelove = new dodajDijeloveZaposlenikForm(selektiranaNarudzba);
+            dodajDijeloveUNarudzbuZaposlenikForm dodajDijelove = new dodajDijeloveUNarudzbuZaposlenikForm(selektiranaNarudzba);
             dodajDijelove.ShowDialog();
         }
 
         private void buttonKreirajKupovinu_Click(object sender, EventArgs e)
         {
-            //baza.KreirajKupovinu(trenutniKorisnik);
+            baza.KreirajKupovinu(trenutniKorisnik);
             OsvjeziPodatke();
         }
 
