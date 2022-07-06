@@ -88,5 +88,13 @@ namespace ServisiranjeVozila
             pregledVozila.ShowDialog();
             this.Show();
         }
+
+        private void PregledOdradenihRadovaNaVozilu_Click(object sender, EventArgs e)
+        {
+            pregledOdradenihRadovaNaVozilu pregledRadova = new pregledOdradenihRadovaNaVozilu(trenutniKorisnik);
+            this.Hide();
+            pregledRadova.ShowDialog();
+            this.Show();
+        }
     }
 }

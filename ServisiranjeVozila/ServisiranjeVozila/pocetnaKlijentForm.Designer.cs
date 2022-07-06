@@ -33,6 +33,7 @@
             this.detaljiNarudzbe = new System.Windows.Forms.Button();
             this.buttonKreirajNarudzbu = new System.Windows.Forms.Button();
             this.buttonPregledVozila = new System.Windows.Forms.Button();
+            this.btnPregledOdradenihRadovaNaVozilu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnikoveNarudzbe)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,12 +85,23 @@
             this.buttonPregledVozila.UseVisualStyleBackColor = true;
             this.buttonPregledVozila.Click += new System.EventHandler(this.buttonPregledVozila_Click);
             // 
+            // btnPregledOdradenihRadovaNaVozilu
+            // 
+            this.btnPregledOdradenihRadovaNaVozilu.Location = new System.Drawing.Point(274, 232);
+            this.btnPregledOdradenihRadovaNaVozilu.Name = "btnPregledOdradenihRadovaNaVozilu";
+            this.btnPregledOdradenihRadovaNaVozilu.Size = new System.Drawing.Size(141, 41);
+            this.btnPregledOdradenihRadovaNaVozilu.TabIndex = 5;
+            this.btnPregledOdradenihRadovaNaVozilu.Text = "Pregled odrađenih radova/servisa na vozilu";
+            this.btnPregledOdradenihRadovaNaVozilu.UseVisualStyleBackColor = true;
+            this.btnPregledOdradenihRadovaNaVozilu.Click += new System.EventHandler(this.PregledOdradenihRadovaNaVozilu_Click);
+            // 
             // PocetnaKlijentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(688, 286);
+            this.Controls.Add(this.btnPregledOdradenihRadovaNaVozilu);
             this.Controls.Add(this.buttonPregledVozila);
             this.Controls.Add(this.buttonKreirajNarudzbu);
             this.Controls.Add(this.detaljiNarudzbe);
@@ -112,5 +124,6 @@
         private System.Windows.Forms.Button detaljiNarudzbe;
         private System.Windows.Forms.Button buttonKreirajNarudzbu;
         private System.Windows.Forms.Button buttonPregledVozila;
+        private System.Windows.Forms.Button btnPregledOdradenihRadovaNaVozilu;
     }
 }

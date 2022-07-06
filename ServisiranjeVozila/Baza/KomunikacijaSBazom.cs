@@ -496,5 +496,14 @@ namespace Baza
                 context.SaveChanges();
             }
         }
+        public List<Napredak> PregledOdradenihRadovaNaVozilu(Korisnik korisnik)
+        {
+            using (var context = new PI2238_DBEntities())
+            {
+                var query = from n in context.Napredak
+                            select n;
+                return query.ToList();
+            }
+        }
     }
 }
