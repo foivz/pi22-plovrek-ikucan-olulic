@@ -78,13 +78,17 @@ namespace ServisiranjeVozila
             dgvSveNarudzbe.Columns["Napredak"].Visible = false;
             dgvSveNarudzbe.Columns["Vozilo1"].Visible = false;
             dgvSveNarudzbe.Columns["Sadrzi_dio"].Visible = false;
+            dgvSveNarudzbe.Columns["Zaposlenik"].Visible = false;
+            dgvSveNarudzbe.Columns["Sadrzi_dio"].Visible = false;
+            dgvSveNarudzbe.Columns["Ukupna_cijena"].Visible = false;
+            dgvSveNarudzbe.Columns["Vozilo"].Visible = false;
 
-            dgvSveNarudzbe.Columns["Vozilo"].HeaderText = "Registracija vozila";
+            
             dgvSveNarudzbe.Columns["Datum_narudzbe"].HeaderText = "Datum narudžbe";
             dgvSveNarudzbe.Columns["Korisnicko_ime"].HeaderText = "Korisničko ime";
             dgvSveNarudzbe.Columns["ID_narudzbe"].HeaderText = "ID narudžbe";
             dgvSveNarudzbe.Columns["Zavrsena"].HeaderText = "Završeno";
-            dgvSveNarudzbe.Columns["Ukupna_cijena"].HeaderText = "Cijena";
+            
 
             dgvKupovinaDijelova.Columns["Dio_u_kupovini"].Visible = false;
             dgvKupovinaDijelova.Columns["Korisnik"].Visible = false;
