@@ -496,12 +496,20 @@ namespace Baza
                 context.SaveChanges();
             }
         }
-        public List<Napredak> PregledOdradenihRadovaNaVozilu(Korisnik korisnik)
+        public object PregledOdradenihRadovaNaVozilu(Korisnik korisnik)
         {
             using (var context = new PI2238_DBEntities())
             {
-                var query = from n in context.Napredak
-                            select n;
+                var query = from n in context.Napredak.Include("Narudzba").Include("Tip_napretka")
+                            where n.Narudzba.Korisnicko_ime == korisnik.Korisnicko_ime
+                            select new
+                            {
+                                n.ID_tipa_napretka,
+                                n.ID_narudzbe,
+                                n.Datum_vrijeme,
+                                n.Tip_napretka.Opis,
+                                n.Narudzba
+                            };
                 return query.ToList();
             }
         }

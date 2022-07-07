@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvPregledOdrađenihRadovaNaVozilu = new System.Windows.Forms.DataGridView();
             this.btnZatvori = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPregledOdrađenihRadovaNaVozilu)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvPregledOdrađenihRadovaNaVozilu
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 13);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(775, 324);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvPregledOdrađenihRadovaNaVozilu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPregledOdrađenihRadovaNaVozilu.Location = new System.Drawing.Point(13, 13);
+            this.dgvPregledOdrađenihRadovaNaVozilu.Name = "dgvPregledOdrađenihRadovaNaVozilu";
+            this.dgvPregledOdrađenihRadovaNaVozilu.Size = new System.Drawing.Size(775, 324);
+            this.dgvPregledOdrađenihRadovaNaVozilu.TabIndex = 0;
             // 
             // btnZatvori
             // 
@@ -58,18 +58,18 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(810, 386);
             this.Controls.Add(this.btnZatvori);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvPregledOdrađenihRadovaNaVozilu);
             this.Name = "pregledOdradenihRadovaNaVozilu";
             this.Text = "Pregled odrađenih servisa/radova na vozilu";
             this.Load += new System.EventHandler(this.pregledOdradenihRadovaNaVozilu_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPregledOdrađenihRadovaNaVozilu)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvPregledOdrađenihRadovaNaVozilu;
         private System.Windows.Forms.Button btnZatvori;
     }
 }

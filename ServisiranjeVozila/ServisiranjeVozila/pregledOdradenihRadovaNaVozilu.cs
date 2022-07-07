@@ -23,7 +23,15 @@ namespace ServisiranjeVozila
 
         private void pregledOdradenihRadovaNaVozilu_Load(object sender, EventArgs e)
         {
-            baza.PregledOdradenihRadovaNaVozilu(trenutniKorisnik);
+            dgvPregledOdrađenihRadovaNaVozilu.DataSource = baza.PregledOdradenihRadovaNaVozilu(trenutniKorisnik);
+            Osvjezi();
+        }
+
+        private void Osvjezi()
+        {
+            dgvPregledOdrađenihRadovaNaVozilu.Columns[0].Visible = false;
+            dgvPregledOdrađenihRadovaNaVozilu.Columns[1].Visible = false;
+            dgvPregledOdrađenihRadovaNaVozilu.Columns["Narudzba"].Visible = false;
         }
 
         private void btnZatvori_Click(object sender, EventArgs e)
