@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelSveNarudzbe = new System.Windows.Forms.Label();
             this.dgvSveNarudzbe = new System.Windows.Forms.DataGridView();
             this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.buttonFilter = new System.Windows.Forms.Button();
@@ -37,7 +37,7 @@
             this.buttonZavrsi = new System.Windows.Forms.Button();
             this.buttonDijelovi = new System.Windows.Forms.Button();
             this.dgvKupovinaDijelova = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelKupovine = new System.Windows.Forms.Label();
             this.buttonDijeloviKupovina = new System.Windows.Forms.Button();
             this.buttonKreirajKupovinu = new System.Windows.Forms.Button();
             this.buttonKupovinaZavrsena = new System.Windows.Forms.Button();
@@ -45,14 +45,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvKupovinaDijelova)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // labelSveNarudzbe
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Sve narudžbe:";
+            this.labelSveNarudzbe.AutoSize = true;
+            this.labelSveNarudzbe.Location = new System.Drawing.Point(9, 23);
+            this.labelSveNarudzbe.Name = "labelSveNarudzbe";
+            this.labelSveNarudzbe.Size = new System.Drawing.Size(76, 13);
+            this.labelSveNarudzbe.TabIndex = 3;
+            this.labelSveNarudzbe.Text = "Sve narudžbe:";
             // 
             // dgvSveNarudzbe
             // 
@@ -138,14 +138,14 @@
             this.dgvKupovinaDijelova.TabIndex = 10;
             this.dgvKupovinaDijelova.SelectionChanged += new System.EventHandler(this.dgvKupovinaDijelova_SelectionChanged);
             // 
-            // label2
+            // labelKupovine
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 297);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Kupovine dijelova:";
+            this.labelKupovine.AutoSize = true;
+            this.labelKupovine.Location = new System.Drawing.Point(9, 297);
+            this.labelKupovine.Name = "labelKupovine";
+            this.labelKupovine.Size = new System.Drawing.Size(94, 13);
+            this.labelKupovine.TabIndex = 11;
+            this.labelKupovine.Text = "Kupovine dijelova:";
             // 
             // buttonDijeloviKupovina
             // 
@@ -186,7 +186,7 @@
             this.Controls.Add(this.buttonKupovinaZavrsena);
             this.Controls.Add(this.buttonKreirajKupovinu);
             this.Controls.Add(this.buttonDijeloviKupovina);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelKupovine);
             this.Controls.Add(this.dgvKupovinaDijelova);
             this.Controls.Add(this.buttonDijelovi);
             this.Controls.Add(this.buttonZavrsi);
@@ -194,7 +194,7 @@
             this.Controls.Add(this.buttonPotvrdi);
             this.Controls.Add(this.buttonFilter);
             this.Controls.Add(this.cmbFilter);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelSveNarudzbe);
             this.Controls.Add(this.dgvSveNarudzbe);
             this.Name = "pocetnaZaposlenikForm";
             this.Text = "Glavni izbornik";
@@ -209,7 +209,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelSveNarudzbe;
         private System.Windows.Forms.DataGridView dgvSveNarudzbe;
         private System.Windows.Forms.ComboBox cmbFilter;
         private System.Windows.Forms.Button buttonFilter;
@@ -218,7 +218,7 @@
         private System.Windows.Forms.Button buttonZavrsi;
         private System.Windows.Forms.Button buttonDijelovi;
         private System.Windows.Forms.DataGridView dgvKupovinaDijelova;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelKupovine;
         private System.Windows.Forms.Button buttonDijeloviKupovina;
         private System.Windows.Forms.Button buttonKreirajKupovinu;
         private System.Windows.Forms.Button buttonKupovinaZavrsena;

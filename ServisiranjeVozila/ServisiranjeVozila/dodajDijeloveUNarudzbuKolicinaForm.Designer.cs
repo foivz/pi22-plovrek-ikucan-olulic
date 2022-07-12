@@ -36,7 +36,7 @@
             // 
             // buttonZatvori
             // 
-            this.buttonZatvori.Location = new System.Drawing.Point(101, 42);
+            this.buttonZatvori.Location = new System.Drawing.Point(131, 42);
             this.buttonZatvori.Name = "buttonZatvori";
             this.buttonZatvori.Size = new System.Drawing.Size(75, 23);
             this.buttonZatvori.TabIndex = 7;
@@ -58,7 +58,7 @@
             // 
             this.textBoxKolicina.Location = new System.Drawing.Point(65, 6);
             this.textBoxKolicina.Name = "textBoxKolicina";
-            this.textBoxKolicina.Size = new System.Drawing.Size(111, 20);
+            this.textBoxKolicina.Size = new System.Drawing.Size(141, 20);
             this.textBoxKolicina.TabIndex = 5;
             // 
             // labelKolicina
@@ -74,13 +74,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(196, 82);
+            this.ClientSize = new System.Drawing.Size(218, 82);
             this.Controls.Add(this.buttonZatvori);
             this.Controls.Add(this.buttonPotvrdi);
             this.Controls.Add(this.textBoxKolicina);
             this.Controls.Add(this.labelKolicina);
             this.Name = "dodajDijeloveUNarudzbuKolicinaForm";
-            this.Text = "dodajDijeloveUNarudzbuKolicinaForm";
+            this.Text = "Unesite količinu";
             this.ResumeLayout(false);
             this.PerformLayout();
 

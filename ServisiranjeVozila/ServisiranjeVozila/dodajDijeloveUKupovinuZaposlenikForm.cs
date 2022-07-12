@@ -32,10 +32,13 @@ namespace ServisiranjeVozila
             dgvDijelovi.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
             dgvDijelovi.Columns["Opis_dijela"].HeaderText = "Opis";
             dgvDijelovi.Columns["Sifra_dijela"].HeaderText = "Šifra dijela";
+            dgvDijelovi.Columns["Kolicina"].HeaderText = "Količina";
 
-            dgvDijeloviUNarudzbi.Columns["ID_dijela"].Visible = false;
+            dgvDijeloviUKupovini.Columns["ID_dijela"].Visible = false;
 
-            dgvDijeloviUNarudzbi.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
+            dgvDijeloviUKupovini.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
+            dgvDijeloviUKupovini.Columns["Sifra_dijela"].HeaderText = "Šifra dijela";
+            dgvDijeloviUKupovini.Columns["Kolicina"].HeaderText = "Količina";
         }
         public dodajDijeloveUKupovinuZaposlenikForm()
         {
@@ -46,7 +49,7 @@ namespace ServisiranjeVozila
         private void OsvjeziPodatke()
         {
             dgvDijelovi.DataSource = baza.DohvatiDijeloveOsimUKupovini(odabranaKupovina);
-            dgvDijeloviUNarudzbi.DataSource = baza.DohvatiDijeloveUKupovini(odabranaKupovina);
+            dgvDijeloviUKupovini.DataSource = baza.DohvatiDijeloveUKupovini(odabranaKupovina);
 
             PostaviNaslove();
         }

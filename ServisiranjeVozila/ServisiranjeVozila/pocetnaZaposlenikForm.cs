@@ -30,7 +30,7 @@ namespace ServisiranjeVozila
         {
             switch (optionIndex)
             {
-                case 0: OsvjeziPodatke(); break;
+                case 0: PrikaziSve(); break;
                 case 1: PrikaziUTijeku(); break;
                 case 2: PrikaziNepotvrdene(); break;
                 case 3: PrikaziPotvrdene(); break;
@@ -39,6 +39,12 @@ namespace ServisiranjeVozila
                 default:
                     break;
             }
+        }
+
+        private void PrikaziSve()
+        {
+            dgvSveNarudzbe.DataSource = baza.DohvatiSveNarudzbeSortPoDatumu();
+            PostaviNaslove();
         }
 
         private void PrikaziUTijeku()
@@ -94,6 +100,7 @@ namespace ServisiranjeVozila
             dgvKupovinaDijelova.Columns["Korisnik"].Visible = false;
 
             dgvKupovinaDijelova.Columns["ID_kupovine"].HeaderText = "ID Kupovine";
+            dgvKupovinaDijelova.Columns["Zaposlenik_korime"].HeaderText = "Zaposlenik";
             dgvKupovinaDijelova.Columns["Ukupna_cijena"].HeaderText = "Ukupna cijena";
             dgvKupovinaDijelova.Columns["Datum_kupovine"].HeaderText = "Datum kupovine";
             dgvKupovinaDijelova.Columns["Status_kupovine"].HeaderText = "Status kupovine";
