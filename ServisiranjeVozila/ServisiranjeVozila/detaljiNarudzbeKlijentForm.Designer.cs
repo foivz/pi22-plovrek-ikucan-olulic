@@ -28,42 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelKorime = new System.Windows.Forms.Label();
             this.textBoxKorime = new System.Windows.Forms.TextBox();
             this.textBoxRegistracija = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelReg = new System.Windows.Forms.Label();
             this.textBoxNapomena = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelNapomena = new System.Windows.Forms.Label();
             this.textBoxDatum = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.labelDatum = new System.Windows.Forms.Label();
+            this.labelPotvrdeno = new System.Windows.Forms.Label();
+            this.labelOtkazano = new System.Windows.Forms.Label();
+            this.labelZavrseno = new System.Windows.Forms.Label();
             this.radioButtonPotvrdeno = new System.Windows.Forms.RadioButton();
             this.radioButtonOtkazano = new System.Windows.Forms.RadioButton();
             this.radioButtonZavrseno = new System.Windows.Forms.RadioButton();
             this.buttonOtkazi = new System.Windows.Forms.Button();
             this.buttonZatvori = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxDijelovi = new System.Windows.Forms.GroupBox();
             this.dgvDijelovi = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBoxPodaci = new System.Windows.Forms.GroupBox();
+            this.groupBoxNapredak = new System.Windows.Forms.GroupBox();
             this.dgvNapredak = new System.Windows.Forms.DataGridView();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxDijelovi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDijelovi)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.groupBoxPodaci.SuspendLayout();
+            this.groupBoxNapredak.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNapredak)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // labelKorime
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Korisničko ime:";
+            this.labelKorime.AutoSize = true;
+            this.labelKorime.Location = new System.Drawing.Point(40, 39);
+            this.labelKorime.Name = "labelKorime";
+            this.labelKorime.Size = new System.Drawing.Size(78, 13);
+            this.labelKorime.TabIndex = 0;
+            this.labelKorime.Text = "Korisničko ime:";
             // 
             // textBoxKorime
             // 
@@ -81,14 +81,14 @@
             this.textBoxRegistracija.Size = new System.Drawing.Size(100, 20);
             this.textBoxRegistracija.TabIndex = 3;
             // 
-            // label2
+            // labelReg
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(39, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Registracija vozila:";
+            this.labelReg.AutoSize = true;
+            this.labelReg.Location = new System.Drawing.Point(39, 65);
+            this.labelReg.Name = "labelReg";
+            this.labelReg.Size = new System.Drawing.Size(95, 13);
+            this.labelReg.TabIndex = 2;
+            this.labelReg.Text = "Registracija vozila:";
             // 
             // textBoxNapomena
             // 
@@ -99,14 +99,14 @@
             this.textBoxNapomena.Size = new System.Drawing.Size(157, 71);
             this.textBoxNapomena.TabIndex = 11;
             // 
-            // label6
+            // labelNapomena
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(27, 74);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Napomena:";
+            this.labelNapomena.AutoSize = true;
+            this.labelNapomena.Location = new System.Drawing.Point(27, 74);
+            this.labelNapomena.Name = "labelNapomena";
+            this.labelNapomena.Size = new System.Drawing.Size(62, 13);
+            this.labelNapomena.TabIndex = 10;
+            this.labelNapomena.Text = "Napomena:";
             // 
             // textBoxDatum
             // 
@@ -116,41 +116,41 @@
             this.textBoxDatum.Size = new System.Drawing.Size(100, 20);
             this.textBoxDatum.TabIndex = 13;
             // 
-            // label7
+            // labelDatum
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(27, 154);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 13);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Datum narudžbe:";
+            this.labelDatum.AutoSize = true;
+            this.labelDatum.Location = new System.Drawing.Point(27, 154);
+            this.labelDatum.Name = "labelDatum";
+            this.labelDatum.Size = new System.Drawing.Size(88, 13);
+            this.labelDatum.TabIndex = 12;
+            this.labelDatum.Text = "Datum narudžbe:";
             // 
-            // label8
+            // labelPotvrdeno
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(27, 180);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 13);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Potvrđeno:";
+            this.labelPotvrdeno.AutoSize = true;
+            this.labelPotvrdeno.Location = new System.Drawing.Point(27, 180);
+            this.labelPotvrdeno.Name = "labelPotvrdeno";
+            this.labelPotvrdeno.Size = new System.Drawing.Size(60, 13);
+            this.labelPotvrdeno.TabIndex = 14;
+            this.labelPotvrdeno.Text = "Potvrđeno:";
             // 
-            // label9
+            // labelOtkazano
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(27, 206);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 13);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Otkazano:";
+            this.labelOtkazano.AutoSize = true;
+            this.labelOtkazano.Location = new System.Drawing.Point(27, 206);
+            this.labelOtkazano.Name = "labelOtkazano";
+            this.labelOtkazano.Size = new System.Drawing.Size(56, 13);
+            this.labelOtkazano.TabIndex = 16;
+            this.labelOtkazano.Text = "Otkazano:";
             // 
-            // label10
+            // labelZavrseno
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(27, 232);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 13);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Završeno:";
+            this.labelZavrseno.AutoSize = true;
+            this.labelZavrseno.Location = new System.Drawing.Point(27, 232);
+            this.labelZavrseno.Name = "labelZavrseno";
+            this.labelZavrseno.Size = new System.Drawing.Size(55, 13);
+            this.labelZavrseno.TabIndex = 18;
+            this.labelZavrseno.Text = "Završeno:";
             // 
             // radioButtonPotvrdeno
             // 
@@ -206,15 +206,15 @@
             this.buttonZatvori.UseVisualStyleBackColor = true;
             this.buttonZatvori.Click += new System.EventHandler(this.buttonZatvori_Click);
             // 
-            // groupBox1
+            // groupBoxDijelovi
             // 
-            this.groupBox1.Controls.Add(this.dgvDijelovi);
-            this.groupBox1.Location = new System.Drawing.Point(321, 14);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(395, 383);
-            this.groupBox1.TabIndex = 24;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Popis dijelova";
+            this.groupBoxDijelovi.Controls.Add(this.dgvDijelovi);
+            this.groupBoxDijelovi.Location = new System.Drawing.Point(321, 14);
+            this.groupBoxDijelovi.Name = "groupBoxDijelovi";
+            this.groupBoxDijelovi.Size = new System.Drawing.Size(395, 383);
+            this.groupBoxDijelovi.TabIndex = 24;
+            this.groupBoxDijelovi.TabStop = false;
+            this.groupBoxDijelovi.Text = "Popis dijelova";
             // 
             // dgvDijelovi
             // 
@@ -225,35 +225,35 @@
             this.dgvDijelovi.Size = new System.Drawing.Size(383, 358);
             this.dgvDijelovi.TabIndex = 0;
             // 
-            // groupBox2
+            // groupBoxPodaci
             // 
-            this.groupBox2.Controls.Add(this.textBoxNapomena);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.buttonOtkazi);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.radioButtonZavrseno);
-            this.groupBox2.Controls.Add(this.textBoxDatum);
-            this.groupBox2.Controls.Add(this.radioButtonOtkazano);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.radioButtonPotvrdeno);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Location = new System.Drawing.Point(12, 14);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(294, 383);
-            this.groupBox2.TabIndex = 25;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Podaci o narudžbi";
+            this.groupBoxPodaci.Controls.Add(this.textBoxNapomena);
+            this.groupBoxPodaci.Controls.Add(this.labelNapomena);
+            this.groupBoxPodaci.Controls.Add(this.buttonOtkazi);
+            this.groupBoxPodaci.Controls.Add(this.labelDatum);
+            this.groupBoxPodaci.Controls.Add(this.radioButtonZavrseno);
+            this.groupBoxPodaci.Controls.Add(this.textBoxDatum);
+            this.groupBoxPodaci.Controls.Add(this.radioButtonOtkazano);
+            this.groupBoxPodaci.Controls.Add(this.labelPotvrdeno);
+            this.groupBoxPodaci.Controls.Add(this.radioButtonPotvrdeno);
+            this.groupBoxPodaci.Controls.Add(this.labelOtkazano);
+            this.groupBoxPodaci.Controls.Add(this.labelZavrseno);
+            this.groupBoxPodaci.Location = new System.Drawing.Point(12, 14);
+            this.groupBoxPodaci.Name = "groupBoxPodaci";
+            this.groupBoxPodaci.Size = new System.Drawing.Size(294, 383);
+            this.groupBoxPodaci.TabIndex = 25;
+            this.groupBoxPodaci.TabStop = false;
+            this.groupBoxPodaci.Text = "Podaci o narudžbi";
             // 
-            // groupBox3
+            // groupBoxNapredak
             // 
-            this.groupBox3.Controls.Add(this.dgvNapredak);
-            this.groupBox3.Location = new System.Drawing.Point(731, 14);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(395, 383);
-            this.groupBox3.TabIndex = 25;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Napredak";
+            this.groupBoxNapredak.Controls.Add(this.dgvNapredak);
+            this.groupBoxNapredak.Location = new System.Drawing.Point(731, 14);
+            this.groupBoxNapredak.Name = "groupBoxNapredak";
+            this.groupBoxNapredak.Size = new System.Drawing.Size(395, 383);
+            this.groupBoxNapredak.TabIndex = 25;
+            this.groupBoxNapredak.TabStop = false;
+            this.groupBoxNapredak.Text = "Napredak";
             // 
             // dgvNapredak
             // 
@@ -270,23 +270,23 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1138, 428);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxDijelovi);
             this.Controls.Add(this.buttonZatvori);
             this.Controls.Add(this.textBoxRegistracija);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelReg);
             this.Controls.Add(this.textBoxKorime);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.labelKorime);
+            this.Controls.Add(this.groupBoxPodaci);
+            this.Controls.Add(this.groupBoxNapredak);
             this.Name = "detaljiNarudzbeKlijentForm";
             this.Text = "Detalji narudžbe";
             this.Load += new System.EventHandler(this.detaljiNarudzbeForm_Load);
             this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.detaljiNarudzbeKlijentForm_HelpRequested);
-            this.groupBox1.ResumeLayout(false);
+            this.groupBoxDijelovi.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDijelovi)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
+            this.groupBoxPodaci.ResumeLayout(false);
+            this.groupBoxPodaci.PerformLayout();
+            this.groupBoxNapredak.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNapredak)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -295,26 +295,26 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelKorime;
         private System.Windows.Forms.TextBox textBoxKorime;
         private System.Windows.Forms.TextBox textBoxRegistracija;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelReg;
         private System.Windows.Forms.TextBox textBoxNapomena;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelNapomena;
         private System.Windows.Forms.TextBox textBoxDatum;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label labelDatum;
+        private System.Windows.Forms.Label labelPotvrdeno;
+        private System.Windows.Forms.Label labelOtkazano;
+        private System.Windows.Forms.Label labelZavrseno;
         private System.Windows.Forms.RadioButton radioButtonPotvrdeno;
         private System.Windows.Forms.RadioButton radioButtonOtkazano;
         private System.Windows.Forms.RadioButton radioButtonZavrseno;
         private System.Windows.Forms.Button buttonOtkazi;
         private System.Windows.Forms.Button buttonZatvori;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxDijelovi;
         private System.Windows.Forms.DataGridView dgvDijelovi;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBoxPodaci;
+        private System.Windows.Forms.GroupBox groupBoxNapredak;
         private System.Windows.Forms.DataGridView dgvNapredak;
     }
 }

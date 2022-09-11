@@ -36,10 +36,13 @@ namespace ServisiranjeVozila
             dgvSviDijelovi.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
             dgvSviDijelovi.Columns["Opis_dijela"].HeaderText = "Opis";
             dgvSviDijelovi.Columns["Sifra_dijela"].HeaderText = "Šifra dijela";
+            dgvSviDijelovi.Columns["Kolicina"].HeaderText = "Količina";
 
             dgvDijeloviUNarudzbi.Columns["ID_dijela"].Visible = false;
 
             dgvDijeloviUNarudzbi.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
+            dgvDijeloviUNarudzbi.Columns["Sifra_dijela"].HeaderText = "Šifra dijela";
+            dgvDijeloviUNarudzbi.Columns["Kolicina"].HeaderText = "Količina";
         }
 
         //Iz klase "Baza" dohvaća podatke, pridružuje ih dataGridView-u

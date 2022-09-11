@@ -35,7 +35,7 @@ Oznaka | Naziv | Kratki opis | Odgovorni član tima
 F01 | Login | Korisnicima aplikacije potrebno se ulogirati u sustav radi autentifikacije | Patrik Lovrek
 F02 | Registracija | Neregistrirani korisnici se mogu prijaviti | Patrik Lovrek
 F03 | Narudžba servisa/radova (klijent) | Klijent može naručiti servis/rad | Patrik Lovrek
-F04 | Potvrđivanje servisa/radova (djelatnik) | Djelatnik može potvrditi/odbiti servis/rad | Patrik Lovrek
+F04 | Potvrđivanje servisa/radova (djelatnik) | Djelatnik može potvrditi servis/rad | Patrik Lovrek
 F05 | Otkazivanje servisa/radova (klijent) | Klijent može otkazati servis/rad do trenutka kad mu vozilo dolazi na red | Ivan Kučan
 F06 | Izvještaj o detaljima i napretku servisa/radova | Izvještaj koji informira klijenta kako mu servis napreduje i ako mu je vozilo gotovo | Ivan Kučan
 F07 | Prikaz popisa auto dijelova | Prikazivanje popisa sa potrebnim auto dijelovima za servis radi evidencije da klijent i zaposlenici mogu vidjeti što se utrošilo | Ivan Kučan
