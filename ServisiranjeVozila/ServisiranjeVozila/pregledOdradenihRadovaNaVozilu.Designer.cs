@@ -38,6 +38,7 @@
             this.dgvPregledOdrađenihRadovaNaVozilu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPregledOdrađenihRadovaNaVozilu.Location = new System.Drawing.Point(13, 13);
             this.dgvPregledOdrađenihRadovaNaVozilu.Name = "dgvPregledOdrađenihRadovaNaVozilu";
+            this.dgvPregledOdrađenihRadovaNaVozilu.RowHeadersWidth = 50;
             this.dgvPregledOdrađenihRadovaNaVozilu.Size = new System.Drawing.Size(775, 324);
             this.dgvPregledOdrađenihRadovaNaVozilu.TabIndex = 0;
             // 

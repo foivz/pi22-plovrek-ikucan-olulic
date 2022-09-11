@@ -496,12 +496,14 @@ namespace Baza
                 context.SaveChanges();
             }
         }
-        public object PregledOdradenihRadovaNaVozilu(Korisnik korisnik)
+        public object PregledOdradenihRadovaNaVozilu(Narudzba odabranaNarudzba)
         {
             using (var context = new PI2238_DBEntities())
             {
-                var query = from n in context.Napredak.Include("Narudzba").Include("Tip_napretka")
-                            where n.Narudzba.Korisnicko_ime == korisnik.Korisnicko_ime
+                context.Narudzba.Attach(odabranaNarudzba);
+                var query = from n in context.Napredak.Include("Tip_napretka")
+                            //join nap in context.Napredak on n.ID_tipa_napretka equals nap.ID_tipa_napretka
+                            where n.Narudzba.ID_narudzbe == odabranaNarudzba.ID_narudzbe
                             select new
                             {
                                 n.ID_tipa_napretka,

@@ -14,16 +14,16 @@ namespace ServisiranjeVozila
     public partial class pregledOdradenihRadovaNaVozilu : Form
     {
         KomunikacijaSBazom baza = new KomunikacijaSBazom();
-        Korisnik trenutniKorisnik;
-        public pregledOdradenihRadovaNaVozilu(Korisnik korisnik)
+        Narudzba odabranaNarudzba;
+        public pregledOdradenihRadovaNaVozilu(Narudzba narudzba)
         {
             InitializeComponent();
-            trenutniKorisnik = korisnik;
+            odabranaNarudzba = narudzba;
         }
 
         private void pregledOdradenihRadovaNaVozilu_Load(object sender, EventArgs e)
         {
-            dgvPregledOdrađenihRadovaNaVozilu.DataSource = baza.PregledOdradenihRadovaNaVozilu(trenutniKorisnik);
+            dgvPregledOdrađenihRadovaNaVozilu.DataSource = baza.PregledOdradenihRadovaNaVozilu(odabranaNarudzba);
             Osvjezi();
         }
 

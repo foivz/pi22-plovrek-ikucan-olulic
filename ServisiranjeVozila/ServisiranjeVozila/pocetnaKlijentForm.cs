@@ -91,7 +91,8 @@ namespace ServisiranjeVozila
 
         private void PregledOdradenihRadovaNaVozilu_Click(object sender, EventArgs e)
         {
-            pregledOdradenihRadovaNaVozilu pregledRadova = new pregledOdradenihRadovaNaVozilu(trenutniKorisnik);
+            Narudzba odabranaNarudzba = dgvKorisnikoveNarudzbe.CurrentRow.DataBoundItem as Narudzba;
+            pregledOdradenihRadovaNaVozilu pregledRadova = new pregledOdradenihRadovaNaVozilu(odabranaNarudzba);
             this.Hide();
             pregledRadova.ShowDialog();
             this.Show();
