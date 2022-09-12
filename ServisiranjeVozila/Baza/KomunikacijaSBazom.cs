@@ -8,13 +8,47 @@ namespace Baza
 {
     public class KomunikacijaSBazom
     {
+        public int DodajVozilo(Vozilo vozilo, Korisnik trenutniKorisnik)
+        {
+            bool zapisMoguc = true;
+            using (var context = new PI2238_DBEntities())
+            {
+                if(!context.Vozilo.Any(reg => reg.Registracija_vozila == vozilo.Registracija_vozila))
+                {
+                    context.Vozilo.Add(vozilo);
+                    context.SaveChanges();
+                }
+            }
+            using (var context = new PI2238_DBEntities())
+            {
+                foreach (Vlasnistvo item in context.Vlasnistvo)
+                {
+                    if (item.Korisnicko_ime == trenutniKorisnik.Korisnicko_ime && item.Registracija_vozila == vozilo.Registracija_vozila) zapisMoguc = false;
+                }
+                if(zapisMoguc)
+                {
+                    Vlasnistvo vlasnistvo = new Vlasnistvo
+                    {
+                        Registracija_vozila = vozilo.Registracija_vozila,
+                        Korisnicko_ime = trenutniKorisnik.Korisnicko_ime,
+                        Od = DateTime.Now
+                    };
+                    context.Vlasnistvo.Add(vlasnistvo);
+                    context.SaveChanges();
+                    return 1;
+                }
+                
+            }
+            return 0;
+        }
+
         public List<Vozilo> DohvatiVozilaKorisnika(Korisnik trenutniKorisnik)
         {
             using (var context = new PI2238_DBEntities())
             {
                 var query = from v in context.Vozilo
                             where v.Vlasnistvo.Any(x => x.Registracija_vozila == v.Registracija_vozila)
-                            && context.Vlasnistvo.Any(x => x.Korisnicko_ime == trenutniKorisnik.Korisnicko_ime)
+                            && v.Vlasnistvo.Any(x => x.Korisnicko_ime == trenutniKorisnik.Korisnicko_ime)
                             select v;
                 return query.ToList();
             }

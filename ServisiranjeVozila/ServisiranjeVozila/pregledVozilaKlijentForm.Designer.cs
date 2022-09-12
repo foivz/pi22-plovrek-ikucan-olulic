@@ -61,6 +61,7 @@
             this.buttonDodajVozilo.TabIndex = 2;
             this.buttonDodajVozilo.Text = "Dodaj vozilo";
             this.buttonDodajVozilo.UseVisualStyleBackColor = true;
+            this.buttonDodajVozilo.Click += new System.EventHandler(this.buttonDodajVozilo_Click);
             // 
             // pregledVozilaKlijentForm
             // 

@@ -46,5 +46,16 @@ namespace ServisiranjeVozila
             dgvVozila.DataSource = baza.DohvatiVozilaKorisnika(trenutniKorisnik);
             PostaviNaslove();
         }
+
+        private void buttonDodajVozilo_Click(object sender, EventArgs e)
+        {
+            dodavanjeVozila forma = new dodavanjeVozila(trenutniKorisnik);
+            this.Hide();
+            forma.ShowDialog();
+            this.Show();
+            dgvVozila.DataSource = null;
+            dgvVozila.DataSource = baza.DohvatiVozilaKorisnika(trenutniKorisnik);
+
+        }
     }
 }

@@ -38,7 +38,7 @@
             // 
             // buttonDodaj
             // 
-            this.buttonDodaj.Location = new System.Drawing.Point(22, 204);
+            this.buttonDodaj.Location = new System.Drawing.Point(22, 161);
             this.buttonDodaj.Name = "buttonDodaj";
             this.buttonDodaj.Size = new System.Drawing.Size(106, 23);
             this.buttonDodaj.TabIndex = 46;
@@ -48,7 +48,7 @@
             // 
             // textBoxNapomena
             // 
-            this.textBoxNapomena.Location = new System.Drawing.Point(120, 127);
+            this.textBoxNapomena.Location = new System.Drawing.Point(120, 65);
             this.textBoxNapomena.Multiline = true;
             this.textBoxNapomena.Name = "textBoxNapomena";
             this.textBoxNapomena.Size = new System.Drawing.Size(157, 71);
@@ -57,7 +57,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(19, 127);
+            this.label6.Location = new System.Drawing.Point(19, 65);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 13);
             this.label6.TabIndex = 36;
@@ -74,7 +74,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(171, 204);
+            this.button1.Location = new System.Drawing.Point(171, 161);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(106, 23);
             this.button1.TabIndex = 47;
@@ -95,7 +95,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(301, 279);
+            this.ClientSize = new System.Drawing.Size(301, 202);
             this.Controls.Add(this.cmbVozila);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonDodaj);

@@ -91,6 +91,12 @@
     <Compile Include="dodajNapredakZaposlenikForm.Designer.cs">
       <DependentUpon>dodajNapredakZaposlenikForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="dodavanjeVozila.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dodavanjeVozila.Designer.cs">
+      <DependentUpon>dodavanjeVozila.cs</DependentUpon>
+    </Compile>
     <Compile Include="pregledOdradenihRadovaNaVozilu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dodajNapredakZaposlenikForm.resx">
       <DependentUpon>dodajNapredakZaposlenikForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dodavanjeVozila.resx">
+      <DependentUpon>dodavanjeVozila.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pregledOdradenihRadovaNaVozilu.resx">
       <DependentUpon>pregledOdradenihRadovaNaVozilu.cs</DependentUpon>
