@@ -164,7 +164,7 @@ namespace ServisiranjeVozila
             if (dgvSveNarudzbe.SelectedRows.Count > 0)
             {
                 var selektiranaNarudzba = dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba;
-                baza.PotvrdiNarudzbu(selektiranaNarudzba);
+                baza.PotvrdiNarudzbu(selektiranaNarudzba, trenutniKorisnik);
             }
             OsvjeziPodatke();
         }

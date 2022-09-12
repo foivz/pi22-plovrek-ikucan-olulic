@@ -105,12 +105,13 @@ namespace Baza
         }
 
         //U bazu podataka zapisuje da je narudžba potvrđena
-        public void PotvrdiNarudzbu(Narudzba odabranaNarudzba)
+        public void PotvrdiNarudzbu(Narudzba odabranaNarudzba, Korisnik zaposlenik)
         {
             using (var context = new PI2238_DBEntities())
             {
                 context.Narudzba.Attach(odabranaNarudzba);
                 odabranaNarudzba.Potvrđeno = 1;
+                odabranaNarudzba.Zaposlenik = zaposlenik.Korisnicko_ime;
                 context.SaveChanges();
             }
         }

@@ -35,7 +35,9 @@ namespace ServisiranjeVozila
                 Datum_narudzbe = DateTime.Now,
                 Potvrđeno = 0,
                 Otkazano = 0,
-                Zavrsena = 0
+                Zavrsena = 0,
+                Ukupna_cijena = 0,
+                Vozilo = (cmbVozila.SelectedItem as Vozilo).Registracija_vozila
             };
             baza.DodajNarudzbu(narudzba);
             MessageBox.Show("Narudžba uspješno dodana!");
@@ -51,6 +53,13 @@ namespace ServisiranjeVozila
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void kreirajNarudzbuKlijentForm_Load(object sender, EventArgs e)
+        {
+            cmbVozila.DataSource = baza.DohvatiVozilaKorisnika(trenutniKorisnik);
+            cmbVozila.DisplayMember = "Registracija_vozila";
+            cmbVozila.ValueMember = "Registracija_vozila";
         }
     }
 }
