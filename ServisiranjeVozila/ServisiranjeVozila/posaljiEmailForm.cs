@@ -25,7 +25,7 @@ namespace ServisiranjeVozila
         }
         public void PosaljiEmail()
         {
-            MailAddress to = new MailAddress("oton.lulic@gmail.com");
+            MailAddress to = new MailAddress(emailTextBox.Text);
             MailAddress from = new MailAddress("LKLTech@foi.hr");
             MailMessage mailMessage = new MailMessage(from, to);
             mailMessage.Subject = "Vaš automobil na servisu";
