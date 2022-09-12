@@ -97,6 +97,12 @@
     <Compile Include="dodavanjeVozila.Designer.cs">
       <DependentUpon>dodavanjeVozila.cs</DependentUpon>
     </Compile>
+    <Compile Include="posaljiEmailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="posaljiEmailForm.Designer.cs">
+      <DependentUpon>posaljiEmailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="pregledOdradenihRadovaNaVozilu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dodavanjeVozila.resx">
       <DependentUpon>dodavanjeVozila.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="posaljiEmailForm.resx">
+      <DependentUpon>posaljiEmailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pregledOdradenihRadovaNaVozilu.resx">
       <DependentUpon>pregledOdradenihRadovaNaVozilu.cs</DependentUpon>

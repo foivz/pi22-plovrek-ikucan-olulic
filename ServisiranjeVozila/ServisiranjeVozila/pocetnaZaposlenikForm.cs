@@ -240,5 +240,11 @@ namespace ServisiranjeVozila
             Pomoc pomoc = new Pomoc();
             pomoc.OtvoriPomocDjelatnik(this, "pocetnaZaposlenik.htm");
         }
+
+        private void posaljiObavijestKorisnikuButton_Click(object sender, EventArgs e)
+        {
+            posaljiEmailForm posaljiemail = new posaljiEmailForm(dgvSveNarudzbe.CurrentRow.DataBoundItem as Narudzba);
+            posaljiemail.ShowDialog();
+        }
     }
 }

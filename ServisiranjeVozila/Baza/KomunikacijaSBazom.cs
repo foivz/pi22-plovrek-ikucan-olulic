@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -547,6 +548,17 @@ namespace Baza
                                 n.Tip_napretka.Opis,
                                 n.Narudzba
                             };
+                return query.ToList();
+            }
+        }
+        public List<Korisnik> PregledKorisnika(Narudzba odabranaNarudzba)
+        {
+            using (var context = new PI2238_DBEntities())
+            {
+                context.Narudzba.Attach(odabranaNarudzba);
+                var query = from n in context.Korisnik
+                            where n.Korisnicko_ime == odabranaNarudzba.Korisnicko_ime
+                            select n;
                 return query.ToList();
             }
         }

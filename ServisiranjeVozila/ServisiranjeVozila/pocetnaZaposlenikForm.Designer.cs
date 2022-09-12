@@ -41,6 +41,7 @@
             this.buttonDijeloviKupovina = new System.Windows.Forms.Button();
             this.buttonKreirajKupovinu = new System.Windows.Forms.Button();
             this.buttonKupovinaZavrsena = new System.Windows.Forms.Button();
+            this.posaljiObavijestKorisnikuButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSveNarudzbe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKupovinaDijelova)).BeginInit();
             this.SuspendLayout();
@@ -177,12 +178,23 @@
             this.buttonKupovinaZavrsena.UseVisualStyleBackColor = true;
             this.buttonKupovinaZavrsena.Click += new System.EventHandler(this.buttonKupovinaZavrsena_Click);
             // 
+            // posaljiObavijestKorisnikuButton
+            // 
+            this.posaljiObavijestKorisnikuButton.Location = new System.Drawing.Point(340, 233);
+            this.posaljiObavijestKorisnikuButton.Name = "posaljiObavijestKorisnikuButton";
+            this.posaljiObavijestKorisnikuButton.Size = new System.Drawing.Size(92, 36);
+            this.posaljiObavijestKorisnikuButton.TabIndex = 15;
+            this.posaljiObavijestKorisnikuButton.Text = "Pošalji obavijest korisniku";
+            this.posaljiObavijestKorisnikuButton.UseVisualStyleBackColor = true;
+            this.posaljiObavijestKorisnikuButton.Click += new System.EventHandler(this.posaljiObavijestKorisnikuButton_Click);
+            // 
             // pocetnaZaposlenikForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(662, 566);
+            this.Controls.Add(this.posaljiObavijestKorisnikuButton);
             this.Controls.Add(this.buttonKupovinaZavrsena);
             this.Controls.Add(this.buttonKreirajKupovinu);
             this.Controls.Add(this.buttonDijeloviKupovina);
@@ -222,5 +234,6 @@
         private System.Windows.Forms.Button buttonDijeloviKupovina;
         private System.Windows.Forms.Button buttonKreirajKupovinu;
         private System.Windows.Forms.Button buttonKupovinaZavrsena;
+        private System.Windows.Forms.Button posaljiObavijestKorisnikuButton;
     }
 }
