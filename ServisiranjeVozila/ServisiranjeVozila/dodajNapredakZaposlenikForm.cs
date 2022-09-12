@@ -31,6 +31,7 @@ namespace ServisiranjeVozila
             textBoxIDNarudzbe.Text = odabranaNarudzba.ID_narudzbe.ToString();
             textBoxRegistracija.Text = odabranaNarudzba.Vozilo.ToString();
             dgvNapredak.DataSource = baza.DohvatiNapredakZaOdabranuNarudzbu(odabranaNarudzba);
+            dgvNapredak.Columns["Datum_vrijeme"].HeaderText = "Datum i vrijeme";
 
             cmbNapredak.DataSource = baza.DohvatiTipoveNapretka(odabranaNarudzba);
             cmbNapredak.ValueMember = "ID_tipa_napretka";

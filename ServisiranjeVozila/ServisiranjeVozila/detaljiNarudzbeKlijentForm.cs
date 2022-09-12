@@ -33,14 +33,17 @@ namespace ServisiranjeVozila
             dgvDijelovi.DataSource = baza.DohvatiDijeloveUNarudzbi(odabranaNarudzba);
 
             dgvDijelovi.Columns["ID_dijela"].Visible = false;
-
+            dgvDijelovi.Columns["Sifra_dijela"].Visible = false;
             dgvDijelovi.Columns["Naziv_dijela"].HeaderText = "Naziv dijela";
+            dgvDijelovi.Columns["Kolicina"].HeaderText = "Količina";
+
         }
 
         //Iz klase "Baza" dohvaća podatke i prikazuje ih u textBox
         private void DohvatiNapredak()
         {
             dgvNapredak.DataSource = baza.DohvatiNapredakZaOdabranuNarudzbu(odabranaNarudzba);
+            dgvNapredak.Columns["Datum_vrijeme"].HeaderText = "Datum i vrijeme";
             
         }
 
