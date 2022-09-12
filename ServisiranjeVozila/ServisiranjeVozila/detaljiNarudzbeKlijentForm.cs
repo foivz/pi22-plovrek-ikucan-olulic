@@ -53,6 +53,7 @@ namespace ServisiranjeVozila
             textBoxNapomena.Text = odabranaNarudzba.Napomene.ToString();
             textBoxDatum.Text = odabranaNarudzba.Datum_narudzbe.ToString();
             textBoxRegistracija.Text = odabranaNarudzba.Vozilo.ToString();
+            textBoxCijena.Text = odabranaNarudzba.Ukupna_cijena.ToString();
 
             if(odabranaNarudzba.Potvrđeno == 0)
             {

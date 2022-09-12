@@ -49,6 +49,9 @@
             this.groupBoxPodaci = new System.Windows.Forms.GroupBox();
             this.groupBoxNapredak = new System.Windows.Forms.GroupBox();
             this.dgvNapredak = new System.Windows.Forms.DataGridView();
+            this.labelCijena = new System.Windows.Forms.Label();
+            this.textBoxCijena = new System.Windows.Forms.TextBox();
+            this.labelHRK = new System.Windows.Forms.Label();
             this.groupBoxDijelovi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDijelovi)).BeginInit();
             this.groupBoxPodaci.SuspendLayout();
@@ -227,6 +230,9 @@
             // 
             // groupBoxPodaci
             // 
+            this.groupBoxPodaci.Controls.Add(this.labelHRK);
+            this.groupBoxPodaci.Controls.Add(this.labelCijena);
+            this.groupBoxPodaci.Controls.Add(this.textBoxCijena);
             this.groupBoxPodaci.Controls.Add(this.textBoxNapomena);
             this.groupBoxPodaci.Controls.Add(this.labelNapomena);
             this.groupBoxPodaci.Controls.Add(this.buttonOtkazi);
@@ -263,6 +269,32 @@
             this.dgvNapredak.Name = "dgvNapredak";
             this.dgvNapredak.Size = new System.Drawing.Size(383, 358);
             this.dgvNapredak.TabIndex = 1;
+            // 
+            // labelCijena
+            // 
+            this.labelCijena.AutoSize = true;
+            this.labelCijena.Location = new System.Drawing.Point(27, 324);
+            this.labelCijena.Name = "labelCijena";
+            this.labelCijena.Size = new System.Drawing.Size(79, 13);
+            this.labelCijena.TabIndex = 23;
+            this.labelCijena.Text = "Ukupna cijena:";
+            // 
+            // textBoxCijena
+            // 
+            this.textBoxCijena.Enabled = false;
+            this.textBoxCijena.Location = new System.Drawing.Point(128, 321);
+            this.textBoxCijena.Name = "textBoxCijena";
+            this.textBoxCijena.Size = new System.Drawing.Size(100, 20);
+            this.textBoxCijena.TabIndex = 24;
+            // 
+            // labelHRK
+            // 
+            this.labelHRK.AutoSize = true;
+            this.labelHRK.Location = new System.Drawing.Point(230, 324);
+            this.labelHRK.Name = "labelHRK";
+            this.labelHRK.Size = new System.Drawing.Size(30, 13);
+            this.labelHRK.TabIndex = 25;
+            this.labelHRK.Text = "HRK";
             // 
             // detaljiNarudzbeKlijentForm
             // 
@@ -316,5 +348,8 @@
         private System.Windows.Forms.GroupBox groupBoxPodaci;
         private System.Windows.Forms.GroupBox groupBoxNapredak;
         private System.Windows.Forms.DataGridView dgvNapredak;
+        private System.Windows.Forms.Label labelHRK;
+        private System.Windows.Forms.Label labelCijena;
+        private System.Windows.Forms.TextBox textBoxCijena;
     }
 }
