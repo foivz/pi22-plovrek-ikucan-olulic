@@ -36,17 +36,19 @@
             // dgvPregledOdrađenihRadovaNaVozilu
             // 
             this.dgvPregledOdrađenihRadovaNaVozilu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPregledOdrađenihRadovaNaVozilu.Location = new System.Drawing.Point(13, 13);
+            this.dgvPregledOdrađenihRadovaNaVozilu.Location = new System.Drawing.Point(20, 20);
+            this.dgvPregledOdrađenihRadovaNaVozilu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvPregledOdrađenihRadovaNaVozilu.Name = "dgvPregledOdrađenihRadovaNaVozilu";
             this.dgvPregledOdrađenihRadovaNaVozilu.RowHeadersWidth = 50;
-            this.dgvPregledOdrađenihRadovaNaVozilu.Size = new System.Drawing.Size(775, 324);
+            this.dgvPregledOdrađenihRadovaNaVozilu.Size = new System.Drawing.Size(1162, 498);
             this.dgvPregledOdrađenihRadovaNaVozilu.TabIndex = 0;
             // 
             // btnZatvori
             // 
-            this.btnZatvori.Location = new System.Drawing.Point(363, 343);
+            this.btnZatvori.Location = new System.Drawing.Point(544, 528);
+            this.btnZatvori.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnZatvori.Name = "btnZatvori";
-            this.btnZatvori.Size = new System.Drawing.Size(75, 23);
+            this.btnZatvori.Size = new System.Drawing.Size(112, 35);
             this.btnZatvori.TabIndex = 1;
             this.btnZatvori.Text = "Zatvori";
             this.btnZatvori.UseVisualStyleBackColor = true;
@@ -54,15 +56,17 @@
             // 
             // pregledOdradenihRadovaNaVozilu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(810, 386);
+            this.ClientSize = new System.Drawing.Size(1215, 594);
             this.Controls.Add(this.btnZatvori);
             this.Controls.Add(this.dgvPregledOdrađenihRadovaNaVozilu);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "pregledOdradenihRadovaNaVozilu";
             this.Text = "Pregled odrađenih servisa/radova na vozilu";
             this.Load += new System.EventHandler(this.pregledOdradenihRadovaNaVozilu_Load);
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.pregledOdradenihRadovaNaVozilu_HelpRequested);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPregledOdrađenihRadovaNaVozilu)).EndInit();
             this.ResumeLayout(false);
 

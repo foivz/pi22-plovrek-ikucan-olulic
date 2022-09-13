@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Baza;
+using F1_pomoc;
 
 namespace ServisiranjeVozila
 {
@@ -37,6 +38,12 @@ namespace ServisiranjeVozila
         private void btnZatvori_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void pregledOdradenihRadovaNaVozilu_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            Pomoc pomoc = new Pomoc();
+            pomoc.OtvoriPomocKorisnik(this, "pregledOdrađenihRadovaIServisaNaVozilu.htm");
         }
     }
 }

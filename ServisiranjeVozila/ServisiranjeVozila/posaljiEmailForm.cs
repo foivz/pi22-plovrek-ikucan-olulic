@@ -11,6 +11,7 @@ using System.Net.Mail;
 using Baza;
 using System.Net;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using F1_pomoc;
 
 namespace ServisiranjeVozila
 {
@@ -71,6 +72,12 @@ namespace ServisiranjeVozila
         private void posaljiEmailForm_Load(object sender, EventArgs e)
         {
             DohvatiKorisnika();
+        }
+
+        private void posaljiEmailForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            Pomoc pomoc = new Pomoc();
+            pomoc.OtvoriPomocDjelatnik(this, "posaljiEmail.chm");
         }
     }
 }
