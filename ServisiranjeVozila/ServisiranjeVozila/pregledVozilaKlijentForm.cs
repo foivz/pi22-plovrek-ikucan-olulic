@@ -55,6 +55,7 @@ namespace ServisiranjeVozila
             this.Show();
             dgvVozila.DataSource = null;
             dgvVozila.DataSource = baza.DohvatiVozilaKorisnika(trenutniKorisnik);
+            PostaviNaslove();
 
         }
     }
